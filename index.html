@@ -480,6 +480,17 @@ ANG.config.site = {
    * All contact goes through the WhatsApp group only: set its link in whatsapp.config.js.
    */
 
+  /*
+   * قنوات التواصل الإضافية | Extra contact channels  (واتساب يُضبط في whatsapp.config.js)
+   *   telegram : رابط المجموعة أو القناة، مثال: https://t.me/xxxxxx  (اتركه '' إن لم يُعتمد بعد)
+   *   email    : بريد المنصة، مثال: info@yourdomain.com أو name@gmail.com  (اتركه '' إن لم يُعتمد بعد)
+   * القناة الفارغة أو الخاطئة لا تظهر؛ لا تُختلق روابط أبدًا.
+   */
+  channels: {
+    telegram: '',
+    email: ''
+  },
+
   // سطر الحقوق في أسفل الصفحة
   credits: 'Anglomania © 2026'
 };
@@ -784,6 +795,8 @@ ANG.config.curriculum = {
  *   title        {ar, en}  مطلوب
  *   description  {ar, en}  اختياري
  *   status       'available' | 'soon'   اختياري (يظهر شارة «متاح» أو «قريبًا»)
+ *   access       'free' | 'paid'        اختياري: مجاني (زر تحميل إن وُجد link) أو مدفوع (زر «اطلب» للتواصل)
+ *   link         ملف مجاني داخل الموقع 'files/اسم.pdf' أو رابط https
  *   link         'https://…'            اختياري (رابط https فقط)
  *   price        {ar, en}              اختياري — لا تضف سعرًا غير معتمد
  *
@@ -803,22 +816,22 @@ ANG.config = ANG.config || {};
 
 ANG.config.content = {
   // محتوى مشترك لكل الصفوف: ملفات الأستاذ حسام بهوية Anglomania (معتمدة من المالك).
-  // بلا روابط تحميل بعد: يطلبها الزائر عبر مجموعة واتساب. لإضافة رابط: link:'https://…' (https فقط).
+  // مجانية للجميع: ملفات داخل مجلد files/ في الموقع. مادة مدفوعة: access:'paid' (والسعر اختياري price:{ar,en} ولا يُضاف إلا بعد اعتماده).
   '*': {
     all: {
       materials: [
         { title: { ar: 'المحادثات — كيف تكوّن السؤال', en: 'Dialogues — How to make a question' },
           description: { ar: 'ملف تدريب من ٣٩ صفحة: أسئلة نعم/لا، Do/Does/Did، أدوات الاستفهام، واختيار الإجابة وإكمال الحوار.', en: 'A 39-page practice file: yes/no questions, Do/Does/Did, WH questions, choose the answer and complete the dialogue.' },
-          status: 'available' },
+          status: 'available', access: 'free', link: 'files/Anglomania-Dialogues.pdf' },
         { title: { ar: 'اكتب عالمك — اقرأ · ترجم · اكتب', en: 'Write Your World — Read · Translate · Write' },
           description: { ar: 'ملف من ٣٩ صفحة و٢٨ وحدة: جمل بترجمتها ثم مختبر كتابة لكل وحدة.', en: 'A 39-page, 28-unit file: sentences with translation, then a writing lab for each unit.' },
-          status: 'available' },
+          status: 'available', access: 'free', link: 'files/Anglomania-WriteYourWorld.pdf' },
         { title: { ar: 'ابنِ فقرتك — اقرأ · املأ · اكتب', en: 'Build Your Paragraph — Read · Fill · Write' },
           description: { ar: 'ملف من ٣٩ صفحة و٣٢ وحدة: جمل جاهزة وبنوك كلمات ثم كتابة فقرات بعدد كلمات محدد.', en: 'A 39-page, 32-unit file: ready sentences, word banks, then paragraphs with a set word count.' },
-          status: 'available' },
+          status: 'available', access: 'free', link: 'files/Anglomania-BuildYourParagraph.pdf' },
         { title: { ar: 'الأفعال الشاذة في اللغة الإنجليزية', en: 'Irregular Verbs' },
           description: { ar: 'ملف من ٨ صفحات: الأفعال الشاذة مرتبة بالحروف مع تصريفاتها ومعانيها.', en: 'An 8-page file: irregular verbs by letter with their forms and meanings.' },
-          status: 'available' }
+          status: 'available', access: 'free', link: 'files/Anglomania-IrregularVerbs.pdf' }
       ]
     }
   }
@@ -843,6 +856,12 @@ ANG.config.content = {
     /* رابط https فقط */
     safeHttps: function (u) {
       u = String(u || '').trim();
+      return /^https:\/\/[^\s<>"']+$/i.test(u) ? u : '';
+    },
+    /* رابط عنصر المحتوى: https أو ملف داخل مجلد files/ في الموقع نفسه */
+    safeLink: function (u) {
+      u = String(u || '').trim();
+      if (/^files\/[A-Za-z0-9._\-\/]+$/.test(u) && u.indexOf('..') < 0) return u;
       return /^https:\/\/[^\s<>"']+$/i.test(u) ? u : '';
     },
     /* رقم هاتف دولي بالأرقام فقط */
@@ -927,6 +946,13 @@ ANG.config.content = {
     'nav.home': 'الرئيسية', 'nav.grades': 'الصفوف', 'nav.request': 'اطلب', 'nav.about': 'من نحن', 'nav.contact': 'تواصل',
     'nav.aria': 'التنقل الرئيسي',
     'nav.teachers': 'للمعلمين',
+    'acc.free': 'مجاني', 'acc.paid': 'مدفوع', 'acc.get': 'تحميل مجاني', 'acc.buy': 'اطلب هذه المادة',
+    'model.t': 'مجاني ومدفوع',
+    'model.free': 'مواد مجانية للجميع', 'model.freed': 'مناهج وملفات أعددناها، يحمّلها كل طالب ومعلم بلا مقابل.',
+    'model.paid': 'مواد مدفوعة', 'model.paidd': 'مواد إضافية مميزة لمن يريد المزيد، تُعلن داخل المجموعة وتُطلب عبر التواصل.',
+    'ch.or': 'أو تواصل معنا عبر:', 'ch.telegram': 'تيليجرام', 'ch.email': 'البريد الإلكتروني',
+    'setup.channels': 'قنوات التواصل الإضافية',
+
     'pwa.t': 'ثبّت Anglomania كتطبيق', 'pwa.d': 'أيقونة على شاشتك، يفتح بملء الشاشة ويعمل حتى بلا إنترنت بعد أول زيارة.', 'pwa.btn': 'تثبيت التطبيق',
     'pwa.ios': 'في آيفون: اضغط زر المشاركة في Safari ثم «إضافة إلى الشاشة الرئيسية».', 'pwa.manual': 'من قائمة المتصفح (⋮) اختر «تثبيت التطبيق» أو «إضافة إلى الشاشة الرئيسية».',
     'home.who.t': 'من أنت؟', 'home.who.s': 'أنا طالب', 'home.who.sd': 'اختر صفّك وتعرّف على ما يتوفر لك.', 'home.who.t2': 'أنا معلم', 'home.who.td': 'ملخصات وأوراق عمل واختبارات ومراجعات وشروحات لطلابك.',
@@ -1010,7 +1036,7 @@ ANG.config.content = {
     'about.cta': 'ابدأ باختيار الصف',
 
     'contact.title': 'تواصل معنا',
-    'contact.lead': 'التواصل معنا يتم عبر مجموعة واتساب الرسمية.',
+    'contact.lead': 'تواصل معنا عبر واتساب، وتيليجرام، والبريد الإلكتروني.',
     'contact.cta.t': 'تريد خدمة محددة؟',
     'contact.cta.d': 'اختر صفّك وطلبك لنوجّهك للمجموعة الأنسب.',
     'contact.cta.b': 'اطلب خدمة',
@@ -1045,6 +1071,13 @@ ANG.config.content = {
     'nav.home': 'Home', 'nav.grades': 'Grades', 'nav.request': 'Request', 'nav.about': 'About', 'nav.contact': 'Contact',
     'nav.aria': 'Main navigation',
     'nav.teachers': 'Teachers',
+    'acc.free': 'Free', 'acc.paid': 'Paid', 'acc.get': 'Free download', 'acc.buy': 'Request this item',
+    'model.t': 'Free & paid',
+    'model.free': 'Free materials for everyone', 'model.freed': 'Curricula and files we made, free to download for every student and teacher.',
+    'model.paid': 'Paid materials', 'model.paidd': 'Extra premium materials for those who want more, announced in the group and requested through contact.',
+    'ch.or': 'Or contact us via:', 'ch.telegram': 'Telegram', 'ch.email': 'Email',
+    'setup.channels': 'Extra contact channels',
+
     'pwa.t': 'Install Anglomania as an app', 'pwa.d': 'An icon on your screen, opens full-screen and works offline after your first visit.', 'pwa.btn': 'Install the app',
     'pwa.ios': 'On iPhone: tap the Share button in Safari, then “Add to Home Screen”.', 'pwa.manual': 'From the browser menu (⋮) choose “Install app” or “Add to Home screen”.',
     'home.who.t': 'Who are you?', 'home.who.s': 'I am a student', 'home.who.sd': 'Pick your grade and see what is available.', 'home.who.t2': 'I am a teacher', 'home.who.td': 'Summaries, worksheets, tests, revision and explanations for your students.',
@@ -1126,7 +1159,7 @@ ANG.config.content = {
     'about.cta': 'Start by choosing a grade',
 
     'contact.title': 'Contact',
-    'contact.lead': 'All contact with us goes through our official WhatsApp group.',
+    'contact.lead': 'Reach us on WhatsApp, Telegram or by email.',
     'contact.cta.t': 'Need something specific?',
     'contact.cta.d': 'Choose your grade and request and we’ll route you to the best group.',
     'contact.cta.b': 'Request a service',
@@ -1308,6 +1341,16 @@ ANG.config.content = {
     groupById: groupById,
     resolveGroup: resolveGroup,
     destinations: destinations,
+
+    /* قنوات التواصل الإضافية الصالحة فقط: تيليجرام وبريد */
+    channels: function () {
+      var c = (A.config.site && A.config.site.channels) || {}, out = [];
+      var tg = String(c.telegram || '').trim();
+      if (/^https:\/\/(t\.me|telegram\.me)\/[A-Za-z0-9_+\-\/]{3,}$/.test(tg)) out.push({ id: 'telegram', url: tg });
+      var em = String(c.email || '').trim();
+      if (/^[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$/.test(em)) out.push({ id: 'email', url: 'mailto:' + em, label: em });
+      return out;
+    },
 
     /* وجهة التواصل العامة (صفحة تواصل): المجموعة المعتمدة للطلبات العامة */
     contact: function () { return this.resolve({ grade: 'any', need: 'other' }); },
@@ -1519,6 +1562,11 @@ ANG.config.content = {
       '<a class="pick" href="#/teachers">' + tile3d('lessons', 'gold', 'ts-sm') + '<span><b>' + esc(t('home.who.t2')) + '</b><small>' + esc(t('home.who.td')) + '</small></span>' + arrow() + '</a>' +
       '</div></section>' +
 
+      '<section class="block"><h2 class="h2">' + esc(t('model.t')) + '</h2><div class="pick-needs">' +
+      '<a class="pick" href="#/grades">' + tile3d('materials', '', 'ts-sm') + '<span><b>' + esc(t('model.free')) + '</b><small>' + esc(t('model.freed')) + '</small></span>' + arrow() + '</a>' +
+      '<a class="pick" href="#/request?grade=any&need=other">' + tile3d('star', 'gold', 'ts-sm') + '<span><b>' + esc(t('model.paid')) + '</b><small>' + esc(t('model.paidd')) + '</small></span>' + arrow() + '</a>' +
+      '</div></section>' +
+
       '<section class="block"><h2 class="h2">' + esc(t('home.steps.title')) + '</h2><ol class="steps">' + steps + '</ol></section>' +
 
       '<section class="block"><h2 class="h2">' + esc(t('home.stages.title')) + '</h2>' +
@@ -1550,13 +1598,16 @@ ANG.config.content = {
   function countOf(map) { var k = 0; Object.keys(map).forEach(function (n) { k += map[n].length; }); return k; }
 
   function itemHtml(it) {
-    var link = A.util.safeHttps(it.link);
-    var st = it.status === 'available' ? '<span class="pill pill-ok">' + esc(t('st.available')) + '</span>' :
-             it.status === 'soon' ? '<span class="pill pill-soon">' + esc(t('st.soon')) + '</span>' : '';
+    var link = A.util.safeLink(it.link), paid = it.access === 'paid', free = it.access === 'free';
+    var st = (free ? '<span class="pill pill-ok">' + esc(t('acc.free')) + '</span>' : paid ? '<span class="pill pill-soon">' + esc(t('acc.paid')) + '</span>' : '') +
+             (it.status === 'available' && !free && !paid ? '<span class="pill pill-ok">' + esc(t('st.available')) + '</span>' : '') +
+             (it.status === 'soon' ? '<span class="pill pill-soon">' + esc(t('st.soon')) + '</span>' : '');
+    var act = '';
+    if (link && !paid) act = '<a class="btn btn-primary" href="' + esc(link) + '" target="_blank" rel="noopener noreferrer" download>' + icon('arrow', 'arr arr-down') + esc(t(free ? 'acc.get' : 'grade.link')) + '</a>';
+    else if (paid) act = '<a class="btn btn-soft" href="' + reqHref({ grade: 'any', need: 'other' }) + '">' + icon('whatsapp') + esc(t('acc.buy')) + '</a>';
     return '<li class="item"><div class="item-h"><strong>' + L(it.title) + '</strong>' + st + '</div>' +
       (it.description ? '<p>' + L(it.description) + '</p>' : '') +
-      (it.price ? '<p class="price">' + L(it.price) + '</p>' : '') +
-      (link ? '<a class="inline-link" href="' + esc(link) + '" target="_blank" rel="noopener noreferrer">' + esc(t('grade.link')) + icon('external') + '</a>' : '') + '</li>';
+      (it.price ? '<p class="price">' + L(it.price) + '</p>' : '') + act + '</li>';
   }
 
   function nodeRow(gid, node, kind) {
@@ -1665,6 +1716,15 @@ ANG.config.content = {
       }).join('') + '</div>';
   }
 
+  /* تيليجرام والبريد: تظهر فقط عند اعتمادهما في site.config.js */
+  function altChannels() {
+    var ch = A.requests.channels();
+    if (!ch.length) return '';
+    return '<p class="muted copy-hint">' + esc(t('ch.or')) + '</p>' + ch.map(function (c) {
+      return '<a class="btn btn-ghost btn-block" href="' + esc(c.url) + '" target="_blank" rel="noopener noreferrer">' + icon(c.id === 'telegram' ? 'chat' : 'link') + esc(t('ch.' + c.id)) + (c.label ? ' — ' + esc(c.label) : '') + '</a>';
+    }).join('');
+  }
+
   /* وجهات الطلب — أضف حالة جديدة هنا عند إضافة وجهة داخلية مستقبلًا */
   function renderDestination(dest, q) {
     switch (dest.type) {
@@ -1672,7 +1732,7 @@ ANG.config.content = {
         return '<div class="card card-go">' + icon('whatsapp', 'card-i') +
           '<div><p class="muted">' + esc(t('req.group')) + '</p><h3>' + L(dest.group.name) + '</h3></div></div>' +
           '<a class="btn btn-wa btn-lg btn-block" href="' + esc(dest.url) + '" target="_blank" rel="noopener noreferrer">' + icon('whatsapp') + esc(t('req.open')) + '</a>' +
-          '<p class="note">' + icon('info') + '<span>' + esc(t('req.openNote')) + '</span></p>';
+          '<p class="note">' + icon('info') + '<span>' + esc(t('req.openNote')) + '</span></p>' + altChannels();
       case 'none':
         return '<div class="card card-pending">' + icon('warn', 'card-i') + '<div><h3>' + esc(t('req.noGroup.t')) + '</h3><p>' + esc(t('req.noGroup.d')) + '</p></div></div>';
       /* case 'form': مستقبلًا — نموذج داخلي + رقم مرجعي */
@@ -1717,7 +1777,7 @@ ANG.config.content = {
   /* ---------- contact ---------- */
   function contact() {
     return pageHead('contact.title', 'contact.lead') +
-      renderDestination(A.requests.contact(), {}) +
+      renderDestination(A.requests.contact(), {}) + (A.requests.contact().type === 'whatsapp' ? '' : altChannels()) +
       '<div class="banner banner-soft"><div><h2>' + esc(t('contact.cta.t')) + '</h2><p>' + esc(t('contact.cta.d')) + '</p></div>' +
       '<a class="btn btn-primary" href="#/request">' + icon('whatsapp') + esc(t('contact.cta.b')) + '</a></div>';
   }
@@ -1753,6 +1813,8 @@ ANG.config.content = {
     return pageHead('setup.title', 'setup.lead') +
       '<section class="block card-plain"><h2>' + esc(t('setup.mode')) + '</h2><p><code>' + esc(site.requestMode) + '</code></p></section>' +
       '<section class="block card-plain"><h2>' + esc(t('setup.groups')) + '</h2><ul class="rows">' + groupRows + '</ul></section>' +
+      '<section class="block card-plain"><h2>' + esc(t('setup.channels')) + '</h2><ul class="rows">' +
+      ['telegram', 'email'].map(function (k) { var ok = A.requests.channels().some(function (c) { return c.id === k; }); return '<li><code>' + k + '</code><span class="grow">' + esc(t('ch.' + k)) + '</span>' + pill(ok, t(ok ? 'setup.ok' : 'setup.empty')) + '</li>'; }).join('') + '</ul></section>' +
       '<section class="block card-plain"><h2>' + esc(t('setup.teacher')) + '</h2><p>' + (A.requests.resolve({ grade: 'any', need: 'other', aud: 'teacher' }).type === 'whatsapp' ? pill(true, A.requests.resolve({ grade: 'any', need: 'other', aud: 'teacher' }).group.id) : pill(false, t('setup.empty'))) + '</p><p class="muted">' + esc(t('setup.teacher.d')) + '</p></section>' +
       '<section class="block card-plain"><h2>' + esc(t('setup.coverage')) + '</h2><p class="muted">' + esc(t('setup.coverage.d')) + '</p>' +
       '<div class="table-wrap" tabindex="0"><table class="matrix"><thead>' + head + '</thead><tbody>' + matrix + '</tbody></table></div></section>' +
