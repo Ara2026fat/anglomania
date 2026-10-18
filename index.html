@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Anglomania</title>
+<link rel="canonical" href="https://anglomaniaedu.com/">
 <meta name="description" content="Anglomania — منصة تعليم اللغة الإنجليزية من الأول الابتدائي إلى الثالث الثانوي. اختر صفك وصل إلى مجموعة واتساب المناسبة.">
 <meta name="theme-color" content="#0E5E3E">
 <meta property="og:type" content="website">
@@ -188,6 +189,12 @@ h3{font-size:1.02rem;line-height:1.4}
 .chip:hover{background:var(--gold-soft)}
 .chip-wide{margin-top:18px;border-style:dashed}
 .chip-i{width:20px;height:20px}
+.aud-list{list-style:none;display:grid;gap:10px;padding:0}
+.aud-u{display:flex;align-items:center;gap:14px;padding:12px 14px;background:var(--ivory);border:1.5px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+.aud-n{flex:none;width:44px;height:44px;border-radius:12px;background:var(--emerald);color:#fff;display:grid;place-items:center;font-weight:800;font-size:1.1rem}
+.aud-t{display:flex;flex-direction:column;gap:2px}.aud-t small{color:var(--muted)}.aud-t em{font-style:normal;color:var(--muted);font-size:.85rem}
+.aud-steps{padding-inline-start:22px;margin-top:8px;display:grid;gap:4px}
+@media(min-width:700px){.aud-list{grid-template-columns:1fr 1fr}}
 .pick-needs{display:grid;gap:10px;margin-top:14px}
 .pick{display:flex;align-items:center;gap:14px;padding:12px 14px;background:var(--ivory);border:1.5px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);transition:transform .12s,border-color .15s}
 .pick:hover{border-color:var(--gold);transform:translateY(-2px)}
@@ -487,7 +494,7 @@ ANG.config.site = {
    * القناة الفارغة أو الخاطئة لا تظهر؛ لا تُختلق روابط أبدًا.
    */
   channels: {
-    telegram: '',
+    telegram: 'https://t.me/+Ef7ievEL7Ho3ZmNk',
     email: 'anglomania2030@gmail.com'
   },
 
@@ -1061,6 +1068,12 @@ ANG.config.content = {
 
     'footer.rights': 'جميع الحقوق محفوظة',
     'footer.setup': 'حالة الإعداد',
+    'audio.title': 'الصوتيات', 'audio.lead': 'مقاطع كتاب Talk Time 1 الصوتية والمرئية، مرتبة حسب وحدات الكتاب الـ12 في مجموعة تيليجرام.',
+    'audio.how': 'كل وحدة في الكتاب لها موضوع (Topic) في المجموعة، وفيها ملف مضغوط يحوي بطاقة الوحدة والفيديوهات والملفات الصوتية.',
+    'audio.unit': 'الوحدة', 'audio.pages': 'الصفحات', 'audio.clips': 'مقطعًا', 'audio.open': 'افتح مجموعة التيليجرام', 'audio.book': 'Talk Time 1 — Student\'s Book',
+    'audio.step.t': 'طريقة الاستخدام', 'audio.s1': 'افتح المجموعة من الزر أدناه.', 'audio.s2': 'اختر موضوع الوحدة المطلوبة.', 'audio.s3': 'نزّل الملف المضغوط وفُكّه، ثم استمع مع الكتاب.',
+    'audio.note': 'الكتاب نفسه غير مرفق؛ المقاطع مرتبطة برقم الصفحة والتمرين في كتابك.',
+    'home.audio': 'الصوتيات', 'home.audiod': 'مقاطع Talk Time 1 حسب الوحدة',
     'footer.note': 'المعلومات المعروضة معتمدة من أنجلومانيا؛ وما لم يُعتمد يُذكر صراحةً.',
     'common.open': 'فتح'
   };
@@ -1184,6 +1197,12 @@ ANG.config.content = {
 
     'footer.rights': 'All rights reserved',
     'footer.setup': 'Setup status',
+    'audio.title': 'Audio', 'audio.lead': 'Audio and video clips for Talk Time 1, organized by the book\'s 12 units in our Telegram group.',
+    'audio.how': 'Each unit has its own Topic in the group, with a zip containing the unit card, videos and audio files.',
+    'audio.unit': 'Unit', 'audio.pages': 'Pages', 'audio.clips': 'clips', 'audio.open': 'Open the Telegram group', 'audio.book': 'Talk Time 1 — Student\'s Book',
+    'audio.step.t': 'How to use', 'audio.s1': 'Open the group with the button below.', 'audio.s2': 'Pick the topic of the unit you need.', 'audio.s3': 'Download and unzip the file, then listen along with the book.',
+    'audio.note': 'The book itself is not included; clips are matched to the page and exercise in your copy.',
+    'home.audio': 'Audio', 'home.audiod': 'Talk Time 1 clips by unit',
     'footer.note': 'Information shown is confirmed by Anglomania; anything unconfirmed is stated openly.',
     'common.open': 'Open'
   };
@@ -1434,6 +1453,7 @@ ANG.config.content = {
       case 'grade':   route.name = 'grade'; route.params.id = seg[1]; break;
       case 'teachers': route.name = 'teachers'; break;
       case 'request': route.name = 'request'; break;
+      case 'audio':   route.name = 'audio'; break;
       case 'about':   route.name = 'about'; break;
       case 'contact': route.name = 'contact'; break;
       case 'setup':   route.name = 'setup'; break;
@@ -1560,6 +1580,7 @@ ANG.config.content = {
       '<section class="block"><h2 class="h2">' + esc(t('home.who.t')) + '</h2><div class="pick-needs">' +
       '<a class="pick" href="#/grades">' + tile3d('stageSecondary', '', 'ts-sm') + '<span><b>' + esc(t('home.who.s')) + '</b><small>' + esc(t('home.who.sd')) + '</small></span>' + arrow() + '</a>' +
       '<a class="pick" href="#/teachers">' + tile3d('lessons', 'gold', 'ts-sm') + '<span><b>' + esc(t('home.who.t2')) + '</b><small>' + esc(t('home.who.td')) + '</small></span>' + arrow() + '</a>' +
+      '<a class="pick" href="#/audio">' + tile3d('chat', '', 'ts-sm') + '<span><b>' + esc(t('home.audio')) + '</b><small>' + esc(t('home.audiod')) + '</small></span>' + arrow() + '</a>' +
       '</div></section>' +
 
       '<section class="block"><h2 class="h2">' + esc(t('model.t')) + '</h2><div class="pick-needs">' +
@@ -1764,6 +1785,28 @@ ANG.config.content = {
     return pageHead(aud === 'teacher' ? 'req.titleT' : 'req.title') + stepper(stepN) + '<section class="wiz">' + body + '</section>';
   }
 
+
+  /* ---------- audio ---------- */
+  var TT1 = [
+    ['Meeting people', 'التعارف', 1, 6, 8], ['Family', 'العائلة', 7, 12, 9], ['In a classroom', 'في الفصل', 13, 18, 9],
+    ['Everyday activities', 'الأنشطة اليومية', 19, 24, 8], ['Foods and drinks', 'الأطعمة والمشروبات', 25, 30, 8], ['Housing', 'السكن', 31, 36, 8],
+    ['Free time activities', 'أنشطة وقت الفراغ', 37, 42, 8], ['Life events', 'أحداث الحياة', 43, 48, 8], ['Movies', 'الأفلام', 49, 54, 8],
+    ['Health problems', 'المشكلات الصحية', 55, 60, 8], ['On vacation', 'في الإجازة', 61, 66, 8], ['Telephone language', 'لغة الهاتف', 67, 72, 8]
+  ];
+  var TG_PUBLIC = 'https://t.me/AnglomaniaEdu';
+  function audio() {
+    var ar = A.i18n.lang === 'ar';
+    var cards = TT1.map(function (u, i) {
+      return '<li class="aud-u"><span class="aud-n">' + A.i18n.num(i + 1) + '</span><span class="aud-t"><b>' + esc(u[0]) + '</b>' + (ar ? '<small>' + esc(u[1]) + '</small>' : '') +
+        '<em>' + esc(t('audio.pages')) + ' ' + A.i18n.num(u[2]) + '–' + A.i18n.num(u[3]) + ' · ' + A.i18n.num(u[4]) + ' ' + esc(t('audio.clips')) + '</em></span></li>';
+    }).join('');
+    return pageHead('audio.title', 'audio.lead') +
+      '<section class="block card-plain"><h2>' + esc(t('audio.book')) + '</h2><p>' + esc(t('audio.how')) + '</p>' +
+      '<a class="btn btn-primary btn-block" href="' + TG_PUBLIC + '" target="_blank" rel="noopener noreferrer">' + icon('chat') + esc(t('audio.open')) + '</a></section>' +
+      '<section class="block"><ul class="aud-list">' + cards + '</ul></section>' +
+      '<section class="block card-plain"><h2>' + esc(t('audio.step.t')) + '</h2><ol class="aud-steps"><li>' + esc(t('audio.s1')) + '</li><li>' + esc(t('audio.s2')) + '</li><li>' + esc(t('audio.s3')) + '</li></ol><p class="muted">' + esc(t('audio.note')) + '</p></section>';
+  }
+
   /* ---------- about ---------- */
   function about() {
     return pageHead('about.title', 'about.lead') +
@@ -1827,7 +1870,7 @@ ANG.config.content = {
   }
 
   A.views = {
-    home: home, teachers: teachers, grades: grades, grade: gradePage, request: request, about: about, contact: contact,
+    home: home, teachers: teachers, grades: grades, grade: gradePage, request: request, audio: audio, about: about, contact: contact,
     setup: setup, notfound: notfound, renderDestination: renderDestination,
     gradeName: function (id) { var g = grade(id); return g ? fullGrade(g) : ''; }
   };
@@ -1865,7 +1908,7 @@ ANG.config.content = {
     $('#lang-btn').setAttribute('aria-label', t('lang.aria'));
     $('#brand-tag').textContent = t('brand.tag');
     $('#footer-note').textContent = t('footer.note');
-    $('#footer-links').innerHTML = '<a href="#/about">' + esc(t('nav.about')) + '</a><a href="#/contact">' + esc(t('nav.contact')) + '</a><a href="#/setup">' + esc(t('footer.setup')) + '</a>';
+    $('#footer-links').innerHTML = '<a href="#/audio">' + esc(t('audio.title')) + '</a><a href="#/about">' + esc(t('nav.about')) + '</a><a href="#/contact">' + esc(t('nav.contact')) + '</a><a href="#/setup">' + esc(t('footer.setup')) + '</a>';
     $('#credits').textContent = A.config.site.credits || '';
     $('#skip').textContent = t('skip');
     $('#top-nav').setAttribute('aria-label', t('nav.aria'));
@@ -1873,7 +1916,7 @@ ANG.config.content = {
   }
 
   function titleFor(r) {
-    var k = { teachers: 'teachers.title', grades: 'grades.title', request: 'req.title', about: 'about.title', contact: 'contact.title', setup: 'setup.title', notfound: 'nf.title' }[r.name];
+    var k = { teachers: 'teachers.title', grades: 'grades.title', request: 'req.title', about: 'about.title', audio: 'audio.title', contact: 'contact.title', setup: 'setup.title', notfound: 'nf.title' }[r.name];
     if (r.name === 'grade') return A.views.gradeName(r.params.id) || t('nf.title');
     return k ? t(k) : t('brand.tag');
   }
@@ -1889,6 +1932,7 @@ ANG.config.content = {
       case 'request': html = v.request(r.query); break;
       case 'teachers': html = v.teachers(); break;
       case 'about': html = v.about(); break;
+      case 'audio': html = v.audio(); break;
       case 'contact': html = v.contact(); break;
       case 'setup': html = v.setup(); break;
       default: html = v.notfound();
