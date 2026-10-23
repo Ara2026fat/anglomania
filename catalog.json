@@ -1,0 +1,484 @@
+{
+ "waNumber": "",
+ "files": [
+  {
+   "id": "adults-foundation",
+   "ar": "التأسيس للكبار",
+   "en": "Foundation for Adults",
+   "pages": 130,
+   "mb": 11.4,
+   "place": [
+    "secondary:grammar",
+    "secondary:reading"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "primary-foundation-course",
+   "ar": "كورس تأسيس للمرحلة الابتدائية",
+   "en": "Primary Foundation Course",
+   "pages": 103,
+   "mb": 9.6,
+   "place": [
+    "primary:grammar"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "grammar-intermediate-secondary",
+   "ar": "كورس قواعد لطلاب متوسط وثانوي",
+   "en": "Grammar Course · Intermediate & Secondary",
+   "pages": 104,
+   "mb": 9.1,
+   "place": [
+    "intermediate:grammar",
+    "secondary:grammar"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "grammar-present-simple-course",
+   "ar": "كورس قواعد: المضارع البسيط",
+   "en": "Grammar Course · Present Simple",
+   "pages": 121,
+   "mb": 10.0,
+   "place": [
+    "intermediate:grammar"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "writing-simple-sentences",
+   "ar": "كورس الكتابة: الجمل البسيطة",
+   "en": "Writing Course · Simple Sentences",
+   "pages": 58,
+   "mb": 6.0,
+   "place": [
+    "primary:writing",
+    "intermediate:writing",
+    "secondary:writing"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "translation-course",
+   "ar": "كورس الترجمة",
+   "en": "Translation Course",
+   "pages": 83,
+   "mb": 6.1,
+   "place": [
+    "intermediate:translation",
+    "secondary:translation"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "primary-grades-5-6",
+   "ar": "كورس خامس وسادس ابتدائي",
+   "en": "Primary Grades 5 & 6",
+   "pages": 69,
+   "mb": 5.8,
+   "place": [
+    "primary:grammar",
+    "primary:reading"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "letter-sounds-dictionary",
+   "ar": "قاموس نطق الحروف الإنجليزية",
+   "en": "English Letter Sounds Dictionary",
+   "pages": 41,
+   "mb": 4.7,
+   "place": [
+    "preschool:phonics"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "grammar-tenses",
+   "ar": "كورس القواعد: الأزمنة",
+   "en": "Grammar · Tenses",
+   "pages": 126,
+   "mb": 7.6,
+   "place": [
+    "secondary:grammar"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "adults-linking-sounds",
+   "ar": "صوتيات كبار: ربط الأصوات",
+   "en": "Linking Sounds for Adults",
+   "pages": 8,
+   "mb": 2.2,
+   "place": [
+    "secondary:reading"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "american-t",
+   "ar": "اللهجة الأمريكية: نطق حرف T",
+   "en": "American T",
+   "pages": 6,
+   "mb": 2.0,
+   "place": [
+    "secondary:reading"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "to-be-to-have",
+   "ar": "الفعلان To Be و To Have",
+   "en": "To Be & To Have",
+   "pages": 34,
+   "mb": 3.6,
+   "place": [
+    "primary:grammar",
+    "intermediate:grammar"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "parts-of-speech",
+   "ar": "أجزاء الكلام",
+   "en": "Parts of Speech",
+   "pages": 9,
+   "mb": 1.7,
+   "place": [
+    "primary:grammar",
+    "intermediate:grammar"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "vowel-patterns",
+   "ar": "أنماط الحروف المتحركة",
+   "en": "Long & Short Vowel Patterns",
+   "pages": 4,
+   "mb": 1.8,
+   "place": [
+    "preschool:phonics",
+    "primary:reading"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "irregular-verbs",
+   "ar": "الأفعال الشاذة",
+   "en": "Irregular Verbs",
+   "pages": 9,
+   "mb": 2.1,
+   "place": [
+    "intermediate:grammar",
+    "secondary:grammar"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "translation-part-8",
+   "ar": "الترجمة: الجزء الثامن",
+   "en": "Translation · Part Eight",
+   "pages": 60,
+   "mb": 3.9,
+   "place": [
+    "secondary:translation"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "alphabet-exercises",
+   "ar": "الحروف الأبجدية: تمارين عامة",
+   "en": "The Alphabet · Exercises",
+   "pages": 53,
+   "mb": 5.4,
+   "place": [
+    "preschool:letters"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "adjectives",
+   "ar": "الصفات",
+   "en": "Adjectives",
+   "pages": 85,
+   "mb": 8.3,
+   "place": [
+    "primary:grammar",
+    "intermediate:grammar"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "prefixes-suffixes",
+   "ar": "اللواحق والسوابق",
+   "en": "Prefixes & Suffixes",
+   "pages": 24,
+   "mb": 2.6,
+   "place": [
+    "secondary:grammar",
+    "secondary:reading"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "dialogues-questions",
+   "ar": "المحادثات: كيف تكوّن السؤال",
+   "en": "Dialogues · Making Questions",
+   "pages": 21,
+   "mb": 3.0,
+   "place": [
+    "intermediate:reading",
+    "intermediate:grammar"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "present-simple-continuous",
+   "ar": "المضارع البسيط والمستمر",
+   "en": "Present Simple vs Continuous",
+   "pages": 59,
+   "mb": 4.0,
+   "place": [
+    "intermediate:grammar"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "about-yourself-family",
+   "ar": "تأسيس: عن نفسك والأسرة",
+   "en": "About Yourself & Family",
+   "pages": 35,
+   "mb": 3.3,
+   "place": [
+    "preschool:grammar"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "farm-food",
+   "ar": "تأسيس: مفردات وجمل المزرعة والطعام",
+   "en": "Farm & Food · Vocabulary",
+   "pages": 33,
+   "mb": 4.4,
+   "place": [
+    "preschool:grammar"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "tenses-intro",
+   "ar": "تمهيد: التعامل مع الأزمنة",
+   "en": "Getting Ready for Tenses",
+   "pages": 11,
+   "mb": 1.9,
+   "place": [
+    "intermediate:grammar"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "prepositions",
+   "ar": "حروف الجر",
+   "en": "Prepositions",
+   "pages": 21,
+   "mb": 3.0,
+   "place": [
+    "primary:grammar",
+    "intermediate:grammar"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "alphabet-workbook",
+   "ar": "دفتر الحروف الإنجليزية",
+   "en": "Alphabet Workbook",
+   "pages": 26,
+   "mb": 3.0,
+   "place": [
+    "preschool:handwriting",
+    "preschool:letters"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "cvc-dictionary",
+   "ar": "قاموس كلمات CVC",
+   "en": "CVC Words Dictionary",
+   "pages": 43,
+   "mb": 3.7,
+   "place": [
+    "preschool:phonics"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "short-sentences",
+   "ar": "قراءة الجمل القصيرة",
+   "en": "Short Sentences Reading",
+   "pages": 22,
+   "mb": 2.0,
+   "place": [
+    "preschool:phonics",
+    "primary:reading"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "phonics-stories",
+   "ar": "قراءة وتأسيس صوتي: قصص الحروف",
+   "en": "Phonics Reading Stories",
+   "pages": 48,
+   "mb": 3.3,
+   "place": [
+    "preschool:phonics",
+    "primary:reading"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "reading-passages",
+   "ar": "قطع القراءة والفهم",
+   "en": "Reading Comprehension",
+   "pages": 69,
+   "mb": 3.7,
+   "place": [
+    "primary:reading",
+    "intermediate:reading",
+    "secondary:reading"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "sight-words",
+   "ar": "كلمات النظر Sight Words",
+   "en": "Sight Words",
+   "pages": 112,
+   "mb": 7.8,
+   "place": [
+    "preschool:phonics",
+    "primary:reading"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "have-got",
+   "ar": "كورس قواعد: have got و has got",
+   "en": "Have Got / Has Got",
+   "pages": 127,
+   "mb": 9.3,
+   "place": [
+    "primary:grammar",
+    "intermediate:grammar"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "body-parts-articles",
+   "ar": "كورس قواعد: أجزاء الجسم وأدوات النكرة",
+   "en": "Body Parts & Articles",
+   "pages": 155,
+   "mb": 10.0,
+   "place": [
+    "primary:grammar"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "indefinite-articles",
+   "ar": "كورس قواعد: أدوات النكرة",
+   "en": "Indefinite Articles",
+   "pages": 127,
+   "mb": 11.2,
+   "place": [
+    "primary:grammar"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "my-body",
+   "ar": "كورس تأسيس: جسمي",
+   "en": "My Body · Foundation",
+   "pages": 83,
+   "mb": 7.3,
+   "place": [
+    "preschool:grammar"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "animals-vocab",
+   "ar": "كورس مفردات وقراءة: الحيوانات",
+   "en": "Vocabulary & Reading · Animals",
+   "pages": 79,
+   "mb": 7.4,
+   "place": [
+    "preschool:grammar",
+    "primary:reading"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "topic-vocabulary",
+   "ar": "مفردات الموضوعات المصورة",
+   "en": "Picture Topic Vocabulary",
+   "pages": 53,
+   "mb": 5.0,
+   "place": [
+    "preschool:grammar",
+    "primary:reading"
+   ],
+   "tier": "free",
+   "price": 0
+  },
+  {
+   "id": "present-simple-summary",
+   "ar": "ملخص القواعد: المضارع البسيط",
+   "en": "Present Simple Summary",
+   "pages": 17,
+   "mb": 2.9,
+   "place": [
+    "intermediate:grammar"
+   ],
+   "tier": "free",
+   "price": 0
+  }
+ ]
+}
