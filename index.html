@@ -70,6 +70,7 @@ a{color:inherit;text-decoration:none}
 .qb::-webkit-details-marker{display:none}.qb:active{transform:translateY(2px);box-shadow:none}.qb svg{width:22px;height:22px}.qb .cur{background:var(--emerald);color:var(--ivory);border-radius:999px;padding:2px 12px;font-size:.88rem}
 .qb.soon{cursor:default;opacity:.92;border-style:dashed;box-shadow:none}.qb .cur.gold{background:linear-gradient(180deg,#FFE184,var(--gold));color:#4a3a05}
 .qb.adm{background:linear-gradient(180deg,#1FA571,var(--emerald));color:#FFF3C8;border-color:var(--gold-d)}.qb[hidden]{display:none}
+@media(max-width:640px){.qbar .wrap{display:grid;grid-template-columns:1fr 1fr;gap:8px}.qb{justify-content:center;padding:0 8px;font-size:.86rem;min-height:44px;gap:6px;width:100%}.qb svg{width:20px;height:20px}.qb .cur{padding:1px 8px;font-size:.76rem}.qsys .qpanel{inset-inline-start:0;width:calc(200% + 8px)}}
 .qsys{position:relative}.qsys[open] .qb{border-color:var(--emerald)}
 .qpanel{position:absolute;top:calc(100% + 8px);inset-inline-start:0;z-index:40;width:min(340px,86vw);background:var(--ivory);border:2px solid var(--gold);border-radius:18px;padding:10px;display:grid;gap:8px;box-shadow:0 14px 30px -12px rgba(14,94,62,.5)}
 .qpanel .sys-opt{width:100%}
@@ -1914,6 +1915,7 @@ ANG.config.content = {
     var ar = A.i18n.lang === 'ar';
     h += '<span class="qb soon" role="link" aria-disabled="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg><span>' + (ar ? 'ركن التأسيس' : 'Foundation Corner') + '</span><span class="cur gold">' + (ar ? 'قريباً' : 'Soon') + '</span></span>';
     var adm = false; try { var c = JSON.parse(localStorage.getItem('angadm.cfg.v1') || '{}'); adm = !!(c && c.tok); } catch (e) {}
+    h += '<span class="qb soon" role="link" aria-disabled="true">' + A.icon('globe') + '<span>' + (ar ? 'ركن الكتب الأجنبية' : 'Foreign Books') + '</span><span class="cur gold">' + (ar ? 'قريباً' : 'Soon') + '</span></span>';
     h += '<a class="qb adm" href="admin.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span>لوحة التحكم</span></a>';
     $('#qbar').innerHTML = h;
     $('#qbar-w').hidden = !h;
