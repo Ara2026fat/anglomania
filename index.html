@@ -71,7 +71,7 @@ a{color:inherit;text-decoration:none}
 .qi b{font-weight:800;display:block}.qi .sub{white-space:nowrap;background:var(--emerald);color:var(--ivory);border-radius:999px;padding:0 8px;font-size:.66rem;font-weight:800;margin-top:-2px}.qi .sub.gold{background:linear-gradient(180deg,#FFE184,var(--gold));color:#4a3a05}
 .qi.soon{cursor:default}.qi.soon .t3d{filter:saturate(.9)}
 .qi .gear{width:62%;height:62%;position:relative;z-index:1;color:#0A4530;filter:drop-shadow(0 1px 1px rgba(255,255,255,.5))}
-.qbar .t3d::after{animation:glt6 6s ease-in-out infinite;animation-delay:var(--d,0s)}
+.qbar .t3d::after{animation:glt6 15s ease-in-out infinite;animation-delay:var(--d,0s)}
 .qsys{flex:0 1 100px;position:static;display:flex;justify-content:center}.qsys[open] .t3d{outline:3px solid var(--gold);outline-offset:2px}
 .qpanel{position:absolute;top:calc(100% - 4px);inset-inline-start:12px;z-index:40;width:min(360px,calc(100vw - 24px));background:var(--ivory);border:2px solid var(--gold);border-radius:18px;padding:10px;display:grid;gap:8px;box-shadow:0 14px 30px -12px rgba(14,94,62,.5)}
 .qpanel .sys-opt{width:100%}
@@ -306,7 +306,7 @@ code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85rem;backgrou
   background:linear-gradient(155deg,#22A06F,#0E5E3E 52%,#05301D);border:1px solid rgba(255,255,255,.45);
   box-shadow:inset 0 2px 0 rgba(255,255,255,.4),inset 0 -7px 12px rgba(0,0,0,.28),0 10px 16px -8px rgba(5,48,29,.65),0 3px 0 #05301D}
 .t3d::before{content:"";position:absolute;inset:4% 7% auto;height:46%;border-radius:calc(var(--ts)*.28) calc(var(--ts)*.28) 60% 60%/calc(var(--ts)*.28) calc(var(--ts)*.28) 42% 42%;background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,.04));pointer-events:none}
-.t3d::after{content:"";position:absolute;top:-20%;bottom:-20%;width:34%;inset-inline-start:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.7),transparent);transform:skewX(-18deg);animation:glt12 12s ease-in-out infinite;animation-delay:var(--d,0s);pointer-events:none}
+.t3d::after{content:"";position:absolute;top:-20%;bottom:-20%;width:34%;inset-inline-start:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.7),transparent);transform:skewX(-18deg);animation:glt12 30s ease-in-out infinite;animation-delay:var(--d,0s);pointer-events:none}
 .t3d .ico-duo{position:relative;z-index:1;width:62%;height:62%;filter:drop-shadow(0 2px 2px rgba(0,0,0,.35))}
 .t3d.gold{--ia:#0A4530;--ib:#FEFDF5;--ic:#F6E7A8;--id:#0A4530;--ie:#F6E7A8;--ig:#F6E7A8;--is:#FEFDF5;
   background:linear-gradient(155deg,#FAE79A,#C8A23A 52%,#8C6A10);border-color:rgba(255,255,255,.6);box-shadow:inset 0 2px 0 rgba(255,255,255,.6),inset 0 -7px 12px rgba(80,50,0,.3),0 10px 16px -8px rgba(110,80,10,.6),0 3px 0 #75570C}
@@ -314,8 +314,8 @@ code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85rem;backgrou
 .stage:nth-of-type(2) .t3d,.need:nth-child(even) .t3d,.svc:nth-child(even) .t3d{--d:2.2s}
 .need:nth-child(3n) .t3d,.svc:nth-child(3n) .t3d{--d:4.4s}
 @keyframes glt{0%,55%{inset-inline-start:-60%}100%{inset-inline-start:140%}}
-@keyframes glt12{0%{inset-inline-start:-60%}10%,100%{inset-inline-start:140%}}
-@keyframes glt6{0%{inset-inline-start:-60%}20%,100%{inset-inline-start:140%}}
+@keyframes glt12{0%{inset-inline-start:-60%}2%,100%{inset-inline-start:140%}}
+@keyframes glt6{0%{inset-inline-start:-60%}4%,100%{inset-inline-start:140%}}
 .t3d.coral{--ia:#fff;--ib:#FFE9A8;--ic:#B8381F;--id:#B8381F;--ie:#B8381F;--ig:#FFD27A;--is:#FFE3D8;background:linear-gradient(155deg,#FFA383,#F26B4E 52%,#B8381F);border-color:rgba(255,255,255,.6);box-shadow:inset 0 2px 0 rgba(255,255,255,.5),inset 0 -7px 12px rgba(120,30,10,.3),0 10px 16px -8px rgba(184,56,31,.6),0 3px 0 #8f2a15}
 .t3d.blue{--ia:#fff;--ib:#FFE9A8;--ic:#14548F;--id:#14548F;--ie:#14548F;--ig:#FFD27A;--is:#DCEBFB;background:linear-gradient(155deg,#8CC6F8,#2F8BE0 52%,#14548F);border-color:rgba(255,255,255,.6);box-shadow:inset 0 2px 0 rgba(255,255,255,.5),inset 0 -7px 12px rgba(10,40,90,.3),0 10px 16px -8px rgba(20,84,143,.6),0 3px 0 #0e3f6d}
 .t3d.violet{--ia:#fff;--ib:#FFE9A8;--ic:#51308A;--id:#51308A;--ie:#51308A;--ig:#FFD27A;--is:#EADFF8;background:linear-gradient(155deg,#CDB0F1,#8B5CC8 52%,#51308A);border-color:rgba(255,255,255,.6);box-shadow:inset 0 2px 0 rgba(255,255,255,.5),inset 0 -7px 12px rgba(40,15,80,.3),0 10px 16px -8px rgba(81,48,138,.6),0 3px 0 #3b2268}
