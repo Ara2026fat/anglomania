@@ -64,6 +64,7 @@ a{color:inherit;text-decoration:none}
 .top-nav{display:none}
 .lang-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 14px;border:1.5px solid var(--gold);border-radius:999px;background:var(--ivory);color:var(--emerald);font:inherit;font-weight:700;cursor:pointer}
 .lang-btn:hover{background:var(--gold-soft)}
+#adm-btn[hidden]{display:none}
 
 /* bottom nav (mobile) */
 .bottom-nav{position:fixed;inset-inline:0;bottom:0;z-index:50;background:var(--ivory);border-top:2px solid var(--gold);padding-bottom:env(safe-area-inset-bottom)}
@@ -444,6 +445,7 @@ body::after{bottom:-40vmax;inset-inline-end:-30vmax;background:radial-gradient(c
       <small id="brand-tag"></small>
     </a>
     <nav id="top-nav" class="top-nav"></nav>
+    <a id="adm-btn" class="lang-btn" href="admin.html" hidden style="text-decoration:none" aria-label="لوحة التحكم">⚙ <span>لوحة التحكم</span></a>
     <button id="lang-btn" class="lang-btn" type="button"></button>
   </div>
 </header>
@@ -2000,5 +2002,6 @@ ANG.config.content = {
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
 </script>
+<script>/* زر لوحة التحكم: يظهر فقط في متصفح المشرف (بعد ربط اللوحة بالمفتاح) */try{var c=JSON.parse(localStorage.getItem("angadm.cfg.v1")||"{}");if(c&&c.tok)document.getElementById("adm-btn").hidden=false}catch(e){}</script>
 </body>
 </html>
