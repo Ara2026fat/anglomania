@@ -2183,18 +2183,46 @@ ANG.config.content = {
   }
   function booksOf(gid) { var c = nodeContent(gid, 'all'); return c.curricula || []; }
 
+  /* الثانوية السعودية: السنة المشتركة ثم أربعة مسارات تشترك في كتاب واحد (Mega Goal 2). */
+  var SA_TRACKS = [
+    { id: 'tr-gen',  ar: 'المسار العام',            en: 'General track' },
+    { id: 'tr-shar', ar: 'المسار الشرعي',           en: 'Sharia track' },
+    { id: 'tr-biz',  ar: 'مسار إدارة الأعمال',      en: 'Business Administration track' },
+    { id: 'tr-cs',   ar: 'مسار علوم الحاسب والهندسة', en: 'Computer Science & Engineering track' }
+  ];
+
+  function curriculaTabs() {
+    var gs = A.system.grades().filter(function (g) { return booksOf(g.id).length; }), out = [], trDone = false;
+    gs.forEach(function (g) {
+      if (A.system.info().id === 'sa' && (g.id === 'g11' || g.id === 'g12')) {
+        if (trDone) return;
+        trDone = true;
+        SA_TRACKS.forEach(function (tr) {
+          out.push({ id: tr.id, b: L({ ar: '٢ – ٣', en: '11–12' }), small: loc(tr), title: loc(tr), books: booksOf('g11'), gid: null });
+        });
+        return;
+      }
+      var common = A.system.info().id === 'sa' && g.id === 'g10';
+      out.push({ id: g.id, b: badge(g), small: common ? loc({ ar: 'السنة المشتركة', en: 'Common year' }) : fullGrade(g),
+        title: common ? fullGrade(g) + ' · ' + loc({ ar: 'السنة المشتركة', en: 'Common year' }) : fullGrade(g), books: booksOf(g.id), gid: g.id });
+    });
+    return out;
+  }
+
   function curriculaPage(query) {
-    var sys = A.system.info(), gs = A.system.grades().filter(function (g) { return booksOf(g.id).length; });
+    var sys = A.system.info(), tabs = curriculaTabs();
     var head = '<a class="back" href="#/">' + icon('arrow', 'arr arr-back') + esc(t('nav.home')) + '</a>' + pageHead('cur.title', 'cur.lead') + sysSwitcher() +
       '<p class="eyebrow">' + esc(loc(sys).name) + '</p>';
-    if (!gs.length) return head + '<div class="card-plain"><p>' + esc(t('cur.empty')) + '</p><a class="btn btn-primary" href="' + reqHref({ need: 'curricula' }) + '">' + icon('whatsapp') + esc(t('nav.request')) + '</a></div>';
-    var sel = gs.filter(function (g) { return query && g.id === query.g; })[0] || gs[0];
-    var chips = gs.map(function (g) {
-      return '<a class="gchip" role="tab" aria-selected="' + (g.id === sel.id) + '" href="#/curricula?g=' + g.id + '"><b>' + badge(g) + '</b><small>' + esc(fullGrade(g)) + '</small></a>';
+    if (!tabs.length) return head + '<div class="card-plain"><p>' + esc(t('cur.empty')) + '</p><a class="btn btn-primary" href="' + reqHref({ need: 'curricula' }) + '">' + icon('whatsapp') + esc(t('nav.request')) + '</a></div>';
+    var q = query && query.g;
+    if (q === 'g11' || q === 'g12') q = 'tr-gen';
+    var sel = tabs.filter(function (x) { return x.id === q; })[0] || tabs[0];
+    var chips = tabs.map(function (x) {
+      return '<a class="gchip" role="tab" aria-selected="' + (x.id === sel.id) + '" href="#/curricula?g=' + x.id + '"><b>' + x.b + '</b><small>' + esc(x.small) + '</small></a>';
     }).join('');
     return head + '<div class="gchips" role="tablist">' + chips + '</div>' +
-      '<section class="block"><h2 class="h2">' + esc(fullGrade(sel)) + '</h2><div class="books">' + booksOf(sel.id).map(bookTile).join('') + '</div>' +
-      '<a class="btn btn-soft" href="' + gradeHref(sel.id) + '">' + esc(fullGrade(sel)) + arrow() + '</a></section>';
+      '<section class="block"><h2 class="h2">' + esc(sel.title) + '</h2><div class="books">' + sel.books.map(bookTile).join('') + '</div>' +
+      (sel.gid ? '<a class="btn btn-soft" href="' + gradeHref(sel.gid) + '">' + esc(fullGrade(grade(sel.gid))) + arrow() + '</a>' : '') + '</section>';
   }
 
   function gradePage(id, query) {
