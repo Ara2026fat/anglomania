@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>أنجلومانيا | تعليم اللغة الإنجليزية لجميع الصفوف وكتب المناهج السعودية والخليجية</title>
+<script>(function(){var S='67d975563c7ccc52',I=150000,H='d27a0d881e14fdd924cdc67b3bf4079c99c05538a429d34053ee35fd70257e8d';
+window.angOwnerOk=function(){try{return sessionStorage.getItem('angOwner')==='1'}catch(e){return false}};
+window.angOwnerTry=function(pin){var enc=new TextEncoder();return crypto.subtle.importKey('raw',enc.encode(pin),'PBKDF2',false,['deriveBits']).then(function(k){return crypto.subtle.deriveBits({name:'PBKDF2',hash:'SHA-256',salt:enc.encode(S),iterations:I},k,256)}).then(function(b){var x=Array.prototype.map.call(new Uint8Array(b),function(v){return('0'+v.toString(16)).slice(-2)}).join('');if(x===H){try{sessionStorage.setItem('angOwner','1')}catch(e){}return true}return false}).catch(function(){return false})};
+})();</script>
 <link rel="canonical" href="https://anglomaniaedu.com/">
 <meta name="description" content="أنجلومانيا (Anglomania): منصة عربية لتعليم اللغة الإنجليزية من الأول الابتدائي إلى الثالث الثانوي، مع كتب المناهج السعودية والكويتية والعُمانية والمصرية والإماراتية بنقرة واحدة، ومجموعات واتساب لكل صف.">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"EducationalOrganization","@id":"https://anglomaniaedu.com/#org","name":"أنجلومانيا","alternateName":["Anglomania","Anglomania Edu"],"url":"https://anglomaniaedu.com/","description":"منصة عربية لتعليم اللغة الإنجليزية لجميع الصفوف من الأول الابتدائي إلى الثالث الثانوي، وكتب المناهج السعودية والخليجية والمصرية.","inLanguage":["ar","en"],"areaServed":["SA","KW","OM","AE","EG"]},{"@type":"WebSite","@id":"https://anglomaniaedu.com/#site","url":"https://anglomaniaedu.com/","name":"أنجلومانيا | Anglomania","inLanguage":"ar","publisher":{"@id":"https://anglomaniaedu.com/#org"}}]}</script>
@@ -2411,6 +2415,17 @@ ANG.config.content = {
   }
 
   /* ---------- setup (owner) ---------- */
+  function ownerGate() {
+    return '<div class="card-plain" style="max-width:360px;margin:24px auto;text-align:center"><h1 class="h2">صفحة المالكين</h1><p>أدخل الرقم السري.</p><form id="owner-gate"><input id="owner-pin" type="password" inputmode="numeric" autocomplete="current-password" aria-label="الرقم السري" style="width:100%;box-sizing:border-box;padding:12px;border:2px solid var(--gold);border-radius:12px;font-size:1.2rem;text-align:center"><p id="owner-err" role="alert" style="color:#b3261e;min-height:1.4em"></p><button class="btn btn-primary" type="submit">دخول</button></form></div>';
+  }
+  window.angOwnerGate = ownerGate;
+  document.addEventListener('submit', function (e) {
+    if (!e.target || e.target.id !== 'owner-gate') return;
+    e.preventDefault();
+    var p = document.getElementById('owner-pin').value;
+    window.angOwnerTry(p).then(function (ok) { if (ok) location.reload(); else { document.getElementById('owner-err').textContent = 'الرقم السري غير صحيح'; document.getElementById('owner-pin').value = ''; } });
+  });
+
   function setup() {
     var site = A.config.site, wa = A.config.whatsapp || { groups: [], rules: [] };
     function pill(ok, label) { return '<span class="pill ' + (ok ? 'pill-ok' : 'pill-soon') + '">' + esc(label) + '</span>'; }
@@ -2491,7 +2506,6 @@ ANG.config.content = {
     items.push(chip(A.icon('stageElementary'), 'coral', ar ? 'ركن التأسيس' : 'Foundation Corner'));
     items.push(chip(A.icon('globe'), 'blue', ar ? 'ركن الكتب الأجنبية' : 'Foreign Books'));
     if (r && (r.name === 'home' || r.name === 'teachers')) items.push(chip(A.icon('stageSecondary'), 'violet', ar ? 'ركن كورسات المعلم' : 'Teacher Courses'));
-    items.push('<a class="qi" href="admin.html">' + tile('<svg class="gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>', 'gold') + '<b>' + (ar ? 'لوحة التحكم' : 'Admin') + '</b></a>');
     $('#qbar').innerHTML = items.join('');
     $('#qbar').querySelectorAll('.t3d').forEach(function (e, i) { e.style.setProperty('--d', (i * 1.2) + 's'); });
     $('#qbar-w').hidden = !items.length;
@@ -2540,7 +2554,7 @@ ANG.config.content = {
       case 'about': html = v.about(); break;
       case 'audio': html = v.audio(); break;
       case 'contact': html = v.contact(); break;
-      case 'setup': html = v.setup(); break;
+      case 'setup': html = window.angOwnerOk() ? v.setup() : window.angOwnerGate(); break;
       default: html = v.notfound();
     }
     $('#main').innerHTML = html;
