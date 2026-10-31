@@ -1,0 +1,30 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>اعتماد أسماء الكتب</title>
+<style>*{box-sizing:border-box;margin:0}body{font-family:Cairo,Tahoma,sans-serif;background:#FBF7EA;color:#17302A;padding-bottom:80px;line-height:1.5}
+header{background:#0E5E3E;color:#fff;padding:12px 16px;border-bottom:4px solid #D4A72C;position:sticky;top:0;z-index:5}header h1{font-size:18px}header p{font-size:12px;opacity:.9}
+.g{max-width:900px;margin:0 auto;padding:12px;display:grid;gap:10px}.c{background:#fff;border:2px solid #eadfb8;border-radius:14px;padding:10px 12px}.c.ok{border-color:#2e9e6b;background:#F1FBF5}.c.w{border-color:#D4A72C}
+.t{display:flex;gap:8px;align-items:center;font-size:12px;color:#5B6C65;margin-bottom:6px;flex-wrap:wrap}.n{background:#D4A72C;color:#fff;border-radius:99px;padding:0 8px;font-weight:900}
+.b{border-radius:8px;padding:0 8px;font-weight:800}.b.f{background:#E8F5EE;color:#0E5E3E}.b.p{background:#FFF1D6;color:#9a6a00}
+input{width:100%;padding:9px 10px;border:2px solid #e3d9b0;border-radius:10px;font:700 15px Cairo,Tahoma;margin-bottom:6px}input.en{direction:ltr;text-align:left;font-family:Inter,Arial,sans-serif}
+.r{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.r button{border:0;border-radius:99px;padding:6px 14px;font:800 13px Cairo,Tahoma;cursor:pointer;background:#eee}.r .ok{background:#0E5E3E;color:#fff}.sp{background:#FFF1D6!important;color:#9a6a00}
+.bar{position:fixed;bottom:0;inset-inline:0;background:#fff;border-top:3px solid #D4A72C;padding:10px 14px;display:flex;gap:10px;align-items:center;justify-content:space-between}.bar button{border:0;border-radius:12px;padding:10px 18px;background:#0E5E3E;color:#fff;font:900 15px Cairo,Tahoma;cursor:pointer}
+.pl{font-size:12px;color:#5B6C65}</style></head><body>
+<header><h1>اعتماد أسماء الكتب (38)</h1><p>راجع الاسم العربي والإنجليزي لكل كتاب، عدّل ما تريد، ثم اضغط «معتمد ✓». الأسماء المميّزة بالأصفر اقترحتُها أنا من تعديلاتك.</p></header>
+<div class="g" id="g"></div>
+<div class="bar"><span id="st"></span><button id="dl">⬇ تنزيل الأسماء المعتمدة</button></div>
+<script>
+const D=__DATA__,SEC=__SEC__,K='ang-names-v1';let S={};try{S=JSON.parse(localStorage.getItem(K)||'{}')}catch(e){}
+const save=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};
+const N=n=>String(n).replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[d]);
+D.forEach(r=>{const s=S[r.id];if(s){r.ar=s.ar;r.en=s.en;r.ok=s.ok}});
+function pl(r){return r.place.map(p=>{const [a,b]=p.split(':');return SEC[a]+' · '+SEC[b]}).join(' — ')}
+function card(r){return `<div class="c${r.ok?' ok':r.chg?' w':''}" data-id="${r.id}"><div class="t"><span class="n">${N(r.n)}</span><span class="b ${r.tier==='paid'?'p':'f'}">${r.tier==='paid'?'مدفوع':'مجاني'}</span>${N(r.pages)} صفحة · <a href="https://anglomaniaedu.com/pdf/${r.id}.pdf" target="_blank">افتح الكتاب</a>${r.chg?' · <b style="color:#9a6a00">اسم إنجليزي مقترح</b>':''}</div>
+<input class="ar" value="${r.ar.replace(/"/g,'&quot;')}"><input class="en" value="${r.en.replace(/"/g,'&quot;')}" placeholder="English name"><div class="pl">${pl(r)}</div><div class="r">${r.sp!==r.ar?`<button class="sp" data-sp>طبّق الإملاء: ${r.sp}</button>`:''}<button class="${r.ok?'ok':''}" data-ok>${r.ok?'معتمد ✓':'اعتمد'}</button></div></div>`}
+function stat(){document.getElementById('st').textContent='معتمد: '+N(D.filter(r=>r.ok).length)+' / '+N(D.length)}
+function draw(){document.getElementById('g').innerHTML=D.map(card).join('');stat()}
+function put(r){S[r.id]={ar:r.ar,en:r.en,ok:!!r.ok};save()}
+const g=document.getElementById('g');
+g.oninput=e=>{const c=e.target.closest('.c'),r=D.find(x=>x.id===c.dataset.id);if(e.target.classList.contains('ar'))r.ar=e.target.value;else r.en=e.target.value;r.ok=false;c.classList.remove('ok');const b=c.querySelector('[data-ok]');b.textContent='اعتمد';b.classList.remove('ok');put(r);stat()};
+g.onclick=e=>{const c=e.target.closest('.c');if(!c)return;const r=D.find(x=>x.id===c.dataset.id);if(e.target.dataset.sp!==undefined){r.ar=r.sp;r.ok=false;put(r);draw()}else if(e.target.dataset.ok!==undefined){r.ok=!r.ok;put(r);draw()}};
+document.getElementById('dl').onclick=()=>{const out={app:'anglomania-names-final',date:new Date().toISOString().slice(0,10),approved:D.filter(r=>r.ok).length,total:D.length,names:D.map(r=>({id:r.id,ar:r.ar.trim(),en:r.en.trim(),approved:!!r.ok}))};const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(out,null,1)],{type:'application/json'}));a.download='anglomania-names-final.json';a.click()};
+draw();
+</script></body></html>

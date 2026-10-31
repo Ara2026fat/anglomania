@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>مختبر أفكار أنجلومانيا</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#0F4A3A;--green2:#166B53;--gold:#C8A23A;--gold2:#9E7E22;--cream:#FEFDF5;--sand:#F6EFD6;--ink:#17302A;--muted:#5C6B66;--line:#E4DFC9;
+  --c-start:#C8A23A;--c-dev:#1E8E6E;--c-mkt:#E2673A;--c-bold:#7B4FD1;--c-risk:#C9404B;--c-cur:#2F7BC4;
+  --accent:var(--c-start);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;margin:0}
+body{font-family:Cairo,system-ui,sans-serif;background:var(--cream);color:var(--ink);overflow:hidden;line-height:1.6}
+.app{height:100dvh;display:flex;flex-direction:column;position:relative;
+  background:
+   radial-gradient(900px 420px at 100% -10%,color-mix(in srgb,var(--accent) 16%,transparent),transparent 70%),
+   radial-gradient(700px 380px at -10% 110%,color-mix(in srgb,var(--green) 10%,transparent),transparent 70%),var(--cream);
+  transition:background .4s}
+header{display:flex;align-items:center;gap:14px;padding:12px clamp(12px,3vw,28px) 6px}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
+.mark{width:40px;height:40px;border-radius:12px;background:var(--green);color:var(--gold);display:grid;place-items:center;font-weight:800;font-size:20px;box-shadow:0 4px 0 var(--gold)}
+.brand h1{margin:0;font-size:clamp(16px,2.2vw,22px);font-weight:800;color:var(--green);line-height:1.15}
+.brand small{display:block;color:var(--muted);font-weight:600;font-size:12px}
+.sum{margin-inline-start:auto;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.sum span{background:#fff;border:1.5px solid var(--line);border-radius:99px;padding:2px 12px;font-size:12px;font-weight:700;color:var(--green)}
+.sum b{color:var(--accent);filter:brightness(.85)}
+nav{display:flex;gap:8px;padding:6px clamp(12px,3vw,28px) 10px;overflow-x:auto;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;border:0;cursor:pointer;font:inherit;font-weight:800;font-size:14px;padding:9px 18px;border-radius:14px;background:#fff;color:var(--ink);
+  box-shadow:0 2px 0 var(--line);display:flex;gap:8px;align-items:center;transition:transform .15s,box-shadow .15s,background .15s}
+.tab i{font-style:normal;font-size:17px}
+.tab:hover{transform:translateY(-1px)}
+.tab[aria-selected=true]{background:var(--tc);color:#fff;box-shadow:0 4px 0 color-mix(in srgb,var(--tc) 60%,#000)}
+.tab .n{background:rgba(0,0,0,.08);border-radius:99px;padding:0 8px;font-size:12px}
+.tab[aria-selected=true] .n{background:rgba(255,255,255,.25)}
+main{flex:1;min-height:0;overflow-y:auto;padding:4px clamp(12px,3vw,28px) 70px;scroll-behavior:smooth}
+.lead{display:flex;gap:12px;align-items:center;background:#fff;border:1.5px solid var(--line);border-inline-start:6px solid var(--accent);border-radius:16px;padding:10px 16px;margin-bottom:14px;font-size:14px;color:var(--muted)}
+.lead b{color:var(--ink)}
+.lead .em{font-size:26px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.card{background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:14px 14px 12px;cursor:pointer;text-align:start;font:inherit;color:inherit;display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden;transition:transform .15s,box-shadow .15s,border-color .15s}
+.card::before{content:"";position:absolute;inset-inline-start:0;top:0;bottom:0;width:5px;background:var(--accent)}
+.card:hover,.card:focus-visible{transform:translateY(-3px);box-shadow:0 10px 24px -12px var(--accent);border-color:var(--accent);outline:0}
+.card h3{margin:0;font-size:15.5px;font-weight:800;color:var(--green);padding-inline-start:6px}
+.card p{margin:0;font-size:13px;color:var(--muted);padding-inline-start:6px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.chips{display:flex;gap:6px;flex-wrap:wrap;padding-inline-start:6px;margin-top:auto}
+.chip{font-size:11.5px;font-weight:700;padding:1px 9px;border-radius:99px;background:var(--sand);color:var(--gold2)}
+.chip.g{background:#E3F1EB;color:var(--green2)}
+.chip.r{background:#FBE5E7;color:var(--c-risk)}
+.chip.b{background:#E4EEF9;color:var(--c-cur)}
+.dots{display:inline-flex;gap:3px;align-items:center}
+.dots s{width:8px;height:8px;border-radius:50%;background:var(--line);display:block}
+.dots s.on{background:var(--accent)}
+.star{align-self:flex-start;margin-inline-start:6px;background:var(--gold);color:#3b2f06;font-size:11px;font-weight:800;padding:0 9px;border-radius:99px;line-height:1.7}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.box{background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:14px 16px}
+.box h4{margin:0 0 8px;font-size:15px;font-weight:800;color:var(--green);display:flex;gap:8px;align-items:center}
+.box ul{margin:0;padding-inline-start:18px;font-size:13.5px}
+.box li{margin:4px 0}
+.week{border-top:5px solid var(--accent)}
+.week .wk{font-weight:800;color:var(--accent);filter:brightness(.8);font-size:13px}
+.pill{display:inline-block;background:var(--sand);border-radius:10px;padding:1px 10px;margin:2px 0;font-weight:700;font-size:12.5px;color:var(--green)}
+.top8{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.top8 button{font:inherit;font-weight:800;font-size:13px;border:0;cursor:pointer;border-radius:12px;padding:7px 14px;background:var(--green);color:#fff;box-shadow:0 3px 0 #082d23}
+.top8 button span{color:var(--gold)}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{text-align:start;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--green);font-size:12px;background:var(--sand)}
+a{color:var(--c-cur);font-weight:700}
+dialog{border:0;padding:0;background:transparent;max-width:min(620px,94vw);width:100%;margin:auto}
+dialog::backdrop{background:rgba(15,40,32,.55);backdrop-filter:blur(3px)}
+.sheet{background:var(--cream);border-radius:22px;overflow:hidden;box-shadow:0 30px 60px -20px #000a;max-height:88dvh;display:flex;flex-direction:column}
+.sh{background:var(--accent);color:#fff;padding:16px 18px;display:flex;gap:12px;align-items:flex-start}
+.sh h2{margin:0;font-size:18px;font-weight:800;flex:1;line-height:1.35}
+.x{border:0;background:rgba(255,255,255,.25);color:#fff;width:34px;height:34px;border-radius:10px;font-size:20px;cursor:pointer;flex:none}
+.sb{padding:14px 18px 18px;overflow-y:auto;display:flex;flex-direction:column;gap:10px}
+.sb .desc{font-size:14.5px;margin:0}
+.row{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:8px 12px}
+.row b{display:block;font-size:12px;color:var(--gold2);margin-bottom:1px}
+.row span{font-size:14px}
+.row.hook span{font-weight:800;color:var(--green)}
+footer{position:absolute;bottom:0;inset-inline:0;text-align:center;font-size:11.5px;color:var(--muted);padding:6px;background:linear-gradient(transparent,var(--cream) 40%);pointer-events:none;font-weight:600}
+@media (max-width:640px){
+  .sum span{display:none}
+  .tab{padding:8px 13px;font-size:13px}
+  .grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* ===== وضع PDF ===== */
+.pm body{overflow:visible;height:auto;background:#fff}
+.pm .app,.pm dialog{display:none!important}
+#doc{display:none}
+.pm #doc{display:block;padding:0}
+.pm *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.dh{background:linear-gradient(135deg,var(--green),#0b3a2d);color:#fff;border-radius:18px;padding:26px 30px;margin-bottom:14px;border-bottom:6px solid var(--gold)}
+.dh h1{margin:0 0 4px;font-size:30px;font-weight:800}
+.dh p{margin:0;color:#E9E2C8;font-size:14px}
+.dh .k{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.dh .k span{background:rgba(255,255,255,.14);border-radius:99px;padding:2px 14px;font-weight:700;font-size:13px}
+.ds{break-before:page}
+.ds:first-of-type{break-before:auto}
+.dt{background:var(--sc);color:#fff;border-radius:14px;padding:10px 18px;font-size:19px;font-weight:800;margin:0 0 8px;display:flex;gap:10px;align-items:center}
+.dl{font-size:13px;color:var(--muted);margin:0 0 10px;padding:0 4px}
+.di{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dc{border:1.5px solid var(--line);border-inline-start:6px solid var(--sc);border-radius:14px;padding:10px 12px;break-inside:avoid;background:#fff}
+.dc h3{margin:0 0 3px;font-size:14.5px;font-weight:800;color:var(--green)}
+.dc p{margin:0 0 5px;font-size:12px;color:var(--muted)}
+.dc .r{font-size:11.5px;margin-top:3px}
+.dc .r b{color:var(--gold2)}
+.dc .chips{padding:0;margin:4px 0}
+.dc .chip{font-size:10.5px}
+.pm .cols{grid-template-columns:1fr 1fr}
+.pm .box{break-inside:avoid}
+.pm .top8 button{box-shadow:none}
+.pm .week{border-top-color:var(--sc)}
+@page{size:A4;margin:10mm}
+.pdfbtn{background:var(--green);color:#fff!important;text-decoration:none;border-radius:99px;padding:3px 14px;font-size:12px;font-weight:800;box-shadow:0 2px 0 #082d23}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <header>
+    <div class="brand"><div class="mark">A</div><div><h1>مختبر أفكار أنجلومانيا</h1><small>جولتان من البحث والنقد · تطوير وتسويق وأفكار جريئة</small></div></div>
+    <div class="sum" id="sum"></div>
+  </header>
+  <nav id="tabs" role="tablist" aria-label="أقسام الأفكار"></nav>
+  <main id="main" tabindex="-1"></main>
+  <footer>ARAFAT ALRAJHI © 2026</footer>
+</div>
+<div id="doc"></div>
+<dialog id="dlg"><div class="sheet" id="sheet"></div></dialog>
+
+<script>
+/* ===== البيانات ===== */
+const ALL = [
+ // التطوير
+ {id:'p1',k:'dev',t:'شعلة الـ3 دقائق',d:'تحدٍّ يومي قصير: 5 كلمات من كتاب الطالب مع صوتها، وعدّاد أيام متتالية يحفظه المتصفح.',i:3,e:'S',srv:0,th:'تجربة الطالب',
+   x:[['لماذا','عادة يومية صغيرة تُرجع الطالب للموقع كل يوم.'],['الخطوة الأولى','عدّاد أيام في localStorage مع بطاقة كلمات واحدة.'],['انتبه','لا تجمع أسماء أو أعمارًا؛ التخزين داخل المتصفح فقط.']]},
+ {id:'p2',k:'dev',t:'اسمع قبل أن تقرأ',d:'مشغّل لصوتيات Talk Time 1: تكرار الجملة، إبطاء السرعة، وزر «سجّل صوتك وقارن».',i:5,e:'M',srv:0,th:'تجربة الطالب',top:1,
+   x:[['لماذا','الصوت أقوى ميزة عندك، ويناسب الجوال.'],['الخطوة الأولى','صفحة مشغّل تقرأ ملف الـ CSV الحالي لخريطة المسارات.'],['انتبه','استعمل تسجيلاتك أنت. التسجيل والمقارنة داخل المتصفح بلا رفع. أجّل المقارنة إن ضاق الوقت.']]},
+ {id:'p3',k:'dev',t:'فحص المستوى في دقيقتين',d:'10 أسئلة تقترح ركن الأساس أو مادة صفه، وتفتح واتساب برسالة جاهزة بكود الصنف.',i:5,e:'S',srv:0,th:'تجربة الطالب',top:1,
+   x:[['لماذا','يحوّل الزائر الحائر إلى طلب فعلي.'],['الخطوة الأولى','اكتب 10 أسئلة بثلاث نتائج محتملة.'],['انتبه','اطلب موافقة ولي الأمر لا الطفل، ولا تحفظ نتائج بأسماء.']]},
+ {id:'p4',k:'dev',t:'قصة الحرف',d:'لكل حرف مقطع صوتي 60 ثانية (الاسم، الصوت، 3 كلمات) وورقة تتبّع للطباعة.',i:4,e:'M',srv:0,th:'تجربة الطالب',
+   x:[['لماذا','الطلاب الضعاف لا يجدون من يخدمهم، وركن الأساس شبه فارغ في السوق.'],['الخطوة الأولى','أنجز الحرفين A وB كنموذج.']]},
+ {id:'p5',k:'dev',t:'تقرير الأحد لولي الأمر',d:'المعلم يكتب 3 خانات فيخرج نص واتساب مرتّب بشعار أنجلومانيا جاهز للنسخ.',i:3,e:'S',srv:0,th:'المعلمون والأهل',
+   x:[['لماذا','يبني ثقة الأهل ويُظهر احترافية بلا نظام معقد.'],['الخطوة الأولى','صمّم نص التقرير الثابت.']]},
+ {id:'p6',k:'dev',t:'بطاقات «ساعد ابنك بدون إنجليزي»',d:'بطاقات عربية بصوت، كل أسبوع نصيحة تمكّن الأب أو الأم غير المتحدثين من مراجعة الدرس مع طفلهما.',i:4,e:'S',srv:0,th:'المعلمون والأهل',top:1,
+   x:[['لماذا','يصل لشريحة مهملة، وتنتشر البطاقات في مجموعات الأهالي.'],['الخطوة الأولى','صمّم 3 بطاقات لصف واحد بصيغة صور.']]},
+ {id:'p7',k:'dev',t:'نماذج اختبارات جاهزة للطباعة',d:'لكل صف ووحدة ورقة اختبار نكتب أسئلتها نحن (لا من نصوص الكتب) بشعار أنجلومانيا، يطبعها المعلم أو ولي الأمر.',i:3,e:'M',srv:0,th:'المعلمون والأهل',
+   x:[['لماذا','يوفر على المعلمين ساعات، ويصلح منتجًا مدفوعًا لاحقًا.'],['الخطوة الأولى','أدخل 30 سؤالًا في ملف JSON وطبّق الطباعة.'],['انتبه','أسئلة من تأليفك فقط، لا من الكتب المدرسية.']]},
+ {id:'p8',k:'dev',t:'ردود واتساب السريعة بالكود',d:'في WhatsApp Business: يكتب العميل «KSA-04» فيصله قائمة المواد وأسعارها.',i:5,e:'S',srv:0,th:'المحتوى والمنتجات',top:1,
+   x:[['لماذا','أتمتة الطلبات بلا خادم، ويناسب شخصًا واحدًا يعمل من الجوال.'],['الخطوة الأولى','أنشئ 5 ردود سريعة لأكثر الصفوف طلبًا.']]},
+ {id:'p9',k:'dev',t:'حزم «اطبعها وعلّقها»',d:'بطاقات مفردات وجدار كلمات وملخص مراجعة في صفحة واحدة بهويتك الخضراء الذهبية.',i:4,e:'M',srv:0,th:'المحتوى والمنتجات',
+   x:[['لماذا','منتج رخيص يُباع مرارًا وأصوله أصلية.'],['الخطوة الأولى','حزمة واحدة لوحدة واحدة كاختبار سوق.'],['انتبه','لا تنسخ صفحات الكتب؛ المحتوى من صنعك.']]},
+ {id:'p10',k:'dev',t:'حقيبة بلا إنترنت',d:'تثبيت الموقع على الجوال (PWA) مع تحميل الصوتيات وأوراق العمل مسبقًا.',i:3,e:'M',srv:0,th:'المحتوى والمنتجات',
+   x:[['لماذا','يحل ضعف الإنترنت ويجعل الموقع تطبيقًا على شاشة الجوال.'],['الخطوة الأولى','manifest وservice worker لصفحة Talk Time فقط.']]},
+ {id:'p11',k:'dev',t:'ركن الكتب الأجنبية المنتقاة',d:'قائمة مختارة: كتاب، مستوى، رابط شراء قانوني، وتعليق منك بصوتك في 20 ثانية.',i:2,e:'S',srv:0,th:'المحتوى والمنتجات',
+   x:[['لماذا','ذوقك كمعلم قيمة نادرة، وقد يعطي عمولة لاحقًا.'],['الخطوة الأولى','اختر 5 كتب فقط.']]},
+ {id:'p12',k:'dev',t:'دفتر الرصيد على Google Sheets',d:'المشرفون يسجلون الرصيد المدفوع مسبقًا برقم الطلب فقط، والطالب يرى رصيده برابط قراءة.',i:2,e:'M',srv:0,th:'التشغيل والنمو',late:1,
+   x:[['لماذا','يسبق نظام الرصيد الرسمي.'],['تحذير','يُؤجَّل حتى يُحسم الوضع النظامي (السجل التجاري)؛ أي تحصيل أو رصيد مسبق التزام مالي.']]},
+ {id:'p13',k:'dev',t:'مولّد الردود والفواتير للمشرفين',d:'يدخل المشرف رقم الطلب والكود فيظهر نص الرد وفاتورة موحّدة قابلة للطباعة.',i:2,e:'M',srv:0,th:'التشغيل والنمو',late:1,
+   x:[['لماذا','يوحّد عمل عدة مشرفين.'],['تحذير','قالب الرد يمكن بناؤه الآن، أما الفاتورة فتؤجَّل حتى التسجيل الرسمي.']]},
+ {id:'p14',k:'dev',t:'كود صديقك',d:'كل طالب يحصل على بطاقة مشاركة برمزه، وعند طلب صديقه يكتب الرمز فيربح الاثنان ورقة عمل مجانية.',i:3,e:'S',srv:0,th:'التشغيل والنمو',
+   x:[['لماذا','نمو بلا إعلانات، والتتبع يدويًا في جدول.'],['الخطوة الأولى','خانة «كود المُحيل» في رسالة الطلب.']]},
+ // التسويق
+ {id:'m1',k:'mkt',t:'سلسلة «غلطة في الكتاب»',d:'فيديو 20 ثانية يصحح خطأً شائعًا في وحدة من كتاب مرتبط على الموقع.',i:4,e:'S',cost:'مجانية',when:'أسبوعيًا قبل الاختبارات',th:'محتوى ينتشر',
+   x:[['الجملة الجاهزة','٩ من ١٠ طلاب يغلطون في هذي القاعدة في وحدة ٣… وأنت؟'],['النتيجة','ظهور في بحث «حل كتاب الإنجليزي» وتحويل المشاهدين لرابط الكتاب.'],['انتبه','اذكر رقم الصفحة ولا تصوّر الصفحة كاملة. لا وجوه أطفال.']],hook:1},
+ {id:'m2',k:'mkt',t:'تحدي «60 ثانية = كلمة ثابتة»',d:'الطالب يشرح كلمة من الوحدة في دقيقة ويحيل الصديق التالي.',i:4,e:'S',cost:'مجانية',when:'بداية الفصل',th:'محتوى ينتشر',top:1,
+   x:[['الجملة الجاهزة','حدّيتك تشرح كلمة Environment في ٦٠ ثانية!'],['النتيجة','محتوى ينتجه الطلاب ويتداولونه في مجموعات الصف.'],['انتبه','موافقة الأهل، ولا تنشر وجوه الأطفال.']],hook:1},
+ {id:'m3',k:'mkt',t:'«مناهج الخليج: مين الأصعب؟»',d:'مقارنة طريفة بين المناهج الستة بلا تفضيل وبلا ادعاءات غير موثقة.',i:3,e:'S',cost:'مجانية',when:'بعد إعلان نتائج الاختبارات',th:'محتوى ينتشر',
+   x:[['الجملة الجاهزة','كتاب الإنجليزي في ٦ دول… أي منهج يعلّمك الكتابة أبكر؟'],['النتيجة','نقاش وتفاعل من دول مختلفة.']],hook:1},
+ {id:'m4',k:'mkt',t:'«اختبر معلمك» كل خميس',d:'المعلم يجيب سؤال طالب أو ولي أمر وصله على واتساب (بإذن).',i:2,e:'M',cost:'مجانية',when:'كل خميس',th:'محتوى ينتشر',late:1,
+   x:[['الجملة الجاهزة','سؤال من أم في الرياض: ابني يحفظ الكلمات وينساها بعد يومين، السر هنا!'],['تحذير','مخاطرة بالسمعة وقد يعادي معلمين هم قناة التوزيع. مؤجَّلة.']],hook:1},
+ {id:'m5',k:'mkt',t:'قناة واتساب لكل منهج',d:'قناة (Channel) لكل منهج ترسل ملخصًا أسبوعيًا ورابط الكتاب الرسمي.',i:4,e:'S',cost:'مجانية',when:'قبل الفصل الثاني',th:'شراكات وقنوات',top:1,
+   x:[['الجملة الجاهزة','اشترك في قناة منهجك: درس الأسبوع في ٣ نقاط + رابط كتابك الرسمي.'],['النتيجة','جمهور مملوك لا تتحكم به الخوارزميات.'],['انتبه','القنوات للبث، ولا رسائل جماعية لمن لم يطلب.']],hook:1},
+ {id:'m6',k:'mkt',t:'شبكة «معلم سفير»',d:'دعوة 10 معلمين لتجربة الموقع وملاحظاتهم مقابل ذكر أسمائهم في صفحة الشكر.',i:3,e:'M',cost:'منخفضة جدًا',when:'الآن',th:'شراكات وقنوات',
+   x:[['الجملة الجاهزة','معلم الإنجليزي: وفّر ساعة تحضير كل أسبوع، جرّب أنجلومانيا.'],['النتيجة','توصيات من أهل الاختصاص ومواد جديدة.']],hook:1},
+ {id:'m7',k:'mkt',t:'لقاء الأهل: 20 دقيقة',d:'محاضرة مجانية «كيف تذاكر مع ابنك الإنجليزي بدون ما تتقن اللغة».',i:4,e:'M',cost:'منخفضة',when:'قبل الاختبارات بأسبوعين',th:'شراكات وقنوات',
+   x:[['الجملة الجاهزة','ما تعرف إنجليزي؟ تقدر تساعد ابنك أصلاً. ٢٠ دقيقة تثبت لك كيف.'],['النتيجة','دخول مجموعات واتساب مغلقة بثقة.']],hook:1},
+ {id:'m8',k:'mkt',t:'مجتمعات الجاليات',d:'نشر المنهج المصري لأبناء الجالية في مجموعات المصريين بالخليج.',i:3,e:'S',cost:'مجانية',when:'بداية العام',th:'شراكات وقنوات',
+   x:[['الجملة الجاهزة','ابنك مصري في الرياض؟ كتب الإنجليزي لمنهجه في مكان واحد.'],['تنبيه','الصفوف 1-6 فقط متوفرة للمصري الآن.']],hook:1},
+ {id:'m9',k:'mkt',t:'«اطلب في 3 نقرات»',d:'زر واتساب عائم يفتح رسالة جاهزة فيها الصف والمنهج والمطلوب (رابط wa.me).',i:5,e:'S',cost:'منخفضة جدًا',when:'فورًا',th:'تحويل الزوار',top:1,
+   x:[['الجملة الجاهزة','اختر صفك، اضغط، ونرد عليك بمادتك على واتساب.'],['النتيجة','تقليل ضياع الزوار قبل الطلب.']],hook:1},
+ {id:'m10',k:'mkt',t:'حزمة مجانية للمنضمّين',d:'ورقة مراجعة مصممة مقابل الانضمام لمجموعة الصف.',i:4,e:'S',cost:'منخفضة',when:'قبل منتصف الفصل',th:'تحويل الزوار',top:1,
+   x:[['الجملة الجاهزة','ورقة مراجعة الصف الخامس مجانًا… بس ادخل مجموعة صفك.'],['النتيجة','قاعدة مجموعات نشطة.'],['انتبه','اطلب موافقة الأهل لا الطفل.']],hook:1},
+ {id:'m11',k:'mkt',t:'تذكير الأهل قبل الاختبار',d:'قبل كل اختبار بـ7 أيام ثم 3 ثم يوم نرسل لأولياء الأمور في المجموعات رسالة قصيرة فيها موعد الاختبار ونشاط مراجعة من 5 دقائق يعمله الأب أو الأم مع ابنهم.',i:3,e:'S',cost:'مجانية',when:'مواسم الاختبارات',th:'تحويل الزوار',
+   x:[['الجملة الجاهزة','باقي ٣ أيام على اختبار ابنكم: اسألوه عن 5 كلمات من الوحدة ٤.'],['لماذا الأهل؟','الطالب غالبًا بلا جوال ولا مجموعة، فالمخاطَب هو ولي الأمر.'],['انتبه','عبر المجموعات فقط، لا رسائل خاصة جماعية.']],hook:1},
+ {id:'m12',k:'mkt',t:'تقييمات Google الحقيقية',d:'طلب تقييم من أولياء الأمور الراضين، ونشر آراء حقيقية فقط.',i:3,e:'M',cost:'مجانية',when:'بعد أول شهر',th:'تحويل الزوار',
+   x:[['الجملة الجاهزة','جرّبتم أنجلومانيا؟ تقييمكم يساعد أسرة غيركم تلقى المادة.'],['انتبه','لا شهادات مختلقة أبدًا.']],hook:1},
+ {id:'m13',k:'mkt',t:'اشتراك كوبونات مسبقة الدفع',d:'باقات شهرية أو فصلية تُباع كأكواد.',i:3,e:'L',cost:'منخفضة',when:'بعد التسجيل التجاري',th:'نماذج ربح',late:1,
+   x:[['الخطر','التزام مالي يحتاج وضعًا نظاميًا، وقد يقل الطلب إن كفت المواد المجانية.'],['القرار','مؤجَّلة حتى السجل التجاري.']]},
+ {id:'m14',k:'mkt',t:'تراخيص المدارس والمراكز',d:'باقة مواد وتقارير للمدارس الأهلية ومراكز التقوية.',i:4,e:'L',cost:'منخفضة',when:'قبل العام الدراسي',th:'نماذج ربح',late:1,
+   x:[['الخطر','دورة بيع طويلة وعقود وفواتير وسجل تجاري، ولا منتج جاهز بعد.'],['القرار','مؤجَّلة.']]},
+ {id:'m15',k:'mkt',t:'حزم المعلمين وعمولة الإحالة',d:'حقيبة تحضير مدفوعة وعمولة للمعلم عن كل ولي أمر يحيله.',i:3,e:'L',cost:'منخفضة',when:'عند إطلاق دورات المعلمين',th:'نماذج ربح',late:1,
+   x:[['الخطر','قد تُعدّ نشاطًا تجاريًا منظّمًا، وفيها تضارب مصالح المعلم مع طلابه.'],['القرار','مؤجَّلة.']]},
+ {id:'m16',k:'mkt',t:'رعايات ومنح وعلامة بيضاء',d:'رعاية من دور نشر ومكتبات، أو منح تعليمية، أو «مركز منهج» بعلامة مدرسة.',i:3,e:'L',cost:'منخفضة',when:'بعد شهرين من الأرقام وبعد السجل',th:'نماذج ربح',
+   x:[['الخطر','ضعف التفاوض قبل وجود أرقام استخدام، وتعارض الرعاة مع حياد الموقع.'],['الجملة الجاهزة','١٢٧ كتابًا في مكان واحد: ندعوكم لدعم بوابة مفتوحة لطلاب الخليج.']],hook:1},
+ // جريئة
+ {id:'b1',k:'bold',t:'خريطة المناهج المفتوحة',d:'جدول مجاني في الموقع يبيّن لكل صف: أي موضوع أو مهارة (مثل زمن المضارع أو الحروف) يُدرَّس في أي وحدة من كتاب كل منهج من المناهج السبعة.',i:4,e:'M',cost:'صفر',th:'مرجع',star:1,
+   x:[['من يستفيد؟','ولي أمر انتقل من بلد لآخر ويسأل: ماذا سيدرس ابني هنا مقارنة بما درسه؟ ومعلم أو مركز يدرّس أكثر من منهج.'],['لماذا مختلفة','لا أحد يقدم هذه المقارنة، فيبحث عنها الناس ويشاركونها، ويصبح اسمنا مرجعًا.'],['هذا الأسبوع','صف واحد في ثلاثة مناهج داخل Google Sheet.'],['المخاطرة','خطأ في المعلومة؛ نذكر المصدر ونفتح باب التصحيح.']]},
+ {id:'b2',k:'bold',t:'دوري المناهج الودّي',d:'نقاط أسبوعية يجمعها الطلاب باسم منهجهم من تحديات قصيرة، ولوحة ترتيب كل جمعة.',i:4,e:'M',cost:'صفر',th:'مجتمع',
+   x:[['لماذا مختلفة','الانتماء للمنهج هوية جاهزة لا تحتاج تسويقًا.'],['هذا الأسبوع','تحدٍّ واحد بخمسة أسئلة لمجموعتين.'],['المخاطرة','تعصب بين الدول؛ الترتيب بالمشاركة لا بالدرجات.']]},
+ {id:'b3',k:'bold',t:'تميمة «صقّور»',d:'صقر أخضر بلمسة ذهبية يرافق الدروس والشهادات والملصقات ويعلّق بالعربية.',i:3,e:'M',cost:'قريبة من الصفر',th:'هوية',
+   x:[['لماذا مختلفة','الطفل يتعلق بشخصية أكثر من الموقع.'],['هذا الأسبوع','ورقة تصميم: الشكل والألوان وعبارته المعتادة.'],['المخاطرة','عدم ثبات الرسم؛ نعتمد نماذج ثابتة فقط.']]},
+ {id:'b4',k:'bold',t:'طريقة «الجسر»',d:'منهج تدريس باسم الموقع: اسمع، ثم «وش يقابلها بلهجتنا؟»، ثم بدّل الكلمة وكوّن جملتك.',i:4,e:'M',cost:'صفر',th:'هوية',
+   x:[['لماذا مختلفة','طريقة موقّعة باسمك يصعب نسخها وتصنع فرقًا تسويقيًا.'],['هذا الأسبوع','صوّر درسًا واحدًا بالطريقة وسمّها.'],['المخاطرة','اختلاف اللهجات؛ نكتفي بالعبارات المشتركة.']]},
+ {id:'b5',k:'bold',t:'مسلسل صوتي «شارع الصقر»',d:'حلقات 3 دقائق تتكرر فيها كلمات الدرس الأسبوعي، بصوتك وصوت شريكك.',i:4,e:'M',cost:'جوال وموسيقى مجانية',th:'محتوى',
+   x:[['لماذا مختلفة','الأهل يشغّلونه في السيارة فيتحول الوقت الضائع إلى تعلّم.'],['هذا الأسبوع','اكتب الحلقة الأولى وسجّلها.'],['المخاطرة','الانقطاع؛ 10 حلقات فقط ثم موسم ثانٍ.']]},
+ {id:'b6',k:'bold',t:'صفحة «عندنا / ما عندنا»',d:'صفحة صريحة بالمتوفر والناقص، مع زر «صوّت على الكتاب القادم».',i:4,e:'S',cost:'صفر',th:'ثقة',star:1,
+   x:[['لماذا مختلفة','الصراحة نادرة وتبني ثقة، والتصويت يعطيك خريطة طلب.'],['هذا الأسبوع','قائمة بالنواقص (قطر، مصر 7-12، الإمارات).'],['المخاطرة','قد يبدو الموقع ضعيفًا؛ نكتب «قيد الإضافة».']]},
+ {id:'b7',k:'bold',t:'«إنجليزي الورديّة»',d:'بطاقات صوتية مجانية لمفردات الصناعة والسلامة العامة، وتُعرض على شركات التدريب.',i:3,e:'M',cost:'صفر',th:'شركات',
+   x:[['لماذا مختلفة','سوق بالغين تعرفه من الداخل.'],['هذا الأسبوع','30 مفردة عامة تجرّبها مع زملائك.'],['المخاطرة','تعارض مصالح أو سرية العمل؛ محتوى عام فقط وبإذن قبل أي ترويج.']]},
+ {id:'b8',k:'bold',t:'حقيبة المسجد وتحدي رمضان',d:'حقيبة جاهزة مجانية لحلقات المساجد والجمعيات الصيفية، وفي رمضان تحدي «30 عبارة لطف».',i:3,e:'M',cost:'طباعة فقط',th:'شراكات',
+   x:[['لماذا مختلفة','الجهات الخيرية تبحث عن محتوى جاهز، ويصلك أطفال جدد دون إعلان.'],['هذا الأسبوع','زيارة إمام مسجد قريب أو مسؤول حلقة.'],['المخاطرة','بطء الموافقات؛ نبدأ بمسجد واحد.']]},
+ {id:'b9',k:'bold',t:'ملصق QR في المكتبات',d:'ملصق على رف الكتاب المدرسي: «امسح لتسمع دروس هذا الكتاب».',i:3,e:'S',cost:'نحو 20 ريالًا',th:'شراكات',
+   x:[['لماذا مختلفة','تصل للأهل لحظة الشراء بدل البحث عنهم.'],['هذا الأسبوع','اعرض الفكرة على مكتبة واحدة في الجبيل.'],['المخاطرة','رفض المكتبات؛ تنطلق من مكتبة صديقة. العمولة تُؤجَّل لما بعد التسجيل.']]},
+ {id:'b10',k:'bold',t:'تصحيح صوتي بمسودة آلية',d:'الطالب يرسل جملته صوتًا فيقترح الذكاء الاصطناعي تصحيحًا يراجعه المعلم قبل الإرسال.',i:3,e:'M',cost:'منخفضة',th:'تعلّم',
+   x:[['لماذا مختلفة','سرعة الآلة وأمانة المعلم، بصدق: «مسودة آلية راجعها معلم».'],['هذا الأسبوع','تجربة على 5 طلاب.'],['المخاطرة','ضغط العمل (حد 5 رسائل أسبوعيًا) وخصوصية أصوات الأطفال.']]},
+ {id:'b11',k:'bold',t:'شهادة «الأكثر تقدّمًا»',d:'تُمنح لطلاب ركن التأسيس عند تحسنهم بدل مكافأة الأعلى درجة، بصورة جاهزة بالتميمة.',i:4,e:'S',cost:'صفر',th:'تحفيز',star:1,
+   x:[['لماذا مختلفة','الطالب الضعيف لا يربح عادة، وهنا يربح هو وتنتشر القصة تلقائيًا.'],['هذا الأسبوع','قالب شهادة واحد في Canva.'],['المخاطرة','المبالغة؛ معيار تحسن واضح ومقيس.']]},
+ {id:'b12',k:'bold',t:'بيانات الطلب للناشرين',d:'أكواد الطلبات تكشف الكتب الأكثر طلبًا؛ تقرير مجمّع «ماذا يطلب الأهل فعلًا».',i:3,e:'M',cost:'صفر',th:'بيانات',
+   x:[['لماذا مختلفة','أصل بيانات مجهول القيمة، غير الرعاية والعلامة البيضاء.'],['هذا الأسبوع','ورقة تسجل عدد الطلبات لكل كود.'],['المخاطرة','الخصوصية؛ أرقام مجمّعة بلا أسماء ولا هواتف.']]}
+];
+const KEEP = ['p7','m6','m7','m11','b4','b5'];
+const D = ALL.filter(x=>KEEP.includes(x.id));
+const byId = Object.fromEntries(ALL.map(x=>[x.id,x]));
+const TOP = ['p7','m11','m7'];
+
+const TABS = [
+ {id:'start',ico:'🚀',label:'ابدأ من هنا',c:'--c-start',lead:'<b>الخلاصة:</b> أفكار تخدم الطالب والمعلم وولي الأمر بمناهج ودروس وأوراق عمل واختبارات وشروحات. هذه 3 تبدأ بها وخطة 30 يومًا، والبقية للتنفيذ لاحقًا أو للقسم التقني.'},
+ {id:'dev',ico:'🛠️',label:'تطوير المنصة',c:'--c-dev',lead:'<b>فكرة واحدة</b> لخدمة المعلم وولي الأمر بمحتوى جاهز. اضغط البطاقة للتفاصيل. نجمة ★ = من أول 3.'},
+ {id:'mkt',ico:'📣',label:'التسويق والربح',c:'--c-mkt',lead:'<b>3 أفكار</b> للمعلمين والأهل والطلاب، مع جملة جاهزة لكل فكرة.'},
+ {id:'bold',ico:'💡',label:'أفكار جريئة',c:'--c-bold',lead:'<b>فكرتان</b> للدروس: طريقة «الجسر» والمسلسل الصوتي. ⭐ = ابدأ بها.'},
+ {id:'tech',ico:'🔧',label:'القسم التقني مستقبلًا',c:'--c-cur',lead:'<b>أدوات وتطبيقات</b> تنتظر قسم التحول الرقمي في المنصة، ولا نبدأ بها الآن.'},
+];
+
+/* ===== أدوات ===== */
+const $ = s=>document.querySelector(s);
+const esc = s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const dots = n=>'<span class="dots" aria-label="الأثر '+n+' من 5">'+[1,2,3,4,5].map(i=>'<s class="'+(i<=n?'on':'')+'"></s>').join('')+'</span>';
+const EF = {S:'سهلة',M:'متوسطة',L:'كبيرة'};
+function card(x){
+  const chips = [];
+  chips.push('<span class="chip">'+(EF[x.e]||'')+' الجهد</span>');
+  if(x.cost) chips.push('<span class="chip g">'+esc(x.cost)+'</span>');
+  if(x.k==='dev') chips.push('<span class="chip g">بلا خادم</span>');
+  if(x.late) chips.push('<span class="chip r">مؤجَّلة</span>');
+  const star = (TOP.includes(x.id)||x.star) ? '<span class="star">'+(x.k==='bold'?'⭐ ابدأ':'★ من أول 3')+'</span>' : '';
+  return '<button class="card" data-id="'+x.id+'">'+star+'<h3>'+esc(x.t)+'</h3><p>'+esc(x.d)+'</p><div class="chips">'+dots(x.i)+chips.join('')+'</div></button>';
+}
+function grid(k){ return '<div class="grid">'+D.filter(x=>x.k===k).map(card).join('')+'</div>'; }
+
+/* ===== المحتوى لكل تبويب ===== */
+const VIEWS = {
+ start(){
+  const wk = [
+   ['الأسبوع 1 — نجهّز الاختبار',['نكتب 30 سؤالًا لوحدة واحدة ونصمّمها بشعار أنجلومانيا']],
+   ['الأسبوع 2 — نرافق الأهل',['نرسل لأولياء الأمور تذكيرات (7 أيام ثم 3 ثم يوم) مع نشاط مراجعة من 5 دقائق','نأخذ موافقة ولي الأمر لا الطفل في أي مشاركة']],
+   ['الأسبوع 3 — نجهّز لقاء الأهل',['نحدد موضوع اللقاء وموعده قبل الاختبارات بأسبوعين','نعلن عنه في مجموعات الأهالي']],
+   ['الأسبوع 4 — القياس',['نراجع الأرقام: كم طلب نموذج الاختبار؟ كم حضر اللقاء؟ ونكمل بما نجح']]
+  ];
+  return '<div class="top8">'+TOP.map((id,i)=>'<button data-id="'+id+'"><span>'+(i+1)+'</span> '+esc(byId[id].t)+'</button>').join('')+'</div>'+
+   '<div class="cols">'+wk.map(w=>'<div class="box week"><div class="wk">'+w[0]+'</div><ul>'+w[1].map(i=>'<li>'+i+'</li>').join('')+'</ul></div>').join('')+'</div>';
+ },
+ dev(){return grid('dev');},
+ mkt(){return grid('mkt');},
+ bold(){return grid('bold');},
+ tech(){
+  const L=[['مولّد الاختبارات','المعلم يختار من بنك أسئلة ويطبع ورقة اختبار بشعار المنصة.'],['تقرير الأحد لولي الأمر','المعلم يكتب 3 خانات فيخرج نص مرتب للأهل.'],['ردود واتساب السريعة بالكود','يكتب العميل رمز الكتاب (مثل KSA-04: السعودية، الصف الرابع) فيصله رد جاهز.'],['كود صديقك','بطاقة مشاركة برمز لكل طالب، ومن يطلب بالرمز يربح الاثنان ورقة مجانية.'],['ملصق QR في المكتبات','يمسح الأهل الرمز على رف الكتاب فيسمعون دروسه.'],['بيانات الطلب للناشرين','تقرير مجمّع بالكتب الأكثر طلبًا، بلا أسماء.'],['شعلة الـ3 دقائق','تحدٍّ يومي: 5 كلمات مع صوتها وعدّاد أيام.'],['دوري المناهج الودّي','نقاط أسبوعية باسم المنهج ولوحة ترتيب.'],['التصحيح الصوتي بمسودة آلية','الطالب يرسل جملته صوتًا والذكاء الاصطناعي يقترح تصحيحًا يراجعه المعلم.'],['الرصيد والفواتير والكوبونات','بعد فتح السجل التجاري.']];
+  return '<div class="cols"><div class="box" style="grid-column:1/-1"><h4>🔧 للقسم التقني مستقبلًا</h4><ul>'+L.map(x=>'<li><b>'+x[0]+':</b> '+x[1]+'</li>').join('')+'</ul></div></div>';
+ },
+ risk(){
+  return '<div class="cols">'+
+   '<div class="box" style="grid-column:1/-1"><h4>🕒 أفكار جيدة نؤجّلها</h4><ul><li><b>شعلة الـ3 دقائق:</b> تحدٍّ يومي بـ5 كلمات وعدّاد أيام (تنتظر قسم التطبيقات)</li><li><b>دوري المناهج الودّي:</b> نقاط أسبوعية باسم المنهج</li><li><b>تميمة «صقّور»:</b> صقر أخضر ذهبي يرافق الدروس</li><li><b>طريقة «الجسر»:</b> اسمع، ثم ترجم، ثم كوّن جملتك</li><li><b>مسلسل صوتي «شارع الصقر»:</b> حلقات 3 دقائق للكلمات الأسبوعية</li><li><b>مجتمعات الجاليات:</b> بعد اكتمال كتب مصر</li><li><b>تقييمات Google:</b> بعد الإطلاق الرسمي بشهر</li></ul></div>'+
+   '<div class="box"><h4>⚠️ مخاطر تراقبها</h4><ul><li><b>حقوق النشر:</b> ارفع أصواتك وموادك فقط، وضع رابطًا لصوت الكتاب أو صفحاته ولا ترفعها.</li><li><b>خصوصية الأطفال:</b> لا أسماء ولا أعمار ولا أصوات مرفوعة؛ التسجيل داخل المتصفح.</li><li><b>واتساب:</b> لا رسائل جماعية لمن لم يطلب؛ استخدم القنوات.</li><li><b>تيك توك:</b> لا وجوه أطفال، وقيود إضافية للمحتوى الموجّه لهم.</li><li><b>السمعة:</b> انتقاد المعلمين أو دور النشر قد يضرّك.</li><li><b>البيع والعمولات:</b> تحتاج وضعًا نظاميًا قبل أي تحصيل.</li></ul></div>'+
+   '<div class="box"><h4>⏸️ تؤجَّل أو تُلغى</h4><ul><li><b>قسائم مسبقة الدفع</b> — التزام مالي.</li><li><b>تراخيص المدارس</b> — عقود وسجل تجاري ولا منتج جاهز.</li><li><b>عمولة المعلمين</b> — قد تُعدّ نشاطًا منظّمًا.</li><li><b>مولّد الفواتير</b> وسجل الرصيد — حتى يُحسم الوضع النظامي.</li><li><b>«اختبر معلمك»</b> — تعادي قناة التوزيع الأهم.</li></ul></div>'+
+   '<div class="box"><h4>🔗 اعتماديات خفية وحلولها</h4><ul><li><b>الوضع النظامي:</b> ابدأ بمرحلة مجانية تجمع الطلبات فقط، وتحقق من وثيقة العمل الحر أو «موثوق» قبل أي تحصيل.</li><li><b>لا خادم:</b> localStorage للتفضيلات، ورسائل wa.me معبّأة، ونموذج Google Forms بلا بيانات أطفال.</li><li><b>كتالوج الأكواد:</b> ملف Google Sheet واحد فيه الكود والاسم والرابط.</li></ul></div></div>';
+ },
+ cur(){
+  return '<div class="cols"><div class="box" style="grid-column:1/-1"><h4>📊 الخلاصة</h4><p style="margin:0;font-size:14px">أرسلت ثلاثة وكلاء للبحث عن روابط كتب قطر ومصر 7-12 والإمارات. لم يجدوا روابط رسمية مؤكدة. <b>لم أضف شيئًا للموقع</b> حتى لا نضلل الزائر. ما وجدوه مدوّن هنا للاحتياط.</p></div></div>'+
+  '<div class="cols" style="margin-top:12px">'+
+  '<div class="box"><h4>🇶🇦 قطر</h4><ul><li>الصف 8، الفصل 1: <b>Portal to English 8A</b> (من موقع معلمين، ملفات Drive غير رسمية).</li><li>الصف 5، الفصل 1: كتاب وكراسة موجودان بلا اسم سلسلة.</li><li>الأرجح أن «Portal to English» للإعدادي والثانوي، <b>غير مؤكد</b>.</li><li>الصفحة الرسمية تعرض عناوين فقط.</li></ul><p style="font-size:12.5px;margin:6px 0 0">مصدر الوكيل: <a href="https://afedni.com/?p=1723" target="_blank" rel="noopener">afedni.com (غير رسمي)</a></p></div>'+
+  '<div class="box"><h4>🇪🇬 مصر 7-12</h4><ul><li>لا رابط مباشر مؤكد لأي كتاب.</li><li>الموقع الرسمي محجوب خارج مصر (403).</li><li>صفحة التعلم الإلكتروني الرسمية موجودة ولم تُفتح.</li><li>منصة Nagwa تعرض حصص شرح لا كتبًا، وسلسلة Connect Plus فيها للابتدائي فقط.</li></ul><p style="font-size:12.5px;margin:6px 0 0"><b>الحل الأنظف:</b> شخص داخل مصر يحمّل الكتب ويرفعها لدرايف.</p></div>'+
+  '<div class="box"><h4>🇦🇪 الإمارات</h4><ul><li>سلسلة <b>Bridge to Success</b> من الصف 1 إلى 12 (Cambridge، مؤكدة).</li><li>مؤكد رسميًا: دليل معلم الصف 11 الفصل 2 (2017) على edushare.</li><li>الصف 10 المتقدم الفصل 1 (2023-24 و2024-25): ملفات Drive من موقع طرف ثالث.</li><li>الصف 1: كتاب نحو للفصل 1 لعام 2026-27 وكتب قديمة 2019-20.</li><li>لا شيء للصفوف 2-3 و4-9 فصل 1-2 و12.</li></ul></div></div>'+
+  '<div class="box" style="margin-top:12px"><h4>➡️ الخطوة المقترحة</h4><ul><li><b>قطر:</b> نسأل معلمًا أو ولي أمر هناك عن أسماء كتب كل صف، واسم الكتاب وحده يكفي لإضافة بطاقة تعريفية.</li><li><b>مصر:</b> شخص داخل مصر يحمّل كتب 7-12.</li><li><b>الإمارات:</b> نكمل لاحقًا كما قلت من المصدر الذي حصلت منه على كتب 4-9.</li></ul></div>';
+ }
+};
+
+/* ===== العرض ===== */
+let cur = 'start';
+function counts(){ return {dev:1,mkt:3,bold:2}; }
+function renderTabs(){
+  $('#tabs').innerHTML = TABS.map(t=>{
+    const n = ({dev:14,mkt:16,bold:12})[t.id];
+    return '<button class="tab" role="tab" id="t-'+t.id+'" aria-selected="'+(t.id===cur)+'" aria-controls="main" data-t="'+t.id+'" style="--tc:var('+t.c+')"><i>'+t.ico+'</i>'+t.label+(n?'<span class="n">'+n+'</span>':'')+'</button>';
+  }).join('');
+}
+function show(id, push){
+  cur = id; const t = TABS.find(x=>x.id===id);
+  document.documentElement.style.setProperty('--accent','var('+t.c+')');
+  $('#app').style.setProperty('--accent','var('+t.c+')');
+  renderTabs();
+  $('#main').innerHTML = '<div class="lead"><span class="em">'+t.ico+'</span><div>'+t.lead+'</div></div>'+VIEWS[id]();
+  $('#main').scrollTop = 0;
+  try{ if(push!==false) history.replaceState(null,'','#'+id); }catch(e){}
+  const el = document.getElementById('t-'+id); if(el) el.scrollIntoView({inline:'center',block:'nearest'});
+}
+function open(id){
+  const x = byId[id]; if(!x) return;
+  const t = TABS.find(t=>t.id===x.k) || TABS[0];
+  const sheet = $('#sheet'); sheet.style.setProperty('--accent','var('+t.c+')');
+  const meta = '<div class="chips" style="padding:0;gap:8px"><span class="chip">الأثر '+dots(x.i)+'</span><span class="chip">الجهد: '+(EF[x.e]||'')+'</span>'+(x.cost?'<span class="chip g">التكلفة: '+esc(x.cost)+'</span>':'')+(x.when?'<span class="chip b">التوقيت: '+esc(x.when)+'</span>':'')+(x.late?'<span class="chip r">مؤجَّلة</span>':'')+'</div>';
+  sheet.innerHTML = '<div class="sh"><h2>'+esc(x.t)+'</h2><button class="x" aria-label="إغلاق" id="cl">×</button></div><div class="sb"><p class="desc">'+esc(x.d)+'</p>'+meta+x.x.map(r=>'<div class="row '+(r[0]==='الجملة الجاهزة'?'hook':'')+'"><b>'+r[0]+'</b><span>'+esc(r[1])+'</span></div>').join('')+'</div>';
+  const dlg = $('#dlg'); if(!dlg.open) dlg.showModal();
+}
+document.addEventListener('click',e=>{
+  const tb = e.target.closest('[data-t]'); if(tb){ show(tb.dataset.t); return; }
+  const c = e.target.closest('[data-id]'); if(c){ open(c.dataset.id); return; }
+  if(e.target.id==='cl') $('#dlg').close();
+  if(e.target.id==='dlg') $('#dlg').close();
+});
+document.addEventListener('keydown',e=>{
+  if(e.target.closest('dialog')) return;
+  const ids = TABS.map(t=>t.id), i = ids.indexOf(cur);
+  if(e.key==='ArrowLeft'&&i<ids.length-1) show(ids[i+1]);
+  if(e.key==='ArrowRight'&&i>0) show(ids[i-1]);
+});
+$('#sum').innerHTML = '<span><b>13</b> فكرة مختارة</span><span><b>42</b> مقترحة</span><span><b>6</b> للبدء</span><a class="pdfbtn" href="anglomania-ideas.pdf" download>تحميل PDF</a>';
+const h = (location.hash||'').slice(1);
+show(TABS.some(t=>t.id===h)?h:'start', false);
+
+/* ===== بناء وثيقة PDF ===== */
+function buildDoc(){
+  const ds = TABS.map(t=>{
+    let body;
+    if(['dev','mkt','bold'].includes(t.id)){
+      body = '<div class="di">'+D.filter(x=>x.k===t.id).map(x=>{
+        const ch = '<span class="chip">الأثر '+x.i+'/5</span><span class="chip">الجهد: '+(EF[x.e]||'')+'</span>'+(x.cost?'<span class="chip g">'+esc(x.cost)+'</span>':'')+(x.when?'<span class="chip b">'+esc(x.when)+'</span>':'')+(x.late?'<span class="chip r">مؤجَّلة</span>':'')+((TOP.includes(x.id)||x.star)?'<span class="chip" style="background:var(--gold);color:#3b2f06">★ ابدأ بها</span>':'');
+        return '<div class="dc"><h3>'+esc(x.t)+'</h3><p>'+esc(x.d)+'</p><div class="chips">'+ch+'</div>'+x.x.map(r=>'<div class="r"><b>'+r[0]+':</b> '+esc(r[1])+'</div>').join('')+'</div>';
+      }).join('')+'</div>';
+    } else body = VIEWS[t.id]();
+    return '<section class="ds" style="--sc:var('+t.c+');--accent:var('+t.c+')"><h2 class="dt"><span>'+t.ico+'</span>'+t.label+'</h2><p class="dl">'+t.lead.replace('اضغط أي بطاقة للتفاصيل. ','').replace('اضغط أي بطاقة للتفاصيل.','')+'</p>'+body+'</section>';
+  }).join('');
+  $('#doc').innerHTML = '<div class="dh"><h1>مختبر أفكار أنجلومانيا</h1><p>جولتان من البحث والنقد: تطوير المنصة، التسويق والربح، وأفكار جريئة</p><div class="k"><span>13 فكرة مختارة</span><span>من 42 مقترحة</span><span>6 للبدء</span></div></div>'+ds+'<p style="text-align:center;color:var(--muted);font-size:11px;margin-top:14px;font-weight:600">ARAFAT ALRAJHI © 2026 · anglomaniaedu.com</p>';
+}
+if(new URLSearchParams(location.search).has('pdf')){ document.documentElement.classList.add('pm'); buildDoc(); }
+</script>
+</body>
+</html>

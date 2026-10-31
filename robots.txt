@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://anglomaniaedu.com/sitemap.xml
+
+User-agent: *
