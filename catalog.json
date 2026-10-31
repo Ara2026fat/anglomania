@@ -553,7 +553,8 @@
    ],
    "tier": "pending",
    "price": 0,
-   "code": "EG-001"
+   "code": "EG-001",
+   "track": "gov"
   },
   {
    "id": "eg-g1-grammar-connect",
@@ -566,7 +567,8 @@
    ],
    "tier": "pending",
    "price": 0,
-   "code": "EG-002"
+   "code": "EG-002",
+   "track": "plus"
   },
   {
    "id": "eg-g1-writing",
@@ -579,7 +581,8 @@
    ],
    "tier": "pending",
    "price": 0,
-   "code": "EG-003"
+   "code": "EG-003",
+   "track": "gov"
   },
   {
    "id": "eg-g2-grammar",
@@ -592,7 +595,8 @@
    ],
    "tier": "pending",
    "price": 0,
-   "code": "EG-004"
+   "code": "EG-004",
+   "track": "gov"
   },
   {
    "id": "eg-g2-grammar-connect",
@@ -605,7 +609,8 @@
    ],
    "tier": "pending",
    "price": 0,
-   "code": "EG-005"
+   "code": "EG-005",
+   "track": "plus"
   },
   {
    "id": "eg-g2-writing",
@@ -618,7 +623,8 @@
    ],
    "tier": "pending",
    "price": 0,
-   "code": "EG-006"
+   "code": "EG-006",
+   "track": "gov"
   },
   {
    "id": "eg-g3-grammar",
@@ -631,7 +637,8 @@
    ],
    "tier": "pending",
    "price": 0,
-   "code": "EG-007"
+   "code": "EG-007",
+   "track": "gov"
   },
   {
    "id": "eg-g3-writing",
@@ -644,7 +651,8 @@
    ],
    "tier": "pending",
    "price": 0,
-   "code": "EG-008"
+   "code": "EG-008",
+   "track": "gov"
   },
   {
    "id": "eg-g4-grammar",
@@ -657,7 +665,8 @@
    ],
    "tier": "pending",
    "price": 0,
-   "code": "EG-009"
+   "code": "EG-009",
+   "track": "gov"
   },
   {
    "id": "eg-g4-grammar-connect",
@@ -670,7 +679,8 @@
    ],
    "tier": "pending",
    "price": 0,
-   "code": "EG-010"
+   "code": "EG-010",
+   "track": "plus"
   },
   {
    "id": "eg-g4-writing",
@@ -683,7 +693,8 @@
    ],
    "tier": "pending",
    "price": 0,
-   "code": "EG-011"
+   "code": "EG-011",
+   "track": "gov"
   },
   {
    "id": "eg-g5-grammar",
@@ -696,7 +707,8 @@
    ],
    "tier": "pending",
    "price": 0,
-   "code": "EG-012"
+   "code": "EG-012",
+   "track": "gov"
   },
   {
    "id": "eg-g5-grammar-connect",
@@ -709,7 +721,8 @@
    ],
    "tier": "pending",
    "price": 0,
-   "code": "EG-013"
+   "code": "EG-013",
+   "track": "plus"
   },
   {
    "id": "eg-g5-writing",
@@ -722,7 +735,8 @@
    ],
    "tier": "pending",
    "price": 0,
-   "code": "EG-014"
+   "code": "EG-014",
+   "track": "gov"
   },
   {
    "id": "eg-g6-grammar",
@@ -735,7 +749,8 @@
    ],
    "tier": "pending",
    "price": 0,
-   "code": "EG-015"
+   "code": "EG-015",
+   "track": "gov"
   },
   {
    "id": "eg-g6-grammar-hello",
@@ -748,7 +763,8 @@
    ],
    "tier": "pending",
    "price": 0,
-   "code": "EG-016"
+   "code": "EG-016",
+   "track": "plus"
   },
   {
    "id": "eg-g6-writing",
@@ -761,7 +777,8 @@
    ],
    "tier": "pending",
    "price": 0,
-   "code": "EG-017"
+   "code": "EG-017",
+   "track": "gov"
   },
   {
    "id": "eg-g7-grammar",
@@ -774,7 +791,8 @@
    ],
    "tier": "pending",
    "price": 0,
-   "code": "EG-018"
+   "code": "EG-018",
+   "track": "gov"
   },
   {
    "id": "eg-g7-grammar-hello",
@@ -787,7 +805,8 @@
    ],
    "tier": "pending",
    "price": 0,
-   "code": "EG-019"
+   "code": "EG-019",
+   "track": "plus"
   },
   {
    "id": "eg-g7-writing",
@@ -800,7 +819,8 @@
    ],
    "tier": "pending",
    "price": 0,
-   "code": "EG-020"
+   "code": "EG-020",
+   "track": "gov"
   },
   {
    "id": "eg-g8-grammar",
@@ -813,7 +833,8 @@
    ],
    "tier": "pending",
    "price": 0,
-   "code": "EG-021"
+   "code": "EG-021",
+   "track": "gov"
   },
   {
    "id": "eg-g8-writing",
@@ -826,7 +847,8 @@
    ],
    "tier": "pending",
    "price": 0,
-   "code": "EG-022"
+   "code": "EG-022",
+   "track": "gov"
   },
   {
    "id": "eg-g9-grammar",
@@ -839,7 +861,8 @@
    ],
    "tier": "pending",
    "price": 0,
-   "code": "EG-023"
+   "code": "EG-023",
+   "track": "gov"
   },
   {
    "id": "eg-g9-writing",
@@ -852,7 +875,8 @@
    ],
    "tier": "pending",
    "price": 0,
-   "code": "EG-024"
+   "code": "EG-024",
+   "track": "gov"
   },
   {
    "id": "eg-g10-grammar",
@@ -865,7 +889,8 @@
    ],
    "tier": "pending",
    "price": 0,
-   "code": "EG-025"
+   "code": "EG-025",
+   "track": "gov"
   }
  ]
 }
