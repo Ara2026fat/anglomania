@@ -85,6 +85,21 @@ a{color:inherit;text-decoration:none}
 .qpanel .sys-opt{width:100%}
 @media(min-width:700px){.qbar .wrap{gap:12px;padding-block:14px 12px}.qi,.qsys{flex:1 1 0;max-width:none;font-size:.95rem}.qi .t3d{--ts:72px}.qi .sub{font-size:.76rem;padding:1px 12px}.qsys .qi{flex:0 0 auto}}
 
+
+/* الحاسوب: الأركان في شريط جانبي يمين بدل صفّ البطاقات الكبير */
+@media(min-width:1100px){
+  .qbar{position:fixed;top:66px;bottom:0;inset-inline-start:0;width:208px;z-index:20;background:linear-gradient(180deg,#FFFDF2,#FBF3D2);border-bottom:0;border-inline-end:1.5px solid rgba(212,167,44,.45)}
+  .qbar .wrap{flex-direction:column;align-items:stretch;justify-content:flex-start;gap:6px;max-width:none;padding:18px 12px}
+  .qbar .qi,.qbar .qsys{flex:none;max-width:none;width:100%}
+  .qbar .qi{display:grid;grid-template-columns:44px 1fr;column-gap:10px;row-gap:2px;align-items:center;text-align:start;font-size:.95rem;padding:8px 10px;border-radius:14px}
+  .qbar .qi .t3d{grid-row:1/3}.qbar .qi b{grid-column:2;align-self:end}.qbar .qi .sub{grid-column:2;justify-self:start;align-self:start}.qbar .qi:not(:has(.sub)) b{grid-row:1/3;align-self:center}
+  .qbar .qi:hover{background:#FFF4CC}
+  .qbar .qi .t3d{--ts:44px;flex:none}
+  .qbar .qi .sub{margin:0;font-size:.68rem;padding:1px 9px}
+  .qsys{display:block;position:static}
+  .qpanel{position:fixed;top:84px;inset-inline-start:222px;width:340px}
+  body:has(#qbar-w:not([hidden])) main.wrap,body:has(#qbar-w:not([hidden])) .site-f .wrap{max-width:1296px;padding-inline-start:236px}
+}
 /* bottom nav (mobile) */
 .bottom-nav{position:fixed;inset-inline:0;bottom:0;z-index:50;background:var(--ivory);border-top:2px solid var(--gold);padding-bottom:env(safe-area-inset-bottom)}
 .bottom-nav ul{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);max-width:560px;margin-inline:auto;padding:0}
