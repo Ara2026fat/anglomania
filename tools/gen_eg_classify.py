@@ -5,7 +5,7 @@ from PIL import Image
 R=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 files=[f for f in json.load(open(R+'/catalog.json',encoding='utf-8'))['files'] if f['code'].startswith('EG')]
 PV='/home/claude/anglomania-private/paid/'
-for f in files:f['track']='plus' if ('connect' in f['id'] or 'hello' in f['id']) else 'gov'
+for f in files:f['tier']='paid';f['price']=0;f['track']='plus' if ('connect' in f['id'] or 'hello' in f['id']) else 'gov'
 tmp='/tmp/claude-0/-home-claude/1b6ebfa6-f935-56bb-b42e-b0a79fcfb8ba/scratchpad/covers'
 IMG={}
 for f in files:
@@ -39,7 +39,7 @@ input{width:80px;padding:5px;border:2px solid #eadfb8;border-radius:10px;font:70
 </style></head><body><header><h1>تصنيف كتب المنهج المصري (الفصل الأول) — __N__ كتابًا</h1><p>أول ٥ صفحات + صفحة الختام (اسحب). عدّل الاسم والأقسام ومجاني/مدفوع. اضغط الصورة لتكبيرها. «نوع التعليم»: حكومي أو بلس (معبَّأ تلقائيًا حسب اسم الكتاب، عدّله إن لزم).</p><div class="f" id="f"></div></header><div class="g" id="g"></div><div class="lb" id="lb"><img id="li"></div>
 <div class="foot"><span id="stat"></span><button class="btn w" id="rst">تراجع</button><button class="btn" id="dl">⬇ تنزيل التعديلات</button></div>
 <script>
-const STAGES=__ST__,ORIG=__DATA__,IMG=__IMG__,KEY='ang.classify.eg.v2';
+const STAGES=__ST__,ORIG=__DATA__,IMG=__IMG__,KEY='ang.classify.eg.v3';
 let S=JSON.parse(JSON.stringify(ORIG)),flt='all';try{const k=JSON.parse(localStorage.getItem(KEY)||'null');if(k&&k.length===S.length)S=k}catch(e){}
 const $=q=>document.querySelector(q),N=n=>String(n).replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[d]);
 const orig=id=>ORIG.find(f=>f.id===id),key=f=>JSON.stringify([f.track,f.ar,f.en,f.tier,f.tier==='paid'?+f.price||0:0,[...f.place].sort()]),dirty=f=>key(f)!==key(orig(f.id));
