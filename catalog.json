@@ -551,7 +551,7 @@
    "place": [
     "eg-g1:t1:grammar"
    ],
-   "tier": "pending",
+   "tier": "paid",
    "price": 0,
    "code": "EG-001",
    "track": "gov"
@@ -565,7 +565,7 @@
    "place": [
     "eg-g1:t1:grammar"
    ],
-   "tier": "pending",
+   "tier": "paid",
    "price": 0,
    "code": "EG-002",
    "track": "plus"
@@ -579,7 +579,7 @@
    "place": [
     "eg-g1:t1:writing"
    ],
-   "tier": "pending",
+   "tier": "paid",
    "price": 0,
    "code": "EG-003",
    "track": "gov"
@@ -593,7 +593,7 @@
    "place": [
     "eg-g2:t1:grammar"
    ],
-   "tier": "pending",
+   "tier": "paid",
    "price": 0,
    "code": "EG-004",
    "track": "gov"
@@ -607,7 +607,7 @@
    "place": [
     "eg-g2:t1:grammar"
    ],
-   "tier": "pending",
+   "tier": "paid",
    "price": 0,
    "code": "EG-005",
    "track": "plus"
@@ -621,7 +621,7 @@
    "place": [
     "eg-g2:t1:writing"
    ],
-   "tier": "pending",
+   "tier": "paid",
    "price": 0,
    "code": "EG-006",
    "track": "gov"
@@ -635,7 +635,7 @@
    "place": [
     "eg-g3:t1:grammar"
    ],
-   "tier": "pending",
+   "tier": "paid",
    "price": 0,
    "code": "EG-007",
    "track": "gov"
@@ -649,7 +649,7 @@
    "place": [
     "eg-g3:t1:writing"
    ],
-   "tier": "pending",
+   "tier": "paid",
    "price": 0,
    "code": "EG-008",
    "track": "gov"
@@ -663,7 +663,7 @@
    "place": [
     "eg-g4:t1:grammar"
    ],
-   "tier": "pending",
+   "tier": "paid",
    "price": 0,
    "code": "EG-009",
    "track": "gov"
@@ -677,7 +677,7 @@
    "place": [
     "eg-g4:t1:grammar"
    ],
-   "tier": "pending",
+   "tier": "paid",
    "price": 0,
    "code": "EG-010",
    "track": "plus"
@@ -691,7 +691,7 @@
    "place": [
     "eg-g4:t1:writing"
    ],
-   "tier": "pending",
+   "tier": "paid",
    "price": 0,
    "code": "EG-011",
    "track": "gov"
@@ -705,7 +705,7 @@
    "place": [
     "eg-g5:t1:grammar"
    ],
-   "tier": "pending",
+   "tier": "paid",
    "price": 0,
    "code": "EG-012",
    "track": "gov"
@@ -719,7 +719,7 @@
    "place": [
     "eg-g5:t1:grammar"
    ],
-   "tier": "pending",
+   "tier": "paid",
    "price": 0,
    "code": "EG-013",
    "track": "plus"
@@ -733,7 +733,7 @@
    "place": [
     "eg-g5:t1:writing"
    ],
-   "tier": "pending",
+   "tier": "paid",
    "price": 0,
    "code": "EG-014",
    "track": "gov"
@@ -747,7 +747,7 @@
    "place": [
     "eg-g6:t1:grammar"
    ],
-   "tier": "pending",
+   "tier": "paid",
    "price": 0,
    "code": "EG-015",
    "track": "gov"
@@ -761,7 +761,7 @@
    "place": [
     "eg-g6:t1:grammar"
    ],
-   "tier": "pending",
+   "tier": "paid",
    "price": 0,
    "code": "EG-016",
    "track": "plus"
@@ -775,7 +775,7 @@
    "place": [
     "eg-g6:t1:writing"
    ],
-   "tier": "pending",
+   "tier": "paid",
    "price": 0,
    "code": "EG-017",
    "track": "gov"
@@ -789,7 +789,7 @@
    "place": [
     "eg-g7:t1:grammar"
    ],
-   "tier": "pending",
+   "tier": "paid",
    "price": 0,
    "code": "EG-018",
    "track": "gov"
@@ -803,7 +803,7 @@
    "place": [
     "eg-g7:t1:grammar"
    ],
-   "tier": "pending",
+   "tier": "paid",
    "price": 0,
    "code": "EG-019",
    "track": "plus"
@@ -817,7 +817,7 @@
    "place": [
     "eg-g7:t1:writing"
    ],
-   "tier": "pending",
+   "tier": "paid",
    "price": 0,
    "code": "EG-020",
    "track": "gov"
@@ -831,7 +831,7 @@
    "place": [
     "eg-g8:t1:grammar"
    ],
-   "tier": "pending",
+   "tier": "paid",
    "price": 0,
    "code": "EG-021",
    "track": "gov"
@@ -845,7 +845,7 @@
    "place": [
     "eg-g8:t1:writing"
    ],
-   "tier": "pending",
+   "tier": "paid",
    "price": 0,
    "code": "EG-022",
    "track": "gov"
@@ -859,7 +859,7 @@
    "place": [
     "eg-g9:t1:grammar"
    ],
-   "tier": "pending",
+   "tier": "paid",
    "price": 0,
    "code": "EG-023",
    "track": "gov"
@@ -873,7 +873,7 @@
    "place": [
     "eg-g9:t1:writing"
    ],
-   "tier": "pending",
+   "tier": "paid",
    "price": 0,
    "code": "EG-024",
    "track": "gov"
@@ -887,7 +887,7 @@
    "place": [
     "eg-g10:t1:grammar"
    ],
-   "tier": "pending",
+   "tier": "paid",
    "price": 0,
    "code": "EG-025",
    "track": "gov"

@@ -488,7 +488,11 @@ body::after{bottom:-40vmax;inset-inline-end:-30vmax;background:radial-gradient(c
 .fc-flt{display:flex;gap:8px;margin:10px 0 4px;flex-wrap:wrap}.fc-f{padding:4px 14px;border-radius:999px;border:2px solid var(--line);font-weight:700;font-size:.9rem;background:#fff}.fc-f.on{background:var(--gold);border-color:var(--gold-d);color:#fff}
 .fc-sec{margin-top:22px}.fc-sec h2{font-size:1.2rem;color:var(--emerald-d);border-inline-start:5px solid var(--gold);padding-inline-start:10px;margin-bottom:8px}
 .fc-grid{list-style:none;padding:0;display:grid;gap:12px;grid-template-columns:1fr}@media(min-width:760px){.fc-grid{grid-template-columns:1fr 1fr}}
-.fc-card{display:flex;gap:12px;background:#fff;border:2px solid var(--line);border-radius:var(--r);padding:10px;box-shadow:var(--shadow)}
+.fc-card{position:relative;display:flex;gap:12px;background:#fff;border:2px solid var(--line);border-radius:var(--r);padding:10px;box-shadow:var(--shadow)}
+.fc-plus{border-color:#B98A16;background:linear-gradient(180deg,#FFFBEA,#fff 60%)}.fc-gov{border-color:#9FC8B2}
+.fc-trk{position:absolute;top:-10px;inset-inline-start:12px;display:inline-flex;align-items:center;gap:4px;padding:2px 10px;border-radius:99px;font-size:12px;font-weight:900;color:#fff;box-shadow:0 1px 3px rgba(0,0,0,.18)}.fc-trk-gov{background:#0E5E3E}.fc-trk-plus{background:linear-gradient(135deg,#D4A72C,#B98A16)}
+.trk-h{display:flex;align-items:center;gap:10px;margin:16px 0 10px;padding:8px 12px;border-radius:12px;font-weight:900}.trk-h small{display:block;font-weight:600;font-size:12px;opacity:.85}.trk-h svg{flex:none;width:26px;height:26px}
+.trk-h-gov{background:#E8F5EE;color:#0E5E3E;border-inline-start:5px solid #0E5E3E}.trk-h-plus{background:#FFF4CC;color:#7A5A00;border-inline-start:5px solid #D4A72C}
 .fc-cv{flex:none;width:92px;height:128px;object-fit:cover;border-radius:8px;border:1px solid #e6dcb4;background:var(--cream)}
 .fc-b{display:flex;flex-direction:column;gap:6px;min-width:0;flex:1}.fc-t strong{display:block;line-height:1.35}.fc-t small{display:block;color:var(--gold-d);font-weight:700}
 .fc-m{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.fc-code{font-size:.74rem;color:var(--muted);direction:ltr;background:var(--emerald-l);border-radius:6px;padding:0 6px}
@@ -1563,7 +1567,7 @@ ANG.config.content = {
     'nav.aria': 'التنقل الرئيسي',
     'nav.teachers': 'للمعلمين',
     'sec.aria': 'أقسام الصف', 'sec.book': 'الكتاب المدرسي', 'sec.translation': 'الترجمة', 'sec.grammar': 'القواعد', 'sec.reading': 'القراءة', 'sec.writing': 'الكتابة', 'sec.soon': 'قريبًا', 'sec.soonD': 'سنضيف هنا مواد {s} لهذا الصف عند اعتمادها. يمكنك طلبها الآن.', 'sec.ask': 'اطلب مادة {s}', 'sec.lib': 'كتب {s} في ركن التأسيس',
-    'fc.title': 'ركن التأسيس', 'fc.lead': 'مكتبة كتب مقروءة (PDF) لتأسيس الطالب: مجانية ومدفوعة، مرتبة بالمرحلة والمهارة.', 'fc.all': 'كل الكتب', 'fc.free': 'المجاني', 'fc.paid': 'المدفوع', 'fc.comp': 'كورسات شاملة', 'fc.compd': 'كتب تغطي المهارات الأربع معًا', 'fc.empty': 'لا توجد كتب في هذا القسم بعد.', 'fc.err': 'تعذّر تحميل الكتب الآن، حاول مرة أخرى.', 'fc.load': 'جارٍ تحميل الكتب…', 'fc.open': 'افتح الكتاب', 'fc.sample': 'عيّنة مجانية', 'fc.order': 'اطلب عبر واتساب', 'fc.pages': 'صفحة', 'fc.priceNote': 'السعر يُتفق عليه عبر واتساب.', 'fc.msg': 'السلام عليكم، أرغب بطلب الكتاب: {n} (الرمز {c}). أرجو إفادتي بالسعر وطريقة الدفع.', 'fc.soon1': 'التأسيس التفاعلي', 'fc.soon2': 'ركن الكتب الأجنبية', 'fc.soon': 'قريبًا',
+    'fc.title': 'ركن التأسيس', 'fc.lead': 'مكتبة كتب مقروءة (PDF) لتأسيس الطالب: مجانية ومدفوعة، مرتبة بالمرحلة والمهارة.', 'fc.all': 'كل الكتب', 'fc.free': 'المجاني', 'fc.paid': 'المدفوع', 'fc.comp': 'كورسات شاملة', 'fc.compd': 'كتب تغطي المهارات الأربع معًا', 'fc.empty': 'لا توجد كتب في هذا القسم بعد.', 'fc.err': 'تعذّر تحميل الكتب الآن، حاول مرة أخرى.', 'fc.load': 'جارٍ تحميل الكتب…', 'fc.open': 'افتح الكتاب', 'fc.sample': 'عيّنة مجانية', 'fc.order': 'اطلب عبر واتساب', 'fc.pages': 'صفحة', 'fc.priceNote': 'السعر يُتفق عليه عبر واتساب.', 'fc.msg': 'السلام عليكم، أرغب بطلب الكتاب: {n} (الرمز {c}). أرجو إفادتي بالسعر وطريقة الدفع.', 'fc.soon1': 'التأسيس التفاعلي', 'fc.soon2': 'ركن الكتب الأجنبية', 'fc.soon': 'قريبًا', 'trk.gov': 'التعليم الحكومي', 'trk.plus': 'تعليم بلس (Plus)', 'trk.govd': 'كتب المدارس الحكومية', 'trk.plusd': 'كتب مدارس بلس',
     'acc.free': 'مجاني', 'acc.paid': 'مدفوع', 'acc.get': 'تحميل مجاني', 'acc.buy': 'اطلب هذه المادة',
     'model.t': 'مجاني ومدفوع',
     'model.free': 'مواد مجانية للجميع', 'model.freed': 'مناهج وملفات أعددناها، يحمّلها كل طالب ومعلم بلا مقابل.',
@@ -1697,7 +1701,7 @@ ANG.config.content = {
     'nav.aria': 'Main navigation',
     'nav.teachers': 'Teachers',
     'sec.aria': 'Grade sections', 'sec.book': 'School book', 'sec.translation': 'Translation', 'sec.grammar': 'Grammar', 'sec.reading': 'Reading', 'sec.writing': 'Writing', 'sec.soon': 'Soon', 'sec.soonD': '{s} materials for this grade will be added here once approved. You can request them now.', 'sec.ask': 'Request {s} material', 'sec.lib': '{s} books in the Foundation Corner',
-    'fc.title': 'Foundation Corner', 'fc.lead': 'A library of readable books (PDF) to build the foundation: free and paid, organised by stage and skill.', 'fc.all': 'All books', 'fc.free': 'Free', 'fc.paid': 'Paid', 'fc.comp': 'Comprehensive courses', 'fc.compd': 'Books that cover all four skills together', 'fc.empty': 'No books in this section yet.', 'fc.err': 'Could not load the books now, please try again.', 'fc.load': 'Loading books…', 'fc.open': 'Open book', 'fc.sample': 'Free sample', 'fc.order': 'Order via WhatsApp', 'fc.pages': 'pages', 'fc.priceNote': 'Price is agreed on WhatsApp.', 'fc.msg': 'Hello, I would like to order the book: {n} (code {c}). Please tell me the price and payment method.', 'fc.soon1': 'Interactive Foundation', 'fc.soon2': 'Foreign Books Corner', 'fc.soon': 'Soon',
+    'fc.title': 'Foundation Corner', 'fc.lead': 'A library of readable books (PDF) to build the foundation: free and paid, organised by stage and skill.', 'fc.all': 'All books', 'fc.free': 'Free', 'fc.paid': 'Paid', 'fc.comp': 'Comprehensive courses', 'fc.compd': 'Books that cover all four skills together', 'fc.empty': 'No books in this section yet.', 'fc.err': 'Could not load the books now, please try again.', 'fc.load': 'Loading books…', 'fc.open': 'Open book', 'fc.sample': 'Free sample', 'fc.order': 'Order via WhatsApp', 'fc.pages': 'pages', 'fc.priceNote': 'Price is agreed on WhatsApp.', 'fc.msg': 'Hello, I would like to order the book: {n} (code {c}). Please tell me the price and payment method.', 'fc.soon1': 'Interactive Foundation', 'fc.soon2': 'Foreign Books Corner', 'fc.soon': 'Soon', 'trk.gov': 'Government education', 'trk.plus': 'Plus education', 'trk.govd': 'Government school books', 'trk.plusd': 'Plus school books',
     'acc.free': 'Free', 'acc.paid': 'Paid', 'acc.get': 'Free download', 'acc.buy': 'Request this item',
     'model.t': 'Free & paid',
     'model.free': 'Free materials for everyone', 'model.freed': 'Curricula and files we made, free to download for every student and teacher.',
@@ -2369,13 +2373,18 @@ ANG.config.content = {
   function fcSub(f) { return A.i18n.lang === 'ar' ? f.en : f.ar; }
   function fcSk(k) { return FC_SK[k][A.i18n.lang === 'ar' ? 0 : 1]; }
   function fcHref(q) { var p = []; if (q.s) p.push('s=' + q.s); if (q.t) p.push('t=' + q.t); return '#/foundation' + (p.length ? '?' + p.join('&') : ''); }
+  var TRK_IC = {
+    gov: '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10 12 4l9 6"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8"/><path d="M3 20h18"/></svg>',
+    plus: '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>'
+  };
   function fcCard(f) {
     var paid = f.tier === 'paid', code = f.code || '';
     var act = paid
       ? '<a class="btn btn-ghost" href="pdf/samples/' + esc(f.id) + '.pdf" target="_blank" rel="noopener noreferrer">' + esc(t('fc.sample')) + '</a>' +
         '<a class="btn btn-soft" href="#/request?grade=any&need=materials&bk=' + encodeURIComponent(code) + '&bn=' + encodeURIComponent(fcName(f)) + '">' + icon('whatsapp') + esc(t('fc.order')) + '</a>'
       : '<a class="btn btn-primary" href="pdf/' + esc(f.id) + '.pdf" target="_blank" rel="noopener noreferrer">' + esc(t('fc.open')) + '</a>';
-    return '<li class="fc-card"><img class="fc-cv" loading="lazy" alt="" src="pdf/covers/' + esc(f.id) + '.jpg">' +
+    var trk = f.track === 'plus' || f.track === 'gov' ? f.track : '';
+    return '<li class="fc-card' + (trk ? ' fc-' + trk : '') + '">' + (trk ? '<span class="fc-trk fc-trk-' + trk + '">' + TRK_IC[trk] + esc(t('trk.' + trk).replace(/ \(Plus\)/, '')) + '</span>' : '') + '<img class="fc-cv" loading="lazy" alt="" src="pdf/covers/' + esc(f.id) + '.jpg">' +
       '<div class="fc-b"><div class="fc-t"><strong>' + esc(fcName(f)) + '</strong><small dir="auto">' + esc(fcSub(f)) + '</small></div>' +
       '<div class="fc-m"><span class="pill ' + (paid ? 'pill-soon' : 'pill-ok') + '">' + esc(t(paid ? 'acc.paid' : 'acc.free')) + '</span>' +
       '<span class="muted">' + esc(A.i18n.num(f.pages)) + ' ' + esc(t('fc.pages')) + '</span>' + (code ? '<span class="fc-code">' + esc(code) + '</span>' : '') + '</div>' +
@@ -2423,7 +2432,14 @@ ANG.config.content = {
     items.forEach(function (f) { f.place.forEach(function (p) { var a = p.split(':'); if (a[0] === gid && a[2] === sk) (terms[a[1]] = terms[a[1]] || []).push(f); }); });
     var tn = { t1: A.i18n.lang === 'ar' ? 'الفصل الدراسي الأول' : 'Term 1', t2: A.i18n.lang === 'ar' ? 'الفصل الدراسي الثاني' : 'Term 2' };
     var out = Object.keys(terms).sort().map(function (k) {
-      return '<h3 class="sub">' + esc(tn[k] || k) + '</h3><p class="muted">' + esc(t('fc.priceNote')) + '</p><ul class="fc-grid">' + terms[k].map(fcCard).join('') + '</ul>';
+      var hasT = terms[k].some(function (f) { return f.track; }), body;
+      if (hasT) {
+        body = ['gov', 'plus'].map(function (tr) {
+          var L = terms[k].filter(function (f) { return (f.track || 'gov') === tr; });
+          return L.length ? '<div class="trk-h trk-h-' + tr + '">' + TRK_IC[tr] + '<div><strong>' + esc(t('trk.' + tr)) + '</strong><small>' + esc(t('trk.' + tr + 'd')) + '</small></div></div><ul class="fc-grid">' + L.map(fcCard).join('') + '</ul>' : '';
+        }).join('');
+      } else body = '<ul class="fc-grid">' + terms[k].map(fcCard).join('') + '</ul>';
+      return '<h3 class="sub">' + esc(tn[k] || k) + '</h3><p class="muted">' + esc(t('fc.priceNote')) + '</p>' + body;
     }).join('');
     return out || '<div class="card-plain"><h2>' + esc(nm) + ' <span class="pill pill-soon">' + esc(t('sec.soon')) + '</span></h2><p>' + esc(t('sec.soonD', { s: nm })) + '</p></div>';
   }
