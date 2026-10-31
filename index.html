@@ -86,19 +86,27 @@ a{color:inherit;text-decoration:none}
 @media(min-width:700px){.qbar .wrap{gap:12px;padding-block:14px 12px}.qi,.qsys{flex:1 1 0;max-width:none;font-size:.95rem}.qi .t3d{--ts:72px}.qi .sub{font-size:.76rem;padding:1px 12px}.qsys .qi{flex:0 0 auto}}
 
 
-/* الحاسوب: الأركان في شريط جانبي يمين بدل صفّ البطاقات الكبير */
+/* الحاسوب: شريط جانبي واحد يمين = الشعار + التنقل الأساسي + الأركان + اللغة (بلا شريط علوي) */
 @media(min-width:1100px){
-  .qbar{position:fixed;top:66px;bottom:0;inset-inline-start:0;width:208px;z-index:20;background:linear-gradient(180deg,#FFFDF2,#FBF3D2);border-bottom:0;border-inline-end:1.5px solid rgba(212,167,44,.45)}
-  .qbar .wrap{flex-direction:column;align-items:stretch;justify-content:flex-start;gap:6px;max-width:none;padding:18px 12px}
+  :root{--rail:232px}
+  .site-h{position:fixed;top:0;inset-inline-start:0;width:var(--rail);z-index:30;background:linear-gradient(180deg,#FFFDF2,#FBF3D2);backdrop-filter:none;border-bottom:0;border-inline-end:1.5px solid rgba(212,167,44,.45)}
+  .site-h .wrap{flex-direction:column;align-items:stretch;gap:4px;min-height:0;max-width:none;padding:14px 12px 6px}
+  .brand{flex-direction:column;text-align:center;gap:4px;margin:0 0 6px}.brand img{width:64px;height:64px}.brand small{max-width:none}
+  .top-nav{display:block}.top-nav ul{flex-direction:column;gap:2px}.top-nav li{display:block}
+  .top-nav a{width:100%;min-height:42px;padding:0 14px;border-radius:12px}
+  .top-nav .cta a{justify-content:center;margin-top:4px}
+  .lang-btn{position:fixed;bottom:14px;inset-inline-start:12px;width:calc(var(--rail) - 24px);justify-content:center;z-index:31}
+  .qbar{position:fixed;top:var(--rail-top,330px);bottom:70px;inset-inline-start:0;width:var(--rail);z-index:30;background:linear-gradient(180deg,#FBF3D2,#FFFDF2);border-bottom:0;border-inline-end:1.5px solid rgba(212,167,44,.45)}
+  .qbar::before{content:"";display:block;margin:0 16px;border-top:1.5px solid rgba(212,167,44,.45)}
+  .qbar .wrap{flex-direction:column;align-items:stretch;justify-content:flex-start;gap:4px;max-width:none;padding:10px 12px}
   .qbar .qi,.qbar .qsys{flex:none;max-width:none;width:100%}
-  .qbar .qi{display:grid;grid-template-columns:44px 1fr;column-gap:10px;row-gap:2px;align-items:center;text-align:start;font-size:.95rem;padding:8px 10px;border-radius:14px}
-  .qbar .qi .t3d{grid-row:1/3}.qbar .qi b{grid-column:2;align-self:end}.qbar .qi .sub{grid-column:2;justify-self:start;align-self:start}.qbar .qi:not(:has(.sub)) b{grid-row:1/3;align-self:center}
+  .qbar .qi{display:grid;grid-template-columns:40px 1fr;column-gap:10px;row-gap:2px;align-items:center;text-align:start;font-size:.92rem;padding:6px 10px;border-radius:12px}
   .qbar .qi:hover{background:#FFF4CC}
-  .qbar .qi .t3d{--ts:44px;flex:none}
-  .qbar .qi .sub{margin:0;font-size:.68rem;padding:1px 9px}
+  .qbar .qi .t3d{--ts:40px;grid-row:1/3}.qbar .qi b{grid-column:2;align-self:end}.qbar .qi .sub{grid-column:2;justify-self:start;align-self:start;margin:0;font-size:.66rem;padding:1px 9px}.qbar .qi:not(:has(.sub)) b{grid-row:1/3;align-self:center}
   .qsys{display:block;position:static}
-  .qpanel{position:fixed;top:84px;inset-inline-start:222px;width:340px}
-  body:has(#qbar-w:not([hidden])) main.wrap,body:has(#qbar-w:not([hidden])) .site-f .wrap{max-width:1296px;padding-inline-start:236px}
+  .qpanel{position:fixed;top:200px;inset-inline-start:calc(var(--rail) + 12px);width:340px}
+  body:has(#qbar-w:not([hidden])) main.wrap,.site-f .wrap{max-width:1296px;padding-inline-start:calc(var(--rail) + 16px)}
+  main{padding-block:28px 56px}
 }
 /* bottom nav (mobile) */
 .bottom-nav{position:fixed;inset-inline:0;bottom:0;z-index:50;background:var(--ivory);border-top:2px solid var(--gold);padding-bottom:env(safe-area-inset-bottom)}
@@ -2821,6 +2829,8 @@ ANG.config.content = {
   }
 
   function init() {
+    var railSync = function () { var h = document.querySelector('.site-h'); if (h) document.documentElement.style.setProperty('--rail-top', h.offsetHeight + 'px'); };
+    railSync(); window.addEventListener('resize', railSync); window.addEventListener('hashchange', function () { setTimeout(railSync, 60); }); setTimeout(railSync, 400);
     $('#qbar').addEventListener('click', function (e) { var sy = e.target.closest && e.target.closest('[data-sys]'); if (sy) { A.system.set(sy.getAttribute('data-sys')); render(A.router.current(), true); } });
     document.addEventListener('click', function (e) { var d = document.getElementById('qsys'); if (d && d.open && !d.contains(e.target)) d.open = false; });
     A.i18n.apply();
