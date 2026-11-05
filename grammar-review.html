@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow"><title>مراجعة فيديوهات القواعد | Anglomania Edu</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap">
+<style>
+/* Layout: lesson list beside one player; stacks on phones. Emerald and gold from the platform identity, ivory ground. */
+:root{--bg:#f7f4e9;--surface:#ffffff;--fg:#17302a;--muted:#5a6b64;--line:#dcd6bd;--em:#0e5e3e;--em-d:#0a4530;--gold:#c8a23a;--gold-d:#8a6c14;--ok:#1d7a4b;--okbg:#dff1e6;--bad:#b3392f;--badbg:#f8e1de;--font:'Cairo',system-ui,sans-serif;--disp:'Playfair Display',Georgia,serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1f1a;--surface:#16302a;--fg:#eef2ea;--muted:#9db3a8;--line:#2a4a40;--em:#3fbf8a;--em-d:#0e5e3e;--gold:#e2bd57;--gold-d:#e2bd57;--ok:#6fdca1;--okbg:#17462f;--bad:#ff9c92;--badbg:#4a2420;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1f1a;--surface:#16302a;--fg:#eef2ea;--muted:#9db3a8;--line:#2a4a40;--em:#3fbf8a;--em-d:#0e5e3e;--gold:#e2bd57;--gold-d:#e2bd57;--ok:#6fdca1;--okbg:#17462f;--bad:#ff9c92;--badbg:#4a2420;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:400 16px/1.6 var(--font);padding-block:0 40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1100px;margin:0 auto}
+header{padding:24px 0 18px;border-bottom:3px double var(--gold);margin-bottom:20px}
+.brand{font:700 13px var(--disp);letter-spacing:.22em;text-transform:uppercase;color:var(--em);direction:ltr;text-align:right}
+h1{font:700 26px/1.3 var(--font);margin:6px 0 4px;text-wrap:balance}
+.sub{color:var(--muted);margin:0;max-width:62ch}
+.grid{display:grid;grid-template-columns:320px minmax(0,1fr);gap:24px;align-items:start}
+@media(max-width:820px){.grid{grid-template-columns:minmax(0,1fr)}}
+.list{display:flex;flex-direction:column;gap:6px;max-height:640px;overflow:auto;padding:2px}
+@media(max-width:820px){.list{max-height:none;flex-direction:row;overflow-x:auto;padding-bottom:8px}.list button{min-width:210px}}
+.list button{font:inherit;text-align:start;background:var(--surface);color:var(--fg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:flex;gap:10px;align-items:center;cursor:pointer}
+.list button[aria-current="true"]{border-color:var(--em);box-shadow:inset 3px 0 0 var(--em)}
+.list button:focus-visible,.btn:focus-visible,textarea:focus-visible,.seg button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.n{font:700 13px var(--disp);color:var(--gold-d);width:22px;text-align:center;flex:none}
+.t{flex:1;min-width:0;direction:ltr;text-align:left;font-weight:600;font-size:15px;line-height:1.3}
+.dot{width:10px;height:10px;border-radius:50%;flex:none;border:2px solid var(--line)}
+.dot.ok{background:var(--ok);border-color:var(--ok)}.dot.bad{background:var(--bad);border-color:var(--bad)}
+.stage{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;min-width:0}
+.vid{width:100%;aspect-ratio:16/9;background:#0a4530;border-radius:10px;display:block}
+.bar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin:14px 0 4px}
+.ttl{font:700 22px var(--disp);direction:ltr;margin:0}
+.seg{display:inline-flex;border:1px solid var(--em);border-radius:999px;overflow:hidden}
+.seg button{font:600 14px var(--font);padding:6px 16px;border:0;background:transparent;color:var(--em);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--em);color:#fff}
+.sw{color:var(--muted);font-size:14px;margin:0 0 14px}
+.rev{border-top:1px solid var(--line);padding-top:14px;display:flex;flex-direction:column;gap:10px}
+.rev h3{margin:0;font-size:16px}
+.st{display:flex;gap:8px;flex-wrap:wrap}
+.btn{font:600 15px var(--font);padding:8px 16px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--fg);cursor:pointer}
+.btn[aria-pressed="true"].ok{background:var(--okbg);border-color:var(--ok);color:var(--ok)}
+.btn[aria-pressed="true"].bad{background:var(--badbg);border-color:var(--bad);color:var(--bad)}
+.btn.save{background:var(--em);border-color:var(--em);color:#fff}
+.btn:disabled{opacity:.5;cursor:default}
+textarea{font:inherit;width:100%;min-height:96px;resize:vertical;padding:10px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--fg)}
+.msg{font-size:14px;color:var(--muted);min-height:1.4em}
+.sum{display:flex;gap:14px;flex-wrap:wrap;font-size:14px;color:var(--muted);margin-top:6px}
+.send{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;padding-top:14px;border-top:3px double var(--gold)}.send .btn{flex:1;min-width:150px;text-align:center}.send .wa{background:#1f9d55;border-color:#1f9d55;color:#fff}.hint{font-size:13px;color:var(--muted);margin:4px 0 0}
+</style></head><body>
+<div class="wrap">
+<header>
+  <div class="brand">Anglomania Edu · More Than English</div>
+  <h1>مراجعة فيديوهات القواعد</h1>
+  <p class="sub">شاهد كل فيديو، بدّل بين النسخة الإنجليزية ونسخة الترجمة العربية، ثم اختر الحالة واكتب ملاحظاتك واضغط حفظ. في النهاية اضغط «إرسال الملاحظات».</p>
+  <div class="sum" id="sum" aria-live="polite"></div>
+</header>
+<div class="grid">
+  <nav class="list" id="list" aria-label="الدروس"></nav>
+  <section class="stage" aria-labelledby="ttl">
+    <video id="vid" class="vid" controls playsinline preload="metadata"></video>
+    <div class="bar">
+      <h2 class="ttl" id="ttl"></h2>
+      <div class="seg" role="group" aria-label="لغة الشاشة">
+        <button id="bEn" aria-pressed="true">English</button>
+        <button id="bAr" aria-pressed="false">+ ترجمة عربية</button>
+      </div>
+    </div>
+    <p class="sw">الصوت إنجليزي في النسختين. زر الترجمة يظهر الكتابة العربية على الشاشة فقط.</p>
+    <div class="rev">
+      <h3>ملاحظات المراجعة</h3>
+      <div class="st">
+        <button class="btn ok" id="sOk" aria-pressed="false">معتمد</button>
+        <button class="btn bad" id="sBad" aria-pressed="false">يحتاج تعديل</button>
+      </div>
+      <label for="note" class="sw" style="margin:0">اكتب ما يجب تعديله (الجملة، المثال، الترجمة، السرعة...)</label>
+      <textarea id="note" placeholder="مثال: في الدقيقة 0:25 المثال الثاني يحتاج تبسيط"></textarea>
+      <div><button class="btn save" id="save">حفظ</button></div>
+      <div class="msg" id="msg" role="status"></div>
+    </div>
+  </section>
+</div>
+<div class="send">
+  <button class="btn wa" id="wa">إرسال كل الملاحظات عبر واتساب</button>
+  <button class="btn" id="cp">نسخ كل الملاحظات</button>
+  <button class="btn" id="rs">مسح الكل</button>
+</div>
+<p class="hint">تُحفظ ملاحظاتك على هذا الجهاز تلقائيًا. عند الانتهاء اضغط «إرسال الملاحظات» لتصلنا كاملة.</p>
+</div>
+
+<script>
+const CDN="https://d2ol7oe51mr4n9.cloudfront.net/user_3Isqcp1WNeQb3wtRQJqKCNlsa5T/";
+const L=[
+["Present Simple","d3a2b589-13e8-4bad-a319-0e7372c48699","1ffd342d-b2f4-48e8-aa5f-31f39e56541d"],
+["Present Continuous","04cd5994-8252-43cc-a299-a0a6039fbce8","ee9e8fdb-1b3c-4575-9bb9-d2e25407c6f6"],
+["Past Simple","9bc7a7fd-b9bb-4c6d-9658-18ebed47b23b","7a3caf01-3ca8-4b50-bcac-e443a06b1639"],
+["Future with Will","1c84fdd1-8587-4dbc-a09d-358d7a37314f","930963cf-d88b-4efb-9068-b8eb7ceb3c26"],
+["Present Perfect","3976506a-300a-4193-a439-8f3036e5a49e","4bc7260a-3372-45f7-943d-aa80ccdf9edb"],
+["A and An","65c9901e-c378-481d-b4a8-58e67e2a5442","2218cf7d-dc45-4b28-8977-0f0e660efaa6"],
+["Plural Nouns","3303f9b1-280d-49aa-9339-3a2376b2e145","58d07a09-f376-4eaf-9782-13736aea4440"],
+["There is and There are","72cec819-d682-4a97-adf1-7337828ca966","4211f17b-30f5-4366-a3de-8a754035e3d8"],
+["Comparatives and Superlatives","250af985-e460-4c40-b9df-edf465009a0e","b1ace62c-b96c-4991-a5a0-95779ea182aa"],
+["Modal Verbs","b28e178d-4203-4065-af78-e4db864f9d9e","e3c1a6f0-7fa8-476c-a27b-b2983fbec135"],
+["Question Words","a012fb91-1c5c-469b-a06b-1ee5771855a1","ec04299f-eec2-42ae-9f62-8e9ba1694f1b"],
+["Prepositions of Time","7c1d48cb-51d4-427c-9a38-a775e264399b","fdac0778-9afa-42e7-8352-49c0a5055e04"],
+["Verb To Be","ec624c17-b077-4398-a0b8-ae587a4a5719","26dbcda9-7daa-4724-b0e0-b5cd9c026f35"],
+["Subject and Object Pronouns","bde8f536-6929-468f-addd-ba7cd85b21f2","29df394e-890d-44bf-8b89-45354cc462a9"],
+["Possessive Adjectives","1eaef856-f88d-49f4-b0a3-664cf22d12a4","bcebb221-0ae1-4dce-8b82-b1effd757cae"],
+["This That These Those","f474c738-1bab-4af5-a8aa-b71790e1c899","e01c7e22-34a4-4c6f-a6ea-a2bf9d357546"],
+["Some and Any","5118f448-0368-4d08-b7c8-74f39dd35ca7","c6c35ced-fbb2-44b5-a361-b2a19a39c394"],
+["Much and Many","7926e8bc-6a16-4a84-850f-754c0c856a06","7dfa3ed1-bbcd-4190-90e5-0049bc8ce486"],
+["Adverbs of Frequency","37f923ea-b0cd-4f16-8c7c-6c9057b3fa6d","786a20ae-39ca-45b4-9557-5e59a56142ea"],
+["Past Continuous","52966aba-f79c-49ae-a341-c136a59615da","dfca2e17-0a90-445d-8bc1-325084a17f04"]
+].map(([t,ar,en],i)=>({t,ar,en,id:en,n:i+1}));
+const $=id=>document.getElementById(id);
+let cur=0,ar=false,rev={},status=null;try{rev=JSON.parse(localStorage.getItem("gvr")||"{}")}catch(e){rev={}}
+const persist=()=>{try{localStorage.setItem("gvr",JSON.stringify(rev))}catch(e){}};
+const vid=$("vid");
+function src(){const l=L[cur];return CDN+(ar?l.ar:l.en)+".mp4"}
+function load(keep){const t=keep?vid.currentTime:0,p=keep&&!vid.paused;vid.src=src();vid.addEventListener("loadedmetadata",()=>{try{vid.currentTime=t}catch(e){}if(p)vid.play().catch(()=>{})},{once:true});}
+function renderList(){
+  $("list").innerHTML="";
+  L.forEach((l,i)=>{const b=document.createElement("button");b.setAttribute("aria-current",i===cur);
+    const s=(rev[l.id]||{}).status;
+    b.innerHTML=`<span class="n">${l.n}</span><span class="t"></span><span class="dot ${s==="ok"?"ok":s==="bad"?"bad":""}" title="${s==="ok"?"معتمد":s==="bad"?"يحتاج تعديل":"لم يُراجع"}"></span>`;
+    b.querySelector(".t").textContent=l.t;b.onclick=()=>{cur=i;select(false)};$("list").appendChild(b)});
+  const v=Object.values(rev),ok=v.filter(x=>x.status==="ok").length,bad=v.filter(x=>x.status==="bad").length;
+  $("sum").textContent=`معتمد ${ok} · يحتاج تعديل ${bad} · لم يُراجع ${L.length-ok-bad}`;
+}
+function fillForm(){const r=rev[L[cur].id]||{};status=r.status||null;$("note").value=r.note||"";mark();}
+function mark(){$("sOk").setAttribute("aria-pressed",status==="ok");$("sBad").setAttribute("aria-pressed",status==="bad")}
+function select(keep){$("ttl").textContent=L[cur].t;load(keep);fillForm();renderList();$("msg").textContent=""}
+$("bEn").onclick=()=>{ar=false;$("bEn").setAttribute("aria-pressed",true);$("bAr").setAttribute("aria-pressed",false);load(true)};
+$("bAr").onclick=()=>{ar=true;$("bEn").setAttribute("aria-pressed",false);$("bAr").setAttribute("aria-pressed",true);load(true)};
+$("sOk").onclick=()=>{status=status==="ok"?null:"ok";mark()};
+$("sBad").onclick=()=>{status=status==="bad"?null:"bad";mark()};
+$("save").onclick=()=>{
+  const r={lesson:L[cur].t,status:status||"",note:$("note").value.trim(),at:new Date().toISOString()};
+  if(!r.status&&!r.note)delete rev[L[cur].id];else rev[L[cur].id]=r;
+  persist();renderList();$("msg").textContent="تم الحفظ على هذا الجهاز.";
+};
+function report(){
+  const lines=["مراجعة فيديوهات القواعد - Anglomania Edu",""];
+  L.forEach(l=>{const r=rev[l.id]||{};const s=r.status==="ok"?"معتمد":r.status==="bad"?"يحتاج تعديل":"لم يُراجع";lines.push(l.n+". "+l.t+" : "+s+(r.note?"\n   ملاحظة: "+r.note:""))});
+  return lines.join("\n");
+}
+$("wa").onclick=()=>{window.open("https://wa.me/?text="+encodeURIComponent(report()),"_blank")};
+$("cp").onclick=()=>{const t=report();(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>{$("msg").textContent="تم نسخ الملاحظات."}).catch(()=>{prompt("انسخ الملاحظات:",t)})};
+$("rs").onclick=()=>{if(confirm("مسح كل الحالات والملاحظات؟")){rev={};persist();fillForm();renderList()}};
+select(false);
+</script>
+</body></html>
