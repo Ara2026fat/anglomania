@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow"><title>مراجعة فيديوهات القواعد | Anglomania Edu</title>
+<html lang="en" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow"><title>Grammar Videos Review | Anglomania Edu</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap">
 <style>
 /* Layout: lesson list beside one player; stacks on phones. Emerald and gold from the platform identity, ivory ground. */
@@ -10,7 +10,7 @@
 body{background:var(--bg);color:var(--fg);font:400 16px/1.6 var(--font);padding-block:0 40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .wrap{max-width:1100px;margin:0 auto}
 header{padding:24px 0 18px;border-bottom:3px double var(--gold);margin-bottom:20px}
-.brand{font:700 13px var(--disp);letter-spacing:.22em;text-transform:uppercase;color:var(--em);direction:ltr;text-align:right}
+.brand{font:700 13px var(--disp);letter-spacing:.22em;text-transform:uppercase;color:var(--em);direction:ltr;text-align:left}
 h1{font:700 26px/1.3 var(--font);margin:6px 0 4px;text-wrap:balance}
 .sub{color:var(--muted);margin:0;max-width:62ch}
 .grid{display:grid;grid-template-columns:320px minmax(0,1fr);gap:24px;align-items:start}
@@ -48,41 +48,41 @@ textarea{font:inherit;width:100%;min-height:96px;resize:vertical;padding:10px;bo
 <div class="wrap">
 <header>
   <div class="brand">Anglomania Edu · More Than English</div>
-  <h1>مراجعة فيديوهات القواعد</h1>
-  <p class="sub">شاهد كل فيديو، بدّل بين النسخة الإنجليزية ونسخة الترجمة العربية، ثم اختر الحالة واكتب ملاحظاتك واضغط حفظ. في النهاية اضغط «إرسال الملاحظات».</p>
+  <h1>Grammar Videos Review</h1>
+  <p class="sub">Watch each video, switch between the English version and the Arabic-translation version, then choose a status, write your notes and press Save. When you finish, press “Send all notes”.</p>
   <div class="sum" id="sum" aria-live="polite"></div>
 </header>
 <div class="grid">
-  <nav class="list" id="list" aria-label="الدروس"></nav>
+  <nav class="list" id="list" aria-label="Lessons"></nav>
   <section class="stage" aria-labelledby="ttl">
     <video id="vid" class="vid" controls playsinline preload="metadata"></video>
     <div class="bar">
       <h2 class="ttl" id="ttl"></h2>
-      <div class="seg" role="group" aria-label="لغة الشاشة">
+      <div class="seg" role="group" aria-label="Screen language">
         <button id="bEn" aria-pressed="true">English</button>
-        <button id="bAr" aria-pressed="false">+ ترجمة عربية</button>
+        <button id="bAr" aria-pressed="false">+ Arabic translation</button>
       </div>
     </div>
-    <p class="sw">الصوت إنجليزي في النسختين. زر الترجمة يظهر الكتابة العربية على الشاشة فقط.</p>
+    <p class="sw">The voice is English in both versions. The translation button only adds written Arabic on screen.</p>
     <div class="rev">
-      <h3>ملاحظات المراجعة</h3>
+      <h3>Review notes</h3>
       <div class="st">
-        <button class="btn ok" id="sOk" aria-pressed="false">معتمد</button>
-        <button class="btn bad" id="sBad" aria-pressed="false">يحتاج تعديل</button>
+        <button class="btn ok" id="sOk" aria-pressed="false">Approved</button>
+        <button class="btn bad" id="sBad" aria-pressed="false">Needs changes</button>
       </div>
-      <label for="note" class="sw" style="margin:0">اكتب ما يجب تعديله (الجملة، المثال، الترجمة، السرعة...)</label>
-      <textarea id="note" placeholder="مثال: في الدقيقة 0:25 المثال الثاني يحتاج تبسيط"></textarea>
-      <div><button class="btn save" id="save">حفظ</button></div>
+      <label for="note" class="sw" style="margin:0">Write what should change (sentence, example, translation, speed...)</label>
+      <textarea id="note" placeholder="Example: at 0:25 the second example needs simplifying"></textarea>
+      <div><button class="btn save" id="save">Save</button></div>
       <div class="msg" id="msg" role="status"></div>
     </div>
   </section>
 </div>
 <div class="send">
-  <button class="btn wa" id="wa">إرسال كل الملاحظات عبر واتساب</button>
-  <button class="btn" id="cp">نسخ كل الملاحظات</button>
-  <button class="btn" id="rs">مسح الكل</button>
+  <button class="btn wa" id="wa">Send all notes via WhatsApp</button>
+  <button class="btn" id="cp">Copy all notes</button>
+  <button class="btn" id="rs">Clear all</button>
 </div>
-<p class="hint">تُحفظ ملاحظاتك على هذا الجهاز تلقائيًا. عند الانتهاء اضغط «إرسال الملاحظات» لتصلنا كاملة.</p>
+<p class="hint">Your notes are saved on this device automatically. When you are done, press “Send all notes” so they reach us in full.</p>
 </div>
 
 <script>
@@ -119,10 +119,10 @@ function renderList(){
   $("list").innerHTML="";
   L.forEach((l,i)=>{const b=document.createElement("button");b.setAttribute("aria-current",i===cur);
     const s=(rev[l.id]||{}).status;
-    b.innerHTML=`<span class="n">${l.n}</span><span class="t"></span><span class="dot ${s==="ok"?"ok":s==="bad"?"bad":""}" title="${s==="ok"?"معتمد":s==="bad"?"يحتاج تعديل":"لم يُراجع"}"></span>`;
+    b.innerHTML=`<span class="n">${l.n}</span><span class="t"></span><span class="dot ${s==="ok"?"ok":s==="bad"?"bad":""}" title="${s==="ok"?"Approved":s==="bad"?"Needs changes":"Not reviewed"}"></span>`;
     b.querySelector(".t").textContent=l.t;b.onclick=()=>{cur=i;select(false)};$("list").appendChild(b)});
   const v=Object.values(rev),ok=v.filter(x=>x.status==="ok").length,bad=v.filter(x=>x.status==="bad").length;
-  $("sum").textContent=`معتمد ${ok} · يحتاج تعديل ${bad} · لم يُراجع ${L.length-ok-bad}`;
+  $("sum").textContent=`Approved ${ok} · Needs changes ${bad} · Not reviewed ${L.length-ok-bad}`;
 }
 function fillForm(){const r=rev[L[cur].id]||{};status=r.status||null;$("note").value=r.note||"";mark();}
 function mark(){$("sOk").setAttribute("aria-pressed",status==="ok");$("sBad").setAttribute("aria-pressed",status==="bad")}
@@ -134,16 +134,16 @@ $("sBad").onclick=()=>{status=status==="bad"?null:"bad";mark()};
 $("save").onclick=()=>{
   const r={lesson:L[cur].t,status:status||"",note:$("note").value.trim(),at:new Date().toISOString()};
   if(!r.status&&!r.note)delete rev[L[cur].id];else rev[L[cur].id]=r;
-  persist();renderList();$("msg").textContent="تم الحفظ على هذا الجهاز.";
+  persist();renderList();$("msg").textContent="Saved on this device.";
 };
 function report(){
-  const lines=["مراجعة فيديوهات القواعد - Anglomania Edu",""];
-  L.forEach(l=>{const r=rev[l.id]||{};const s=r.status==="ok"?"معتمد":r.status==="bad"?"يحتاج تعديل":"لم يُراجع";lines.push(l.n+". "+l.t+" : "+s+(r.note?"\n   ملاحظة: "+r.note:""))});
+  const lines=["Grammar videos review - Anglomania Edu",""];
+  L.forEach(l=>{const r=rev[l.id]||{};const s=r.status==="ok"?"Approved":r.status==="bad"?"Needs changes":"Not reviewed";lines.push(l.n+". "+l.t+" : "+s+(r.note?"\n   Note: "+r.note:""))});
   return lines.join("\n");
 }
 $("wa").onclick=()=>{window.open("https://wa.me/?text="+encodeURIComponent(report()),"_blank")};
-$("cp").onclick=()=>{const t=report();(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>{$("msg").textContent="تم نسخ الملاحظات."}).catch(()=>{prompt("انسخ الملاحظات:",t)})};
-$("rs").onclick=()=>{if(confirm("مسح كل الحالات والملاحظات؟")){rev={};persist();fillForm();renderList()}};
+$("cp").onclick=()=>{const t=report();(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>{$("msg").textContent="Notes copied."}).catch(()=>{prompt("Copy the notes:",t)})};
+$("rs").onclick=()=>{if(confirm("Clear all statuses and notes?")){rev={};persist();fillForm();renderList()}};
 select(false);
 </script>
 </body></html>
