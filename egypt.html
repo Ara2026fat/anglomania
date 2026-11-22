@@ -79,6 +79,10 @@ h2{font-size:22px;color:var(--gd);padding-inline-start:12px;border-inline-start:
 .rc .ic{font-size:26px;line-height:1}
 .rc b{font-size:15px}.rc span.s{color:var(--mu);font-size:13px}
 .rc .btn{margin-top:auto}
+.gv{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:6px 0 4px}
+.gv .rc{border-color:var(--g)}
+.gv .two2{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
+@media(max-width:620px){.gv{grid-template-columns:1fr}}
 .rc.anglo{border-color:var(--g);background:linear-gradient(#fff,var(--gl))}
 .rc.azhar{border-color:var(--g)}.rc.plus{border-color:var(--gold)}
 .off{margin-top:22px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;background:#fff;border:2px solid var(--ln);border-radius:var(--r);padding:14px 16px}
@@ -148,10 +152,6 @@ footer .mot{margin-top:6px}
     </div>
   </div>
   <div id="list"></div>
-  <div class="off">
-    <p>عايز كتاب الطالب الرسمي من الوزارة؟ روابطه متجمعة لأولى لسادسة ابتدائي.</p>
-    <a class="btn o s" href="/curricula/egypt/">كتب الوزارة</a>
-  </div>
 </div></section>
 
 <section id="anglo"><div class="w">
@@ -205,7 +205,7 @@ footer .mot{margin-top:6px}
       <div><label for="fTrack">المسار</label>
         <select id="fTrack"><option>حكومي</option><option>بلس</option><option>أزهر</option><option>ملفات أنجلومانيا</option><option>مش متأكد</option></select></div>
       <div><label for="fNeed">محتاج</label>
-        <select id="fNeed"><option>ملف جرامر</option><option>ملف كتابة برجراف</option><option>شرح درس</option><option>ورق عمل</option><option>مراجعة</option><option>مراجعة نهائية</option><option>ملف ترجمة</option><option>نموذج امتحان</option><option>استفسار تاني</option></select></div>
+        <select id="fNeed"><option>ملف جرامر</option><option>ملف كتابة برجراف</option><option>شرح درس</option><option>ورق عمل</option><option>مراجعة</option><option>مراجعة نهائية</option><option>ملف ترجمة</option><option>نموذج امتحان</option><option>تقييمات المدرسة</option><option>كتب المدرسة</option><option>استفسار تاني</option></select></div>
     </div>
     <div><label for="fMsg">تفاصيل (اختياري)</label><textarea id="fMsg" placeholder="مثلا: الدرس أو الوحدة اللي محتاجها"></textarea></div>
     <div class="pv" id="pv" aria-live="polite"></div>
@@ -270,11 +270,17 @@ function match(b){
   if(qs){const t=(b.t+' '+b.c+' '+GN[b.g]+' '+TR[b.k]).toLowerCase();if(!t.includes(qs))return false}
   return true;
 }
+function gvTiles(){
+  if(track!=='gov')return '';
+  const gl=grade==='all'?'':` data-g="${grade}"`;
+  return `<div class="gv"><article class="rc"><span class="ic">📖</span><b>كتب المدرسة</b><span class="s">كتاب الطالب الرسمي من الوزارة (من أولى لسادسة ابتدائي)، وللصفوف الأخرى اطلب كتاب صفك.</span><div class="two2"><a class="btn s" href="/curricula/egypt/">افتح الكتب</a><button class="btn o s" type="button" data-gv="كتب المدرسة"${gl}>اطلب كتاب صفي</button></div></article>
+  <article class="rc"><span class="ic">📝</span><b>تقييمات المدرسة</b><span class="s">تقييمات المدرسة لصفك على المنهج الحكومي. اطلبها وهنرد عليك.</span><div class="two2"><button class="btn s" type="button" data-gv="تقييمات المدرسة"${gl}>اطلب التقييمات</button></div></article></div>`;
+}
 function render(){
   const L=DATA.filter(match);
-  if(!L.length){$('#list').innerHTML='<div class="none">مفيش ملفات مطابقة دلوقتي. جرّب تغيّر الصف أو المسار، أو ابعت طلبك ونجهّزه لك.</div>';return}
+  if(!L.length){$('#list').innerHTML=gvTiles()+'<div class="none">مفيش ملفات مطابقة دلوقتي. جرّب تغيّر الصف أو المسار، أو ابعت طلبك ونجهّزه لك.</div>';return}
   const by={};L.forEach(b=>(by[b.g]=by[b.g]||[]).push(b));
-  $('#list').innerHTML=Object.keys(by).sort((a,b)=>a-b).map(g=>`<div class="gr"><h3>${GN[g]} <small>الفصل الأول</small></h3><div class="bk">${by[g].map(b=>`
+  $('#list').innerHTML=gvTiles()+Object.keys(by).sort((a,b)=>a-b).map(g=>`<div class="gr"><h3>${GN[g]} <small>الفصل الأول</small></h3><div class="bk">${by[g].map(b=>`
   <article class="cd ${b.k}"><div class="im"><img loading="lazy" src="pdf/covers/${b.id}.jpg" alt="غلاف ${esc(b.t)} ${GN[b.g]}"></div>
   <div class="bd"><b>${esc(b.t)}</b><div class="meta"><span class="chip ${b.k=='plus'?'pl':''}">${TR[b.k]}</span><span class="chip">${b.p} صفحة</span><span class="chip">${esc(b.c)}</span><span class="chip pd">مدفوع</span></div>
   <button class="btn s" type="button" data-req="${b.id}">اطلب الملف</button></div></article>`).join('')}</div></div>`).join('');
@@ -307,6 +313,8 @@ document.addEventListener('click',async e=>{
   const p=e.target.closest('.pill');
   if(p&&p.dataset.g){grade=p.dataset.g;pills();render();return}
   if(p&&p.dataset.t){track=p.dataset.t;document.querySelectorAll('#trackRow .pill').forEach(x=>x.setAttribute('aria-pressed',x.dataset.t==track));render();return}
+  const gv=e.target.closest('[data-gv]');
+  if(gv){if(gv.dataset.g)$('#fGrade').value=gv.dataset.g;$('#fTrack').value='حكومي';$('#fNeed').value=gv.dataset.gv;delete $('#fMsg').dataset.code;pv();$('#request').scrollIntoView();return}
   const ac=e.target.closest('[data-ac]');if(ac){anC=ac.dataset.ac;anRender();return}
   const as=e.target.closest('[data-as]');if(as){anS=as.dataset.as;anRender();return}
   const an=e.target.closest('[data-an]');
