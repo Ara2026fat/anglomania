@@ -74,6 +74,12 @@ h2{font-size:22px;color:var(--gd);padding-inline-start:12px;border-inline-start:
 .chip.pd{background:var(--g);border-color:var(--g);color:#fff}
 .cd .btn{margin-top:auto}
 .none{padding:22px;text-align:center;color:var(--mu);border:2px dashed var(--ln);border-radius:var(--r);background:#fff}
+.rv{margin-top:6px;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.rc{background:#fff;border:2px solid var(--ln);border-radius:var(--r);padding:14px;display:flex;flex-direction:column;gap:6px}
+.rc .ic{font-size:26px;line-height:1}
+.rc b{font-size:15px}.rc span.s{color:var(--mu);font-size:13px}
+.rc .btn{margin-top:auto}
+.rc.azhar{border-color:var(--g)}.rc.plus{border-color:var(--gold)}
 .off{margin-top:22px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;background:#fff;border:2px solid var(--ln);border-radius:var(--r);padding:14px 16px}
 .off p{flex:1;min-width:200px;color:var(--mu);font-size:14.5px}
 /* form */
@@ -108,13 +114,13 @@ footer .mot{margin-top:6px}
 <header class="bar"><div class="w">
   <img src="logo-t.png" alt="Anglomania">
   <b>أنجلومانيا · مصر</b>
-  <nav aria-label="أقسام الصفحة"><a href="#books">الملفات</a><a href="#request">اطلب</a><a href="#faq">أسئلة</a><a href="/">الموقع الرئيسي</a></nav>
+  <nav aria-label="أقسام الصفحة"><a href="#books">الملفات</a><a href="#reviews">المراجعات</a><a href="#request">اطلب</a><a href="#faq">أسئلة</a><a href="/">الموقع الرئيسي</a></nav>
 </div></header>
 
 <main>
 <div class="w">
   <div class="hero">
-    <span class="tag">المنهج المصري · حكومي وبلس</span>
+    <span class="tag">المنهج المصري · حكومي وبلس وأزهر</span>
     <h1>إنجليزي <em>بسيط وممتع</em><br>لكل صف من أولى ابتدائي لأولى ثانوي</h1>
     <p>ملفات جرامر وكتابة مصمّمة بعناية، بإشراف تعليمي من مستر حسام. اختار صفك والمسار، واطلب الملف في دقيقة على واتساب.</p>
     <div class="cta"><a class="btn" href="#books">شوف الملفات</a><a class="btn o" href="#request">ابعت طلبك</a></div>
@@ -138,6 +144,7 @@ footer .mot{margin-top:6px}
       <button class="pill gold" type="button" data-t="all" aria-pressed="true">كل المسارات</button>
       <button class="pill gold" type="button" data-t="gov" aria-pressed="false">حكومي</button>
       <button class="pill gold" type="button" data-t="plus" aria-pressed="false">بلس</button>
+      <button class="pill gold" type="button" data-t="azhar" aria-pressed="false">أزهر</button>
     </div>
   </div>
   <div id="list"></div>
@@ -145,6 +152,24 @@ footer .mot{margin-top:6px}
     <p>عايز كتاب الطالب الرسمي من الوزارة؟ روابطه متجمعة لأولى لسادسة ابتدائي.</p>
     <a class="btn o s" href="/curricula/egypt/">كتب الوزارة</a>
   </div>
+</div></section>
+
+<section id="reviews"><div class="w">
+  <h2>🏁 المراجعات النهائية</h2>
+  <p class="sub">مراجعة نهائية لكل صف، لمسار حكومي وبلس وأزهر. اختار المسار والمرحلة واطلب مراجعة صفك.</p>
+  <div class="fl">
+    <div class="row" id="rvTrack" role="group" aria-label="مسار المراجعة">
+      <button class="pill gold" type="button" data-rt="gov" aria-pressed="true">حكومي</button>
+      <button class="pill gold" type="button" data-rt="plus" aria-pressed="false">بلس</button>
+      <button class="pill gold" type="button" data-rt="azhar" aria-pressed="false">أزهر</button>
+    </div>
+    <div class="row" id="rvStage" role="group" aria-label="المرحلة">
+      <button class="pill" type="button" data-rs="p" aria-pressed="true">ابتدائي</button>
+      <button class="pill" type="button" data-rs="i" aria-pressed="false">إعدادي</button>
+      <button class="pill" type="button" data-rs="s" aria-pressed="false">ثانوي</button>
+    </div>
+  </div>
+  <div class="rv" id="rvList"></div>
 </div></section>
 
 <section id="request"><div class="w">
@@ -159,9 +184,9 @@ footer .mot{margin-top:6px}
     </div>
     <div class="two">
       <div><label for="fTrack">المسار</label>
-        <select id="fTrack"><option>حكومي</option><option>بلس</option><option>مش متأكد</option></select></div>
+        <select id="fTrack"><option>حكومي</option><option>بلس</option><option>أزهر</option><option>مش متأكد</option></select></div>
       <div><label for="fNeed">محتاج</label>
-        <select id="fNeed"><option>ملف جرامر</option><option>ملف كتابة برجراف</option><option>شرح درس</option><option>ورق عمل</option><option>مراجعة</option><option>نموذج امتحان</option><option>استفسار تاني</option></select></div>
+        <select id="fNeed"><option>ملف جرامر</option><option>ملف كتابة برجراف</option><option>شرح درس</option><option>ورق عمل</option><option>مراجعة</option><option>مراجعة نهائية</option><option>نموذج امتحان</option><option>استفسار تاني</option></select></div>
     </div>
     <div><label for="fMsg">تفاصيل (اختياري)</label><textarea id="fMsg" placeholder="مثلا: الدرس أو الوحدة اللي محتاجها"></textarea></div>
     <div class="pv" id="pv" aria-live="polite"></div>
@@ -178,7 +203,7 @@ footer .mot{margin-top:6px}
   <h2>أسئلة شائعة</h2>
   <p class="sub">إجابات سريعة لأكتر الأسئلة.</p>
   <details><summary>إزاي أطلب ملف؟</summary><p>اختار الملف من القائمة واضغط «اطلب الملف»، أو املا نموذج الطلب. هتفتح لك محادثة واتساب والرسالة جاهزة، وتبعتها بضغطة واحدة. وتقدر كمان تبعتها في جروب أنجلومانيا.</p></details>
-  <details><summary>إيه الفرق بين حكومي وبلس؟</summary><p>«حكومي» لطلاب المدارس الحكومية، و«بلس» لطلاب مسار Plus (مثل Connect Plus وHello Plus). اختار مسارك وهنعرضلك الملفات المناسبة.</p></details>
+  <details><summary>إيه الفرق بين حكومي وبلس؟</summary><p>«حكومي» لطلاب المدارس الحكومية، و«بلس» لطلاب مسار Plus (مثل Connect Plus وHello Plus)، و«أزهر» لطلاب المعاهد الأزهرية. اختار مسارك وهنعرضلك الملفات المناسبة.</p></details>
   <details><summary>الملفات مدفوعة ولا مجانية؟</summary><p>ملفات أنجلومانيا الظاهرة هنا مدفوعة. السعر وطريقة الدفع بيتأكدوا معاك على واتساب قبل الإرسال. أما كتب الوزارة الرسمية فروابطها متاحة في زر «كتب الوزارة».</p></details>
   <details><summary>الملفات لأي فصل دراسي؟</summary><p>الموجود حاليًا ملفات الفصل الدراسي الأول، ونضيف باقي الفصول تباعًا.</p></details>
   <details><summary>أنا معلّم، أقدر أستفيد؟</summary><p>أكيد. اختار «معلّم» في النموذج واكتب نوع المادة اللي محتاجها (ملف، ورق عمل، مراجعة)، ونرد عليك في الجروب.</p></details>
@@ -205,16 +230,19 @@ const WA='https://chat.whatsapp.com/Kw2BtMZmpn9LaKWExgNHsB';
 const WN='201069167219';
 const DATA=[{"id":"eg-g1-grammar","t":"جرامر","g":1,"p":30,"c":"EG-001","k":"gov"},{"id":"eg-g1-grammar-connect","t":"جرامر كونكت بلس","g":1,"p":30,"c":"EG-002","k":"plus"},{"id":"eg-g1-writing","t":"كتابة البرجراف","g":1,"p":9,"c":"EG-003","k":"gov"},{"id":"eg-g2-grammar","t":"جرامر","g":2,"p":23,"c":"EG-004","k":"gov"},{"id":"eg-g2-grammar-connect","t":"جرامر كونكت بلس","g":2,"p":50,"c":"EG-005","k":"plus"},{"id":"eg-g2-writing","t":"كتابة البرجراف","g":2,"p":8,"c":"EG-006","k":"gov"},{"id":"eg-g3-grammar","t":"جرامر","g":3,"p":55,"c":"EG-007","k":"gov"},{"id":"eg-g3-writing","t":"كتابة البرجراف","g":3,"p":20,"c":"EG-008","k":"gov"},{"id":"eg-g4-grammar","t":"جرامر","g":4,"p":20,"c":"EG-009","k":"gov"},{"id":"eg-g4-grammar-connect","t":"جرامر كونكت بلس","g":4,"p":40,"c":"EG-010","k":"plus"},{"id":"eg-g4-writing","t":"كتابة البرجراف","g":4,"p":14,"c":"EG-011","k":"gov"},{"id":"eg-g5-grammar","t":"جرامر","g":5,"p":30,"c":"EG-012","k":"gov"},{"id":"eg-g5-grammar-connect","t":"جرامر كونكت بلس","g":5,"p":32,"c":"EG-013","k":"plus"},{"id":"eg-g5-writing","t":"كتابة البرجراف","g":5,"p":17,"c":"EG-014","k":"gov"},{"id":"eg-g6-grammar","t":"جرامر","g":6,"p":33,"c":"EG-015","k":"gov"},{"id":"eg-g6-grammar-hello","t":"جرامر هاللو بلس","g":6,"p":21,"c":"EG-016","k":"plus"},{"id":"eg-g6-writing","t":"كتابة البرجراف","g":6,"p":29,"c":"EG-017","k":"gov"},{"id":"eg-g7-grammar","t":"جرامر","g":7,"p":32,"c":"EG-018","k":"gov"},{"id":"eg-g7-grammar-hello","t":"جرامر هاللو بلس","g":7,"p":44,"c":"EG-019","k":"plus"},{"id":"eg-g7-writing","t":"كتابة البرجراف","g":7,"p":23,"c":"EG-020","k":"gov"},{"id":"eg-g8-grammar","t":"جرامر","g":8,"p":50,"c":"EG-021","k":"gov"},{"id":"eg-g8-writing","t":"كتابة البرجراف","g":8,"p":28,"c":"EG-022","k":"gov"},{"id":"eg-g9-grammar","t":"جرامر","g":9,"p":38,"c":"EG-023","k":"gov"},{"id":"eg-g9-writing","t":"كتابة البرجراف","g":9,"p":16,"c":"EG-024","k":"gov"},{"id":"eg-g10-grammar","t":"جرامر","g":10,"p":53,"c":"EG-025","k":"gov"}];
 const GN={1:'الصف الأول الابتدائي',2:'الصف الثاني الابتدائي',3:'الصف الثالث الابتدائي',4:'الصف الرابع الابتدائي',5:'الصف الخامس الابتدائي',6:'الصف السادس الابتدائي',7:'الصف الأول الإعدادي',8:'الصف الثاني الإعدادي',9:'الصف الثالث الإعدادي',10:'الصف الأول الثانوي'};
+const GA={...GN,11:'الصف الثاني الثانوي',12:'الصف الثالث الثانوي'};
+const RS={p:[1,2,3,4,5,6],i:[7,8,9],s:[10,11,12]};
+let rvT='gov',rvS='p';
 const ST={'ابتدائي':[1,2,3,4,5,6],'إعدادي':[7,8,9],'ثانوي':[10]};
 let grade='all',track='all',qs='';
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const TR={gov:'حكومي',plus:'بلس'};
+const TR={gov:'حكومي',plus:'بلس',azhar:'أزهر'};
 function pills(){
   const r=$('#gradeRow');
   const all=[['all','كل الصفوف']].concat(Object.keys(GN).map(g=>[g,GN[g].replace('الصف ','')]));
   r.innerHTML=all.map(([g,t])=>`<button class="pill" type="button" data-g="${g}" aria-pressed="${g==grade}">${esc(t)}</button>`).join('');
-  $('#fGrade').innerHTML=Object.keys(GN).map(g=>`<option value="${g}">${GN[g]}</option>`).join('');
+  $('#fGrade').innerHTML=Object.keys(GA).map(g=>`<option value="${g}">${GA[g]}</option>`).join('');
 }
 function match(b){
   if(grade!=='all'&&b.g!=+grade)return false;
@@ -224,15 +252,20 @@ function match(b){
 }
 function render(){
   const L=DATA.filter(match);
-  if(!L.length){$('#list').innerHTML='<div class="none">مفيش ملفات مطابقة دلوقتي. جرّب تغيّر الصف أو المسار، أو ابعت طلبك ونجهّزه لك.</div>';return}
+  if(!L.length){$('#list').innerHTML='<div class="none">'+(track==='azhar'?'ملفات الأزهر قيد التجهيز. اطلب اللي محتاجه من «المراجعات النهائية» أو من نموذج الطلب.':'مفيش ملفات مطابقة دلوقتي. جرّب تغيّر الصف أو المسار، أو ابعت طلبك ونجهّزه لك.')+'</div>';return}
   const by={};L.forEach(b=>(by[b.g]=by[b.g]||[]).push(b));
   $('#list').innerHTML=Object.keys(by).sort((a,b)=>a-b).map(g=>`<div class="gr"><h3>${GN[g]} <small>الفصل الأول</small></h3><div class="bk">${by[g].map(b=>`
   <article class="cd ${b.k}"><div class="im"><img loading="lazy" src="pdf/covers/${b.id}.jpg" alt="غلاف ${esc(b.t)} ${GN[b.g]}"></div>
   <div class="bd"><b>${esc(b.t)}</b><div class="meta"><span class="chip ${b.k=='plus'?'pl':''}">${TR[b.k]}</span><span class="chip">${b.p} صفحة</span><span class="chip">${esc(b.c)}</span><span class="chip pd">مدفوع</span></div>
   <button class="btn s" type="button" data-req="${b.id}">اطلب الملف</button></div></article>`).join('')}</div></div>`).join('');
 }
+function rvRender(){
+  $('#rvList').innerHTML=RS[rvS].map(g=>`<article class="rc ${rvT}"><span class="ic">🏁</span><b>المراجعة النهائية</b><span class="s">${GA[g]} · ${TR[rvT]}</span><button class="btn s" type="button" data-rv="${g}">اطلب المراجعة</button></article>`).join('');
+  document.querySelectorAll('#rvTrack .pill').forEach(x=>x.setAttribute('aria-pressed',x.dataset.rt==rvT));
+  document.querySelectorAll('#rvStage .pill').forEach(x=>x.setAttribute('aria-pressed',x.dataset.rs==rvS));
+}
 function msg(){
-  const r=$('#fRole').value,g=GN[$('#fGrade').value],t=$('#fTrack').value,n=$('#fNeed').value,m=$('#fMsg').value.trim(),c=$('#fMsg').dataset.code;
+  const r=$('#fRole').value,g=GA[$('#fGrade').value],t=$('#fTrack').value,n=$('#fNeed').value,m=$('#fMsg').value.trim(),c=$('#fMsg').dataset.code;
   let s=`السلام عليكم، أنا ${r}.\nالصف: ${g}\nالمسار: ${t}\nمحتاج: ${n}`;
   if(c)s+=`\nكود الملف: ${c}`;
   if(m)s+=`\nتفاصيل: ${m}`;
@@ -248,6 +281,10 @@ document.addEventListener('click',async e=>{
   const p=e.target.closest('.pill');
   if(p&&p.dataset.g){grade=p.dataset.g;pills();render();return}
   if(p&&p.dataset.t){track=p.dataset.t;document.querySelectorAll('#trackRow .pill').forEach(x=>x.setAttribute('aria-pressed',x.dataset.t==track));render();return}
+  const rt=e.target.closest('[data-rt]');if(rt){rvT=rt.dataset.rt;rvRender();return}
+  const rs=e.target.closest('[data-rs]');if(rs){rvS=rs.dataset.rs;rvRender();return}
+  const rv=e.target.closest('[data-rv]');
+  if(rv){$('#fGrade').value=rv.dataset.rv;$('#fTrack').value=TR[rvT];$('#fNeed').value='مراجعة نهائية';delete $('#fMsg').dataset.code;pv();$('#request').scrollIntoView();return}
   const w=e.target.closest('[data-role]');
   if(w){$('#fRole').value=w.dataset.role;pv();$('#request').scrollIntoView();return}
   const rq=e.target.closest('[data-req]');
@@ -258,7 +295,7 @@ $('#q').addEventListener('input',e=>{qs=e.target.value.trim().toLowerCase();rend
 $('#cp').onclick=async()=>{$('#ok').textContent=(await copy())?'تم نسخ الرسالة ✓':'تعذّر النسخ، انسخ النص يدويًا من المربع الأصفر'};
 $('#go').onclick=()=>{window.open('https://wa.me/'+WN+'?text='+encodeURIComponent(msg()),'_blank','noopener');$('#ok').textContent='بنفتحلك واتساب والرسالة جاهزة ✓'};
 $('#gp').onclick=async()=>{const ok=await copy();$('#ok').textContent=ok?'تم نسخ الرسالة ✓ الصقها في الجروب':'انسخ الرسالة من المربع الأصفر ثم الصقها في الجروب';window.open(WA,'_blank','noopener')};
-pills();render();pv();
+pills();render();rvRender();pv();
 const io=new IntersectionObserver(es=>{$('#fab').style.display=es[0].isIntersecting?'none':'inline-flex'});io.observe($('#request'));
 </script>
 </body>
