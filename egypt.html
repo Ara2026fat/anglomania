@@ -149,7 +149,7 @@ footer .mot{margin-top:6px}
 
 <section id="request"><div class="w">
   <h2>اطلب ملف أو اسأل مستر حسام</h2>
-  <p class="sub">املا البيانات، هتطلعلك رسالة جاهزة. اضغط «افتح واتساب» وابعتها في الجروب.</p>
+  <p class="sub">املا البيانات، هتطلعلك رسالة جاهزة. اضغط «ابعت على واتساب» وهتتفتح المحادثة والرسالة مكتوبة.</p>
   <form class="fm" id="fm" onsubmit="return false">
     <div class="two">
       <div><label for="fRole">أنا</label>
@@ -166,7 +166,8 @@ footer .mot{margin-top:6px}
     <div><label for="fMsg">تفاصيل (اختياري)</label><textarea id="fMsg" placeholder="مثلا: الدرس أو الوحدة اللي محتاجها"></textarea></div>
     <div class="pv" id="pv" aria-live="polite"></div>
     <div class="cta" style="margin:0;justify-content:flex-start">
-      <button class="btn" id="go" type="button">انسخ الرسالة وافتح واتساب</button>
+      <button class="btn" id="go" type="button">ابعت على واتساب</button>
+      <button class="btn o" id="gp" type="button">انسخ وابعت في الجروب</button>
       <button class="btn o" id="cp" type="button">نسخ فقط</button>
     </div>
     <div class="ok" id="ok" role="status"></div>
@@ -176,7 +177,7 @@ footer .mot{margin-top:6px}
 <section id="faq"><div class="w">
   <h2>أسئلة شائعة</h2>
   <p class="sub">إجابات سريعة لأكتر الأسئلة.</p>
-  <details><summary>إزاي أطلب ملف؟</summary><p>اختار الملف من القائمة واضغط «اطلب الملف»، أو املا نموذج الطلب. هتتنسخ لك رسالة جاهزة وتفتح جروب واتساب أنجلومانيا، وتبعتها هناك.</p></details>
+  <details><summary>إزاي أطلب ملف؟</summary><p>اختار الملف من القائمة واضغط «اطلب الملف»، أو املا نموذج الطلب. هتفتح لك محادثة واتساب والرسالة جاهزة، وتبعتها بضغطة واحدة. وتقدر كمان تبعتها في جروب أنجلومانيا.</p></details>
   <details><summary>إيه الفرق بين حكومي وبلس؟</summary><p>«حكومي» لطلاب المدارس الحكومية، و«بلس» لطلاب مسار Plus (مثل Connect Plus وHello Plus). اختار مسارك وهنعرضلك الملفات المناسبة.</p></details>
   <details><summary>الملفات مدفوعة ولا مجانية؟</summary><p>ملفات أنجلومانيا الظاهرة هنا مدفوعة. السعر وطريقة الدفع بيتأكدوا معاك على واتساب قبل الإرسال. أما كتب الوزارة الرسمية فروابطها متاحة في زر «كتب الوزارة».</p></details>
   <details><summary>الملفات لأي فصل دراسي؟</summary><p>الموجود حاليًا ملفات الفصل الدراسي الأول، ونضيف باقي الفصول تباعًا.</p></details>
@@ -201,6 +202,7 @@ footer .mot{margin-top:6px}
 
 <script>
 const WA='https://chat.whatsapp.com/Kw2BtMZmpn9LaKWExgNHsB';
+const WN='201069167219';
 const DATA=[{"id":"eg-g1-grammar","t":"جرامر","g":1,"p":30,"c":"EG-001","k":"gov"},{"id":"eg-g1-grammar-connect","t":"جرامر كونكت بلس","g":1,"p":30,"c":"EG-002","k":"plus"},{"id":"eg-g1-writing","t":"كتابة البرجراف","g":1,"p":9,"c":"EG-003","k":"gov"},{"id":"eg-g2-grammar","t":"جرامر","g":2,"p":23,"c":"EG-004","k":"gov"},{"id":"eg-g2-grammar-connect","t":"جرامر كونكت بلس","g":2,"p":50,"c":"EG-005","k":"plus"},{"id":"eg-g2-writing","t":"كتابة البرجراف","g":2,"p":8,"c":"EG-006","k":"gov"},{"id":"eg-g3-grammar","t":"جرامر","g":3,"p":55,"c":"EG-007","k":"gov"},{"id":"eg-g3-writing","t":"كتابة البرجراف","g":3,"p":20,"c":"EG-008","k":"gov"},{"id":"eg-g4-grammar","t":"جرامر","g":4,"p":20,"c":"EG-009","k":"gov"},{"id":"eg-g4-grammar-connect","t":"جرامر كونكت بلس","g":4,"p":40,"c":"EG-010","k":"plus"},{"id":"eg-g4-writing","t":"كتابة البرجراف","g":4,"p":14,"c":"EG-011","k":"gov"},{"id":"eg-g5-grammar","t":"جرامر","g":5,"p":30,"c":"EG-012","k":"gov"},{"id":"eg-g5-grammar-connect","t":"جرامر كونكت بلس","g":5,"p":32,"c":"EG-013","k":"plus"},{"id":"eg-g5-writing","t":"كتابة البرجراف","g":5,"p":17,"c":"EG-014","k":"gov"},{"id":"eg-g6-grammar","t":"جرامر","g":6,"p":33,"c":"EG-015","k":"gov"},{"id":"eg-g6-grammar-hello","t":"جرامر هاللو بلس","g":6,"p":21,"c":"EG-016","k":"plus"},{"id":"eg-g6-writing","t":"كتابة البرجراف","g":6,"p":29,"c":"EG-017","k":"gov"},{"id":"eg-g7-grammar","t":"جرامر","g":7,"p":32,"c":"EG-018","k":"gov"},{"id":"eg-g7-grammar-hello","t":"جرامر هاللو بلس","g":7,"p":44,"c":"EG-019","k":"plus"},{"id":"eg-g7-writing","t":"كتابة البرجراف","g":7,"p":23,"c":"EG-020","k":"gov"},{"id":"eg-g8-grammar","t":"جرامر","g":8,"p":50,"c":"EG-021","k":"gov"},{"id":"eg-g8-writing","t":"كتابة البرجراف","g":8,"p":28,"c":"EG-022","k":"gov"},{"id":"eg-g9-grammar","t":"جرامر","g":9,"p":38,"c":"EG-023","k":"gov"},{"id":"eg-g9-writing","t":"كتابة البرجراف","g":9,"p":16,"c":"EG-024","k":"gov"},{"id":"eg-g10-grammar","t":"جرامر","g":10,"p":53,"c":"EG-025","k":"gov"}];
 const GN={1:'الصف الأول الابتدائي',2:'الصف الثاني الابتدائي',3:'الصف الثالث الابتدائي',4:'الصف الرابع الابتدائي',5:'الصف الخامس الابتدائي',6:'الصف السادس الابتدائي',7:'الصف الأول الإعدادي',8:'الصف الثاني الإعدادي',9:'الصف الثالث الإعدادي',10:'الصف الأول الثانوي'};
 const ST={'ابتدائي':[1,2,3,4,5,6],'إعدادي':[7,8,9],'ثانوي':[10]};
@@ -254,7 +256,8 @@ document.addEventListener('click',async e=>{
 $('#q').addEventListener('input',e=>{qs=e.target.value.trim().toLowerCase();render()});
 ['fRole','fGrade','fTrack','fNeed','fMsg'].forEach(i=>$('#'+i).addEventListener('input',()=>{if(i!=='fMsg')delete $('#fMsg').dataset.code;pv()}));
 $('#cp').onclick=async()=>{$('#ok').textContent=(await copy())?'تم نسخ الرسالة ✓':'تعذّر النسخ، انسخ النص يدويًا من المربع الأصفر'};
-$('#go').onclick=async()=>{const ok=await copy();$('#ok').textContent=ok?'تم نسخ الرسالة ✓ الصقها في الجروب':'انسخ الرسالة من المربع الأصفر ثم الصقها في الجروب';window.open(WA,'_blank','noopener')};
+$('#go').onclick=()=>{window.open('https://wa.me/'+WN+'?text='+encodeURIComponent(msg()),'_blank','noopener');$('#ok').textContent='بنفتحلك واتساب والرسالة جاهزة ✓'};
+$('#gp').onclick=async()=>{const ok=await copy();$('#ok').textContent=ok?'تم نسخ الرسالة ✓ الصقها في الجروب':'انسخ الرسالة من المربع الأصفر ثم الصقها في الجروب';window.open(WA,'_blank','noopener')};
 pills();render();pv();
 const io=new IntersectionObserver(es=>{$('#fab').style.display=es[0].isIntersecting?'none':'inline-flex'});io.observe($('#request'));
 </script>
