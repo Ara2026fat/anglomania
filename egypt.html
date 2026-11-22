@@ -189,7 +189,7 @@ footer .mot{margin-top:6px}
     </div>
   </div>
   <div class="rv" id="rvList"></div>
-  <div class="off" id="rvExt"><p><b>مراجعات جاهزة إضافية</b><br>مجموعة مراجعات من موقع مصري خارجي، تفتح في صفحة المصدر ومحتواها لأصحابه الأصليين.</p><a class="btn o s" href="https://storage.gps.com.eg/qrs/html5/1795014586_NSUZk8/index.html?qrcode=Wy7hz696" target="_blank" rel="noopener noreferrer">افتح المراجعات</a></div>
+  <div class="off" id="rvExt" aria-live="polite"></div>
 </div></section>
 
 <section id="request"><div class="w">
@@ -286,7 +286,18 @@ function render(){
   <div class="bd"><b>${esc(b.t)}</b><div class="meta"><span class="chip ${b.k=='plus'?'pl':''}">${TR[b.k]}</span><span class="chip">${b.p} صفحة</span><span class="chip">${esc(b.c)}</span><span class="chip pd">مدفوع</span></div>
   <button class="btn s" type="button" data-req="${b.id}">اطلب الملف</button></div></article>`).join('')}</div></div>`).join('');
 }
+const EXT_URL='https://storage.gps.com.eg/qrs/html5/1795014586_NSUZk8/index.html?qrcode=Wy7hz696';
+const EXT={
+  gov:{u:EXT_URL,n:'طلاب التعليم العام',d:'الابتدائي من الأول للسادس، والإعدادي من الأول للثالث (مراجعة نهائية وتدريبات معدلة)، والصف الأول الثانوي.'},
+  plus:{u:EXT_URL,n:'طلاب المدارس الرسمية والخاصة لغات',d:'مراجعات Connect Plus وHello Plus. اختار القسم الثاني من صفحة المصدر.'},
+  azhar:{u:EXT_URL,n:'طلاب الأزهر الشريف',d:'مراجعات الأزهر. اختار القسم الثالث من صفحة المصدر.'}
+};
+function rvExt(){
+  const e=EXT[rvT];
+  $('#rvExt').innerHTML=`<p><b>مراجعات دليل المعاصر · الفصل الأول 2027</b><br>${e.d}<br><small>من إصدار شركة جي بي إس (GPS) / المعاصر، وحقوقها لأصحابها. نوفّر لك الرابط فقط ويفتح في موقع المصدر.</small><br><small>للصف الثاني والثالث الثانوي مراجعات المصدر غير متوفرة، فاطلبها من أنجلومانيا بالأعلى.</small></p><a class="btn o s" href="${e.u}" target="_blank" rel="noopener noreferrer">افتح مراجعات ${e.n}</a>`;
+}
 function rvRender(){
+  rvExt();
   $('#rvList').innerHTML=RS[rvS].map(g=>`<article class="rc ${rvT}"><span class="ic">🏁</span><b>المراجعة النهائية</b><span class="s">${GA[g]} · ${TR[rvT]}</span><button class="btn s" type="button" data-rv="${g}">اطلب المراجعة</button></article>`).join('');
   document.querySelectorAll('#rvTrack .pill').forEach(x=>x.setAttribute('aria-pressed',x.dataset.rt==rvT));
   document.querySelectorAll('#rvStage .pill').forEach(x=>x.setAttribute('aria-pressed',x.dataset.rs==rvS));
