@@ -120,7 +120,7 @@ footer .mot{margin-top:6px}
 <main>
 <div class="w">
   <div class="hero">
-    <span class="tag">المنهج المصري · حكومي وبلس وأزهر</span>
+    <span class="tag">المنهج المصري · حكومي وبلس</span>
     <h1>إنجليزي <em>بسيط وممتع</em><br>لكل صف من أولى ابتدائي لأولى ثانوي</h1>
     <p>ملفات جرامر وكتابة مصمّمة بعناية، بإشراف تعليمي من مستر حسام. اختار صفك والمسار، واطلب الملف في دقيقة على واتساب.</p>
     <div class="cta"><a class="btn" href="#books">شوف الملفات</a><a class="btn o" href="#request">ابعت طلبك</a></div>
@@ -144,7 +144,6 @@ footer .mot{margin-top:6px}
       <button class="pill gold" type="button" data-t="all" aria-pressed="true">كل المسارات</button>
       <button class="pill gold" type="button" data-t="gov" aria-pressed="false">حكومي</button>
       <button class="pill gold" type="button" data-t="plus" aria-pressed="false">بلس</button>
-      <button class="pill gold" type="button" data-t="azhar" aria-pressed="false">أزهر</button>
     </div>
   </div>
   <div id="list"></div>
@@ -203,7 +202,7 @@ footer .mot{margin-top:6px}
   <h2>أسئلة شائعة</h2>
   <p class="sub">إجابات سريعة لأكتر الأسئلة.</p>
   <details><summary>إزاي أطلب ملف؟</summary><p>اختار الملف من القائمة واضغط «اطلب الملف»، أو املا نموذج الطلب. هتفتح لك محادثة واتساب والرسالة جاهزة، وتبعتها بضغطة واحدة. وتقدر كمان تبعتها في جروب أنجلومانيا.</p></details>
-  <details><summary>إيه الفرق بين حكومي وبلس؟</summary><p>«حكومي» لطلاب المدارس الحكومية، و«بلس» لطلاب مسار Plus (مثل Connect Plus وHello Plus)، و«أزهر» لطلاب المعاهد الأزهرية. اختار مسارك وهنعرضلك الملفات المناسبة.</p></details>
+  <details><summary>إيه الفرق بين حكومي وبلس؟</summary><p>«حكومي» لطلاب المدارس الحكومية، و«بلس» لطلاب مسار Plus (مثل Connect Plus وHello Plus)، وفي «المراجعات النهائية» بس فيه كمان مسار «أزهر» لطلاب المعاهد الأزهرية. اختار مسارك وهنعرضلك الملفات المناسبة.</p></details>
   <details><summary>الملفات مدفوعة ولا مجانية؟</summary><p>ملفات أنجلومانيا الظاهرة هنا مدفوعة. السعر وطريقة الدفع بيتأكدوا معاك على واتساب قبل الإرسال. أما كتب الوزارة الرسمية فروابطها متاحة في زر «كتب الوزارة».</p></details>
   <details><summary>الملفات لأي فصل دراسي؟</summary><p>الموجود حاليًا ملفات الفصل الدراسي الأول، ونضيف باقي الفصول تباعًا.</p></details>
   <details><summary>أنا معلّم، أقدر أستفيد؟</summary><p>أكيد. اختار «معلّم» في النموذج واكتب نوع المادة اللي محتاجها (ملف، ورق عمل، مراجعة)، ونرد عليك في الجروب.</p></details>
@@ -252,7 +251,7 @@ function match(b){
 }
 function render(){
   const L=DATA.filter(match);
-  if(!L.length){$('#list').innerHTML='<div class="none">'+(track==='azhar'?'ملفات الأزهر قيد التجهيز. اطلب اللي محتاجه من «المراجعات النهائية» أو من نموذج الطلب.':'مفيش ملفات مطابقة دلوقتي. جرّب تغيّر الصف أو المسار، أو ابعت طلبك ونجهّزه لك.')+'</div>';return}
+  if(!L.length){$('#list').innerHTML='<div class="none">مفيش ملفات مطابقة دلوقتي. جرّب تغيّر الصف أو المسار، أو ابعت طلبك ونجهّزه لك.</div>';return}
   const by={};L.forEach(b=>(by[b.g]=by[b.g]||[]).push(b));
   $('#list').innerHTML=Object.keys(by).sort((a,b)=>a-b).map(g=>`<div class="gr"><h3>${GN[g]} <small>الفصل الأول</small></h3><div class="bk">${by[g].map(b=>`
   <article class="cd ${b.k}"><div class="im"><img loading="lazy" src="pdf/covers/${b.id}.jpg" alt="غلاف ${esc(b.t)} ${GN[b.g]}"></div>
