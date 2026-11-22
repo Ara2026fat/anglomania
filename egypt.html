@@ -107,7 +107,7 @@ details p{padding:0 16px 14px;color:var(--mu)}
 .ab div{background:#fff;border:2px solid var(--ln);border-radius:var(--r);padding:16px}
 .ab h4{color:var(--g);margin-bottom:4px}
 .ab p{color:var(--mu);font-size:14.5px}
-footer{margin-top:20px;background:var(--gd);color:#e9efe9;padding:22px 0 30px;text-align:center;border-top:4px solid var(--gold);font-size:14px}
+footer{margin-top:20px;background:var(--gd);color:#e9efe9;padding:22px 0 calc(30px + env(safe-area-inset-bottom));text-align:center;border-top:4px solid var(--gold);font-size:14px}
 footer a{color:#fff}
 footer .mot{margin-top:6px}
 .fab{position:fixed;inset-inline-end:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:30;box-shadow:0 8px 22px rgba(14,94,62,.35)}
@@ -334,7 +334,7 @@ $('#cp').onclick=async()=>{$('#ok').textContent=(await copy())?'تم نسخ ال
 $('#go').onclick=()=>{window.open('https://wa.me/'+WN+'?text='+encodeURIComponent(msg()),'_blank','noopener');$('#ok').textContent='بنفتحلك واتساب والرسالة جاهزة ✓'};
 $('#gp').onclick=async()=>{const ok=await copy();$('#ok').textContent=ok?'تم نسخ الرسالة ✓ الصقها في الجروب':'انسخ الرسالة من المربع الأصفر ثم الصقها في الجروب';window.open(WA,'_blank','noopener')};
 pills();render();rvRender();anRender();pv();
-const io=new IntersectionObserver(es=>{$('#fab').style.display=es[0].isIntersecting?'none':'inline-flex'});io.observe($('#request'));
+const vis=new Set();const io=new IntersectionObserver(es=>{es.forEach(e=>e.isIntersecting?vis.add(e.target.id||'f'):vis.delete(e.target.id||'f'));$('#fab').style.display=vis.size?'none':'inline-flex'});io.observe($('#request'));io.observe(document.querySelector('footer'));
 </script>
 </body>
 </html>
