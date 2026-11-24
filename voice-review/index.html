@@ -36,10 +36,10 @@ audio{width:100%;margin:10px 0}
 .num{font-feature-settings:"lnum"}
 </style></head><body><div class="w">
 <h1>مراجعة صوت الفيديو التعريفي</h1>
-<p class="mut">تسعة مقاطع للفيديو التعريفي للمنصة. الطريقة:</p>
+<p class="mut">مقاطع الفيديو التعريفي للمنصة. الطريقة:</p>
 <ol>
-<li>الصق المفتاح، ثم اضغط «ولّد غير المولَّد».</li>
-<li>استمع لكل مقطع، ثم اضغط ✓ صح أو ✗ خطأ.</li>
+<li>الصق المفتاح، ثم اضغط زراً واحداً: «ولّد الكل وشغّله بالتتابع». يولّد كل المقاطع تلقائياً ثم يشغّلها واحداً بعد الآخر.</li>
+<li>أثناء الاستماع اضغط ✓ صح أو ✗ خطأ، ويبقى التشغيل مستمراً للمقطع التالي.</li>
 <li>عند ✗ اكتب السبب في خانة «ما الخطأ؟»، ثم اضغط «انسخ تقرير الأخطاء» والصقه لي.</li>
 <li>حين تصير كلها صح اضغط «نزّل المعتمد» وأرسل لي الملف.</li>
 </ol>
@@ -63,8 +63,9 @@ audio{width:100%;margin:10px 0}
 </details></div>
 
 <div class="card"><div class="mut" id="stat">—</div>
+<label style="display:flex;gap:10px;align-items:center;margin:10px 0 0;font-weight:400"><input type="checkbox" id="autoN" style="width:22px;height:22px;flex:none" checked> يشغّل المقطع التالي تلقائياً بعد انتهاء السابق</label>
 <div class="bar" style="margin:10px 0"><i id="b1" style="background:var(--g)"></i><i id="b2" style="background:var(--bad)"></i><i id="b3" style="background:var(--hold)"></i><i id="b4" style="background:var(--gl)"></i></div>
-<div class="g2"><button class="pri" id="genNew">ولّد غير المولَّد</button><button id="genBad">أعد توليد الخاطئة</button>
+<div class="g2"><button class="pri" id="genNew" style="grid-column:1/-1">ولّد الكل وشغّله بالتتابع</button><button id="playAll">شغّل الكل بالتتابع</button><button id="stopAll">أوقف التشغيل</button><button id="genBad">أعد توليد الخاطئة</button>
 <button id="copyRep">انسخ تقرير الأخطاء لأرسله لك</button><button class="on" data-f="all" id="fAll">اعرض الكل</button>
 <button data-f="ok" id="fOk">اعرض المعتمد (٠)</button><button data-f="bad" id="fBad">اعرض الخاطئة (٠)</button>
 <button data-f="hold" id="fHold">اعرض المؤجلة (٠)</button><button data-f="new" id="fNew">اعرض غير المراجَع</button></div>
@@ -94,12 +95,14 @@ function bind(){
   $('#model').onchange=function(){S.model=this.value;saveS()};$('#stab').onchange=function(){S.stab=this.value;saveS()};$('#rules').oninput=function(){S.rules=this.value;saveS()};
 }
 function cnt(){var c={ok:0,bad:0,hold:0,gen:0,new:0,audio:0};SC.forEach(function(s){var o=ST[s.id];if(o.blob)c.audio++;c[o.status]=(c[o.status]||0)+1});return c}
-function render(){
+function renderStat(){
   var c=cnt(),n=SC.length,chars=SC.reduce(function(a,s){return a+ST[s.id].text.length},0);
   $('#stat').textContent='مولَّدة '+AR(c.audio)+' · صح '+AR(c.ok)+' · خطأ '+AR(c.bad)+' · مؤجلة '+AR(c.hold)+' · من '+AR(n)+' · الحروف: نحو '+AR(chars);
   $('#b1').style.width=c.ok/n*100+'%';$('#b2').style.width=c.bad/n*100+'%';$('#b3').style.width=c.hold/n*100+'%';$('#b4').style.width=c.gen/n*100+'%';
   $('#fOk').textContent='اعرض المعتمد ('+AR(c.ok)+')';$('#fBad').textContent='اعرض الخاطئة ('+AR(c.bad)+')';$('#fHold').textContent='اعرض المؤجلة ('+AR(c.hold)+')';
-  $$('[data-f]').forEach(function(b){b.classList.toggle('on',b.dataset.f===filt)});
+  $$('[data-f]').forEach(function(b){b.classList.toggle('on',b.dataset.f===filt)})}
+function render(){
+  renderStat();
   var h='';
   SC.forEach(function(s,i){var o=ST[s.id];
     var show=filt==='all'||(filt==='new'?(o.status==='new'||o.status==='gen'):o.status===filt);if(!show)return;
@@ -108,7 +111,7 @@ function render(){
      +'<div class="mut" dir="ltr" style="text-align:right">'+s.id+'.mp3</div>'
      +'<textarea data-t="1">'+o.text.replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</textarea>'
      +'<div class="g2" style="margin:10px 0"><select data-vs="1"><option value="">الصوت الافتراضي</option><option value="1">صوت ١</option><option value="2">صوت ٢</option><option value="3">صوت ٣</option><option value="4">صوت ٤</option></select><button data-gen="1">'+(o.blob?'أعد توليد هذا':'ولّد هذا')+'</button></div>'
-     +(o.blob?'<audio controls preload="none" src="'+URL.createObjectURL(o.blob)+'"></audio>':'')
+     +(o.blob?'<audio controls preload="auto" src="'+URL.createObjectURL(o.blob)+'"></audio>':'')
      +'<div class="g3"><button data-st="ok" class="'+(o.status==='ok'?'on':'')+'" '+(o.blob?'':'disabled')+'>✓ صح</button><button data-st="bad" class="bad '+(o.status==='bad'?'on':'')+'" '+(o.blob?'':'disabled')+'>✗ خطأ</button><button data-st="hold" class="hold '+(o.status==='hold'?'on':'')+'" '+(o.blob?'':'disabled')+'>أجّل</button></div>'
      +'<input data-r="1" placeholder="ما الخطأ؟" value="'+o.reason.replace(/"/g,'&quot;')+'"></div>';
   });
@@ -120,7 +123,7 @@ $('#list').addEventListener('change',function(e){var d=e.target.closest('.sc');i
 $('#list').addEventListener('input',function(e){var d=e.target.closest('.sc');if(!d)return;var o=ST[d.dataset.id];
   if(e.target.dataset.t){o.text=e.target.value;put(d.dataset.id)}if(e.target.dataset.r){o.reason=e.target.value;put(d.dataset.id)}});
 $('#list').addEventListener('click',function(e){var d=e.target.closest('.sc');if(!d)return;var id=d.dataset.id,o=ST[id];
-  if(e.target.dataset.st){o.status=e.target.dataset.st;put(id);render()}
+  if(e.target.dataset.st){o.status=e.target.dataset.st;put(id);if(filt!=='all'){render()}else{d.className='sc '+o.status;$('.tag',d).textContent={ok:'صح ✓',bad:'خطأ ✗',hold:'مؤجل'}[o.status];$$('[data-st]',d).forEach(function(b){b.classList.toggle('on',b.dataset.st===o.status)});renderStat()}}
   if(e.target.dataset.gen){gen([id])}});
 $$('[data-f]').forEach(function(b){b.onclick=function(){filt=b.dataset.f;render()}});
 /* ---- generate ---- */
@@ -134,10 +137,18 @@ async function genOne(id){
   o.blob=await r.blob();o.status='gen';put(id);
 }
 var busy=false;
-async function gen(ids){if(busy)return;busy=true;var done=0;
-  try{for(var i=0;i<ids.length;i++){msg('أولّد '+AR(i+1)+' من '+AR(ids.length)+'…',0);await genOne(ids[i]);done++;render()}msg('تم توليد '+AR(done)+' مقطع')}
-  catch(e){msg('تعذّر: '+e.message,6000)}busy=false;render()}
-$('#genNew').onclick=function(){var ids=SC.filter(function(s){return !ST[s.id].blob}).map(function(s){return s.id});if(!ids.length)return msg('كلها مولَّدة');gen(ids)};
+async function gen(ids,autoplay){if(busy)return;busy=true;var done=0,fail=false;
+  try{for(var i=0;i<ids.length;i++){msg('أولّد '+AR(i+1)+' من '+AR(ids.length)+'…',0);await genOne(ids[i]);done++;renderStat()}msg('تم توليد '+AR(done)+' مقطع')}
+  catch(e){fail=true;msg('تعذّر: '+e.message,6000)}busy=false;render();if(autoplay&&!fail)playFrom(0)}
+$('#genNew').onclick=function(){var ids=SC.filter(function(s){return !ST[s.id].blob}).map(function(s){return s.id});if(!ids.length){playFrom(0);return}gen(ids,true)};
+/* ---- sequential play ---- */
+function auds(){return $$('#list audio')}
+function playFrom(i){var a=auds();if(i>=a.length){msg('انتهت المقاطع');return}
+  a.forEach(function(x){x.pause()});var el=a[i];el.closest('.sc').scrollIntoView({behavior:'smooth',block:'center'});
+  var p=el.play();if(p&&p.catch)p.catch(function(){msg('اضغط تشغيل على المقطع مرة واحدة ثم يكمل وحده',5000)})}
+$('#list').addEventListener('ended',function(e){if(e.target.tagName!=='AUDIO'||!$('#autoN').checked)return;var a=auds(),i=a.indexOf(e.target);if(i>=0)playFrom(i+1)},true);
+$('#playAll').onclick=function(){if(!auds().length)return msg('ولّد المقاطع أولاً');playFrom(0)};
+$('#stopAll').onclick=function(){auds().forEach(function(x){x.pause()})};
 $('#genBad').onclick=function(){var ids=SC.filter(function(s){return ST[s.id].status==='bad'}).map(function(s){return s.id});if(!ids.length)return msg('لا توجد مقاطع خاطئة');gen(ids.map(function(id){ST[id].status='new';return id}))};
 /* ---- report ---- */
 $('#copyRep').onclick=function(){
