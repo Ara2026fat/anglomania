@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>معلّمي | محاكاة المنصة</title>
+<meta name="theme-color" content="#22304a">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Reem+Kufi:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#22304a;--paper:#fff6dc;--card:#fff;--red:#ff5b5b;--blue:#6fb4ff;--purple:#b49bff;--mint:#7be0a0;--yellow:#ffd23f;--orange:#ffb27a;--pink:#ff8fb8;--green:#25a244;--mu:#6b6757;--ac:#6fb4ff}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{font-family:Cairo,system-ui,Tahoma,sans-serif;background:#e9dfc0;color:var(--ink);line-height:1.6;font-size:16px}
+button{font-family:inherit;cursor:pointer;color:inherit}
+.app{max-width:460px;margin:0 auto;min-height:100dvh;background:var(--paper);position:relative;display:flex;flex-direction:column;box-shadow:0 0 0 2px var(--ink)}
+@media(min-width:520px){body{padding:16px 0}.app{min-height:calc(100dvh - 32px);border-radius:28px;overflow:hidden}}
+/* top */
+.top{background:var(--ink);color:#fff7e0;padding:max(10px,env(safe-area-inset-top)) 14px 10px;position:sticky;top:0;z-index:30}
+.row1{display:flex;align-items:center;gap:10px}
+.logo{font:700 22px "Reem Kufi",Cairo,sans-serif;display:flex;align-items:center;gap:8px}
+.logo i{width:30px;height:30px;border-radius:9px;background:var(--yellow);display:grid;place-items:center;color:var(--ink);font-style:normal;font-size:18px;transform:rotate(-6deg)}
+.who{margin-inline-start:auto;background:#ffffff1c;border:2px solid #ffffff44;border-radius:99px;padding:2px 12px 2px 8px;display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px;min-height:40px}
+.roles{display:flex;gap:6px;margin-top:10px}
+.rl{flex:1;border:2px solid #ffffff55;background:transparent;color:#fff7e0;border-radius:99px;font-weight:800;font-size:14px;padding:3px 0;min-height:38px}
+.rl.on{background:var(--c);border-color:var(--c);color:var(--ink);box-shadow:2px 2px 0 #0006}
+.main{flex:1;padding:14px 14px 96px}
+/* nav */
+.nav{position:sticky;bottom:0;display:flex;background:var(--ink);padding:6px 6px max(6px,env(safe-area-inset-bottom));gap:4px;z-index:30;margin-top:auto}
+.nv{flex:1;border:0;background:transparent;color:#ffffffaa;border-radius:14px;padding:6px 2px;font-weight:700;font-size:12px;min-height:54px;display:flex;flex-direction:column;align-items:center;gap:1px}
+.nv span{font-size:20px;line-height:1.2}.nv.on{background:var(--ac);color:var(--ink)}
+.sim{font-size:11px;text-align:center;color:var(--mu);padding:0 0 6px;font-weight:600}
+/* atoms */
+.av{width:var(--s,48px);height:var(--s,48px);border-radius:50%;background:var(--bg);border:2px solid var(--ink);display:grid;place-items:center;font:800 calc(var(--s,48px)*.42)/1 Cairo;color:var(--ink);flex:none;box-shadow:2px 2px 0 var(--ink)}
+.cd{background:var(--card);border:2px solid var(--ink);border-radius:18px;box-shadow:3px 3px 0 var(--ink);padding:12px;margin-bottom:12px}
+.h{font:700 24px/1.2 "Reem Kufi",Cairo,sans-serif;margin:4px 0 10px}
+.h em{font-style:normal;background:var(--yellow);border:2px solid var(--ink);border-radius:9px;padding:0 10px;display:inline-block;transform:rotate(-2deg)}
+.h2{font:700 19px/1.2 "Reem Kufi",Cairo,sans-serif;margin:16px 0 8px;display:flex;align-items:center;gap:8px}
+.h2::after{content:"";flex:1;height:2px;background:var(--ink);opacity:.15}
+.mu{color:var(--mu);font-size:13px}
+.chip{display:inline-block;background:var(--bg,#22304a14);border:1.5px solid var(--ink);border-radius:99px;padding:0 9px;font-size:12px;font-weight:800;margin-inline-end:4px;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:42px;padding:3px 18px;border-radius:99px;border:2px solid var(--ink);background:var(--yellow);font-weight:800;font-size:15px;box-shadow:2px 2px 0 var(--ink);transition:transform .1s,box-shadow .1s;color:var(--ink)}
+.btn:active{transform:translate(2px,2px);box-shadow:0 0 0 var(--ink)}
+.btn.g{background:var(--green);color:#fff}.btn.d{background:var(--ink);color:#fff7e0}.btn.w{background:#fff}
+.btn.s{min-height:34px;font-size:13px;padding:0 12px}
+.pills{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:10px}
+.pl{border:2px solid var(--ink);background:#fff;border-radius:99px;padding:0 13px;font-weight:800;font-size:13px;min-height:34px}
+.pl.on{background:var(--yellow);box-shadow:2px 2px 0 var(--ink)}
+.bar{height:11px;background:#22304a14;border:1.5px solid var(--ink);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--c,var(--mint));border-radius:0 9px 9px 0}
+.tc{display:flex;gap:12px;align-items:center}
+.tc b{font-size:16px;display:block;line-height:1.25}
+.star{color:#e08a00;font-weight:800;font-size:13px}
+.bn{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.kp{border:2px solid var(--ink);border-radius:16px;box-shadow:3px 3px 0 var(--ink);padding:10px;background:var(--bg)}
+.kp b{display:block;font:700 28px/1.1 "Reem Kufi",Cairo}.kp small{font-weight:700;font-size:12px}
+.wk{display:flex;gap:6px;align-items:flex-end;height:70px}.wk div{flex:1;text-align:center;font-size:10px;font-weight:700}.wk i{display:block;background:var(--blue);border:1.5px solid var(--ink);border-radius:6px 6px 0 0;margin-bottom:2px}
+.al{display:flex;gap:10px;align-items:center;padding:8px 0;border-top:1.5px dashed #22304a30;font-size:14px;font-weight:600}.al:first-child{border:0}.al span{font-size:20px}
+.vid{position:relative;aspect-ratio:16/9;border-radius:14px;background:linear-gradient(135deg,#27406b,#0c1424);border:2px solid var(--ink);overflow:hidden;color:#fff7e0;display:grid;place-items:center;margin-bottom:10px}
+.vid .pb{width:62px;height:62px;border-radius:50%;background:var(--yellow);border:2px solid var(--ink);display:grid;place-items:center;font-size:26px;color:var(--ink);box-shadow:3px 3px 0 #0006}
+.wm{position:absolute;left:0;top:0;background:#ffffff40;border-radius:8px;padding:0 10px;font-size:13px;font-weight:700;white-space:nowrap;animation:wm 11s linear infinite alternate}
+@keyframes wm{0%{transform:translate(6px,8px)}25%{transform:translate(180px,90px)}50%{transform:translate(40px,120px)}75%{transform:translate(220px,20px)}100%{transform:translate(90px,70px)}}
+.sh{position:fixed;inset:0;z-index:60;background:#0008;display:none;align-items:flex-end;justify-content:center}.sh.on{display:flex}
+.sh .p{width:100%;max-width:460px;max-height:86dvh;overflow:auto;background:var(--paper);border:2px solid var(--ink);border-radius:24px 24px 0 0;padding:14px 14px max(18px,env(safe-area-inset-bottom))}
+.pr{display:flex;align-items:center;gap:10px;padding:8px;border:2px solid transparent;border-radius:14px;width:100%;background:none;text-align:right}.pr:hover,.pr.on{border-color:var(--ink);background:#fff}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:90px;background:var(--ink);color:#fff7e0;padding:10px 18px;border-radius:14px;font-weight:700;z-index:80;max-width:88%;text-align:center;opacity:0;pointer-events:none;transition:.25s}.toast.on{opacity:1}
+input[type=range]{width:100%;accent-color:var(--ink)}
+.ls{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1.5px dashed #22304a30}.ls:first-child{border:0}
+.big{font:700 34px/1 "Reem Kufi",Cairo}
+.tabs2{display:flex;gap:6px;margin-bottom:10px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+ <div class="top"><div class="row1"><div class="logo"><i>م</i>معلّمي</div><button class="who" id="who" type="button"></button></div><div class="roles" id="roles"></div></div>
+ <div class="main" id="mn"></div>
+ <div class="sim">محاكاة تجريبية: كل الأسماء والأرقام والأسعار وهمية · «معلّمي» اسم مؤقت</div>
+ <nav class="nav" id="nv"></nav>
+</div>
+<div class="sh" id="sh"><div class="p" id="sp"></div></div>
+<div class="toast" id="ts"></div>
+<script>
+var $=function(s){return document.querySelector(s)};
+var AR=function(n){return Number(n).toLocaleString('ar-EG')};
+var COL=['#ff5b5b','#6fb4ff','#b49bff','#7be0a0','#ffd23f','#ffb27a','#ff8fb8'];
+var TRK={gov:['حكومي','#6fb4ff'],plus:['بلس','#b49bff'],azhar:['أزهر','#7be0a0']};
+var STG={prim:'الابتدائي',prep:'الإعدادي',sec:'الثانوي'};
+var SJ={'اللغة العربية':['📚',0],'الرياضيات':['➗',1],'العلوم':['🔬',3],'الفيزياء':['⚡',4],'الإنجليزية':['🔤',5],'الكيمياء':['🧪',2],'الدراسات':['🌍',6],'التربية الدينية':['🌙',3],'الحاسب':['💻',1],'الأحياء':['🧬',3],'الفرنسية':['🥖',0]};
+var T=[
+['هدى عبد الله','اللغة العربية','prep','gov',4.9,212,180,'خبرة ١٢ سنة في تأسيس الإملاء والنحو بأسلوب القصص.'],
+['كريم شعبان','الرياضيات','sec','plus',4.8,340,250,'يبسّط الجبر والتفاضل بأمثلة من الحياة اليومية.'],
+['منى السيد','العلوم','prim','gov',4.9,175,150,'تجارب منزلية بسيطة تجعل العلوم لعبة.'],
+['ياسر فؤاد','الفيزياء','sec','gov',4.7,290,260,'حل مسائل بنمط الامتحان مع شرح الفكرة قبل المعادلة.'],
+['سلمى رضوان','الإنجليزية','prep','plus',4.8,260,200,'محادثة وقواعد وكتابة بمنهج كونكت بلس.'],
+['أحمد منصور','الكيمياء','sec','gov',4.6,198,240,'يربط الجدول الدوري بقصص ممتعة وسهلة الحفظ.'],
+['نادية حسن','الدراسات','prep','gov',4.7,120,140,'خرائط وخطوط زمنية ملونة تُسهّل المذاكرة.'],
+['الشيخ محمود إبراهيم','التربية الدينية','prim','azhar',4.9,150,120,'قرآن وأخلاق وسيرة بأسلوب هادئ للصغار.'],
+['رنا عادل','الحاسب','prep','plus',4.8,95,160,'مبادئ البرمجة بالألعاب والمشاريع الصغيرة.'],
+['عمر السعيد','الأحياء','sec','gov',4.7,230,230,'رسومات يدوية وملخصات للمراجعة السريعة.'],
+['دينا فتحي','الفرنسية','prep','plus',4.6,80,170,'الحروف والمحادثة اليومية من الصفر.'],
+['طارق مصطفى','الرياضيات','prim','gov',4.8,310,160,'أرقام ومسائل بالألعاب والتحديات اليومية.']
+].map(function(a,i){return{id:i,n:a[0],s:a[1],st:a[2],tr:a[3],r:a[4],k:a[5],p:a[6],b:a[7],col:COL[(SJ[a[1]]||[0,i])[1]],ic:(SJ[a[1]]||['📘'])[0],ls:['مقدمة الوحدة','الدرس الأول','الدرس الثاني','تدريبات','مراجعة الوحدة','نموذج امتحان']}});
+var S=[
+['يوسف أحمد','الثاني الإعدادي','prep','gov',[[0,72],[4,40],[6,15]],9],
+['مريم خالد','الأول الثانوي','sec','plus',[[1,60],[3,35],[9,80]],14],
+['آدم محمود','الرابع الابتدائي','prim','gov',[[2,55],[11,90],[7,30]],5],
+['لجين وليد','الثالث الإعدادي','prep','plus',[[4,88],[8,50]],21],
+['عبد الرحمن سامي','الثاني الثانوي','sec','gov',[[3,66],[5,45],[1,20]],3],
+['جنى هاني','الخامس الابتدائي','prim','azhar',[[7,70],[11,25]],11],
+['زياد طارق','الأول الإعدادي','prep','gov',[[0,30],[6,62]],7],
+['ملك ياسر','الثالث الثانوي','sec','gov',[[1,92],[3,85],[5,77],[9,70]],30],
+['سيف الدين عمرو','السادس الابتدائي','prim','gov',[[2,40],[11,58]],2],
+['هبة مصطفى','الأول الإعدادي','prep','plus',[[4,20],[10,35],[8,10]],6]
+].map(function(a,i){return{id:i,n:a[0],g:a[1],st:a[2],tr:a[3],subs:a[4].map(function(x){return{t:x[0],p:x[1]}}),streak:a[5],col:COL[(i+1)%7],wk:[0,1,2,3,4,5,6].map(function(d){return 10+((i*7+d*13)%50)})}});
+var P=[['أم يوسف',[0]],['أبو مريم',[1,2]],['أم لجين',[3]],['أبو عبد الرحمن',[4,8]],['أم جنى',[5]],['أبو زياد',[6,9]]].map(function(a,i){return{id:i,n:a[0],kids:a[1],col:COL[(i+3)%7]}});
+var st={role:'s',pid:{s:0,p:0,t:0},tab:{s:'home',p:'kids',t:'home'},kid:0,open:null,f:{stage:'all',subj:'all'},share:15,sub:300};
+var ROLE={s:['طالب','#6fb4ff'],p:['ولي أمر','#b49bff'],t:['معلّم','#7be0a0']};
+var NAV={s:[['home','🏠','الرئيسية'],['mine','📚','معلميّ'],['find','🔎','اكتشف'],['lesson','▶️','درس']],p:[['kids','👨‍👩‍👧','الأبناء'],['find','🔎','اكتشف'],['pay','💳','المدفوعات']],t:[['home','📊','لوحتي'],['stu','🎓','طلابي'],['cont','🎬','محتواي'],['earn','💰','أرباحي']]};
+function av(n,c,s){return '<span class="av" style="--bg:'+c+';--s:'+(s||48)+'px">'+n.replace(/^(أ\.|الشيخ|أم|أبو)\s*/,'').charAt(0)+'</span>'}
+function tav(t,s){return '<span class="av" style="--bg:'+t.col+';--s:'+(s||52)+'px">'+t.ic+'</span>'}
+function trk(k){return '<span class="chip" style="--bg:'+TRK[k][1]+'">'+TRK[k][0]+'</span>'}
+function toast(m){var e=$('#ts');e.textContent=m;e.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(function(){e.classList.remove('on')},2200)}
+function who(){var r=st.role,i=st.pid[r];return r==='s'?S[i]:r==='p'?P[i]:T[i]}
+function students_of(t){var n=0;S.forEach(function(s){s.subs.forEach(function(x){if(x.t===t)n++})});return n}
+function tcard(t,kid){
+ var sub=kid&&kid.subs.some(function(x){return x.t===t.id});
+ return '<div class="cd tc" data-open="'+t.id+'" style="cursor:pointer">'+tav(t)+'<div style="min-width:0;flex:1"><b>'+t.n+'</b><span class="chip" style="--bg:'+t.col+'">'+t.s+'</span>'+trk(t.tr)+'<div class="mu"><span class="star">★ '+AR(t.r)+'</span> · '+AR(t.k+students_of(t.id))+' طالب · '+STG[t.st]+'</div></div><div style="text-align:center"><b style="font-size:17px">'+AR(t.p)+'</b><div class="mu">جنيه/شهر</div>'+(sub?'<span class="chip" style="--bg:var(--mint)">مشترك ✓</span>':'')+'</div></div>'}
+function bar(p,c){return '<div class="bar" style="--c:'+c+'"><i style="width:'+p+'%"></i></div>'}
+/* ---- views ---- */
+function vFind(kid){
+ var L=T.filter(function(t){return (st.f.stage==='all'||t.st===st.f.stage)&&(st.f.subj==='all'||t.s===st.f.subj)});
+ var subs=[];T.forEach(function(t){if(subs.indexOf(t.s)<0)subs.push(t.s)});
+ var h='<div class="h">اختار <em>معلّمك</em></div><div class="pills">'+[['all','الكل'],['prim','ابتدائي'],['prep','إعدادي'],['sec','ثانوي']].map(function(x){return '<button class="pl'+(st.f.stage===x[0]?' on':'')+'" data-fs="'+x[0]+'">'+x[1]+'</button>'}).join('')+'</div><div class="pills">'+[['all','كل المواد']].concat(subs.map(function(s){return [s,(SJ[s]||[''])[0]+' '+s]})).map(function(x){return '<button class="pl'+(st.f.subj===x[0]?' on':'')+'" data-fj="'+x[0]+'">'+x[1]+'</button>'}).join('')+'</div>';
+ return h+(L.length?L.map(function(t){return tcard(t,kid)}).join(''):'<div class="cd mu">مفيش معلّمين مطابقين دلوقتي.</div>')}
+function vTeacherSheet(id,kid){
+ var t=T[id],sub=kid&&kid.subs.some(function(x){return x.t===id});
+ return '<div class="tc" style="margin-bottom:10px">'+tav(t,64)+'<div><div class="h" style="margin:0;font-size:22px">'+t.n+'</div><span class="chip" style="--bg:'+t.col+'">'+t.s+'</span>'+trk(t.tr)+'</div></div>'
+ +'<div class="vid"><div class="pb">▶</div><div class="wm">'+(kid?kid.n:'اسم المشترك')+'</div></div>'
+ +'<p style="font-weight:600">'+t.b+'</p>'
+ +'<div class="bn" style="margin-top:10px"><div class="kp" style="--bg:var(--yellow)"><b>★ '+AR(t.r)+'</b><small>التقييم</small></div><div class="kp" style="--bg:var(--mint)"><b>'+AR(t.k+students_of(t.id))+'</b><small>طالب مشترك</small></div></div>'
+ +'<div class="h2">محتوى الاشتراك</div>'+t.ls.map(function(l,i){return '<div class="ls"><span class="av" style="--bg:'+(i<2?'var(--mint)':'#fff')+';--s:30px;font-size:14px">'+(i<2?'▶':'🔒')+'</span><b style="font-size:14px">'+l+'</b><span class="mu" style="margin-inline-start:auto">'+(i<2?'مجاني':'للمشتركين')+'</span></div>'}).join('')
+ +'<p class="mu" style="margin:10px 0">الدفع يتم عبر المنصة، واسم المشترك يظهر كعلامة مائية على كل فيديو لحماية حقوق المعلّم.</p>'
+ +(kid?(sub?'<button class="btn w" style="width:100%" data-close="1">أنت مشترك بالفعل ✓</button>':'<button class="btn g" style="width:100%;min-height:50px;font-size:17px" data-sub="'+id+'">اشترك'+(st.role==='p'?' لـ'+kid.n:'')+' · '+AR(t.p)+' جنيه/شهر</button>'):'<button class="btn w" style="width:100%" data-close="1">إغلاق</button>')}
+function vS(tab){var s=S[st.pid.s];
+ if(tab==='home'){var m=s.subs[0],t=T[m.t];
+  return '<div class="h">أهلًا يا <em>'+s.n.split(' ')[0]+'</em></div><div class="cd" style="background:var(--yellow);display:flex;gap:10px;align-items:center"><span style="font-size:30px">🔥</span><div><b style="font-size:18px">'+AR(s.streak)+' يوم متواصل</b><div class="mu" style="color:var(--ink)">كمّل النهاردة عشان ما تقطعش!</div></div></div>'
+  +'<div class="cd tc" data-tab="lesson" style="cursor:pointer;background:#fff"><div style="flex:1"><div class="mu">أكمل من حيث وقفت</div><b style="font-size:19px">'+t.s+' · الدرس الثاني</b><div style="margin:8px 0">'+bar(m.p,t.col)+'</div><span class="chip" style="--bg:'+t.col+'">'+t.n+'</span></div>'+tav(t,60)+'</div>'
+  +'<div class="h2">أيام الأسبوع</div><div class="cd"><div class="wk">'+s.wk.map(function(v,i){return '<div><i style="height:'+v+'px"></i>'+['س','ح','ن','ث','ر','خ','ج'][i]+'</div>'}).join('')+'</div></div>'
+  +'<div class="h2">معلّمون ننصحك بهم</div>'+T.filter(function(t){return t.st===s.st&&!s.subs.some(function(x){return x.t===t.id})}).slice(0,2).map(function(t){return tcard(t,s)}).join('')}
+ if(tab==='mine')return '<div class="h">معلّميّ <em>'+AR(s.subs.length)+'</em></div>'+s.subs.map(function(x){var t=T[x.t];return '<div class="cd tc" data-open="'+t.id+'" style="cursor:pointer">'+tav(t)+'<div style="flex:1"><b>'+t.n+'</b><span class="chip" style="--bg:'+t.col+'">'+t.s+'</span><div style="margin-top:6px">'+bar(x.p,t.col)+'</div><div class="mu">أنجزت '+AR(x.p)+'٪</div></div></div>'}).join('')
+ if(tab==='find')return vFind(s);
+ if(tab==='lesson'){var m=s.subs[0],t=T[m.t];return '<div class="h">الدرس <em>'+t.s+'</em></div><div class="vid" id="vd"><div class="pb" id="pbn">▶</div><div class="wm">'+s.n+'</div></div><div class="cd"><div class="mu">تقدّم الدرس</div>'+bar(m.p,t.col)+'</div><div class="h2">دروس الوحدة</div><div class="cd">'+t.ls.map(function(l,i){var d=i*17<m.p;return '<div class="ls"><span class="av" style="--bg:'+(d?'var(--mint)':'#fff')+';--s:30px;font-size:14px">'+(d?'✓':i+1)+'</span><b style="font-size:14px">'+l+'</b></div>'}).join('')+'</div><button class="btn g" style="width:100%" data-fin="1">أنهيت الدرس ✓</button>'}
+}
+function vP(tab){var p=P[st.pid.p],kids=p.kids.map(function(i){return S[i]}),k=kids[Math.min(st.kid,kids.length-1)];
+ if(tab==='kids'){var tot=k.wk.reduce(function(a,b){return a+b},0);
+  return '<div class="h">أبنائي <em>'+AR(kids.length)+'</em></div><div class="pills">'+kids.map(function(x,i){return '<button class="pl'+(x===k?' on':'')+'" data-kid="'+i+'">'+x.n.split(' ')[0]+'</button>'}).join('')+'</div>'
+  +'<div class="cd tc">'+av(k.n,k.col,56)+'<div><b style="font-size:18px">'+k.n+'</b><div class="mu">'+k.g+' · '+STG[k.st]+'</div>'+trk(k.tr)+'</div></div>'
+  +'<div class="bn"><div class="kp" style="--bg:var(--yellow)"><b>🔥 '+AR(k.streak)+'</b><small>يوم متواصل</small></div><div class="kp" style="--bg:var(--blue)"><b>'+AR(tot)+'</b><small>دقيقة هذا الأسبوع</small></div></div>'
+  +'<div class="h2">تقدّمه مع معلّميه</div>'+k.subs.map(function(x){var t=T[x.t];return '<div class="cd"><div class="tc">'+tav(t,40)+'<b>'+t.s+' <span class="mu">· '+t.n+'</span></b></div><div style="margin-top:8px">'+bar(x.p,t.col)+'</div><div class="mu">'+AR(x.p)+'٪ من المنهج</div></div>'}).join('')
+  +'<div class="h2">تنبيهات</div><div class="cd"><div class="al"><span>✅</span>أنهى «الدرس الثاني» في '+T[k.subs[0].t].s+'</div><div class="al"><span>⏰</span>اختبار قصير غدًا مع '+T[k.subs[Math.min(1,k.subs.length-1)].t].n+'</div><div class="al"><span>📈</span>مستواه في تحسّن هذا الأسبوع</div></div>'}
+ if(tab==='find')return '<div class="mu" style="margin-bottom:6px">الاشتراك سيكون لـ <b>'+k.n.split(' ')[0]+'</b></div>'+vFind(k);
+ if(tab==='pay'){var tot=0;var rows=kids.map(function(x){return '<div class="h2">'+x.n.split(' ')[0]+'</div><div class="cd">'+x.subs.map(function(y){var t=T[y.t];tot+=t.p;return '<div class="ls"><b style="font-size:14px">'+t.s+' · '+t.n+'</b><span style="margin-inline-start:auto;font-weight:800">'+AR(t.p)+'</span></div>'}).join('')+'</div>'}).join('');
+  return '<div class="h">المدفوعات</div><div class="cd" style="background:var(--yellow)"><div class="mu" style="color:var(--ink)">إجمالي هذا الشهر</div><div class="big">'+AR(tot)+' <small style="font-size:16px">جنيه</small></div><div class="mu" style="color:var(--ink)">يُدفع كله عبر المنصة، وتصلك إيصالات إلكترونية.</div></div>'+rows+'<button class="btn d" style="width:100%" data-pay="1">ادفع الآن (تجريبي)</button>'}
+}
+function vT(tab){var t=T[st.pid.t],n=t.k+students_of(t.id),inc=n*t.p,net=Math.round(inc*(1-st.share/100))-st.sub;
+ if(tab==='home')return '<div class="h">أهلًا يا <em>'+t.n.split(' ')[0]+'</em></div><div class="bn"><div class="kp" style="--bg:var(--mint)"><b>'+AR(n)+'</b><small>طالب مشترك</small></div><div class="kp" style="--bg:var(--yellow)"><b>'+AR(net)+'</b><small>صافي هذا الشهر (جنيه)</small></div><div class="kp" style="--bg:var(--pink)"><b>★ '+AR(t.r)+'</b><small>التقييم</small></div><div class="kp" style="--bg:var(--blue)"><b>'+AR(t.ls.length)+'</b><small>دروس منشورة</small></div></div>'
+  +'<div class="cd" style="background:#fff"><div class="mu">الحصة المباشرة القادمة</div><b style="font-size:18px">'+t.s+' · حل نماذج</b><div class="mu">اليوم 8:00 م · '+AR(Math.min(n,40))+' طالب مسجّل</div><button class="btn g s" style="margin-top:8px" data-toast="تجريبي: ستبدأ الحصة من هنا">ابدأ البث</button></div>'
+  +'<div class="h2">آخر النشاط</div><div class="cd"><div class="al"><span>🎓</span>اشترك '+AR(3)+' طلاب جدد هذا الأسبوع</div><div class="al"><span>⭐</span>تقييم جديد: «شرح ممتاز وبسيط»</div><div class="al"><span>💬</span>'+AR(5)+' أسئلة من الطلاب تنتظر ردك</div></div>'
+ if(tab==='stu'){var L=[];S.forEach(function(s){s.subs.forEach(function(x){if(x.t===t.id)L.push([s,x.p])})});
+  return '<div class="h">طلابي <em>'+AR(n)+'</em></div><div class="mu" style="margin-bottom:8px">يظهر هنا طلاب المحاكاة المشتركون معك.</div>'+(L.length?L.map(function(a){return '<div class="cd tc">'+av(a[0].n,a[0].col,44)+'<div style="flex:1"><b>'+a[0].n+'</b><div class="mu">'+a[0].g+'</div><div style="margin-top:5px">'+bar(a[1],t.col)+'</div></div></div>'}).join(''):'<div class="cd mu">لا طلاب تجريبيون بعد. جرّب شخصية معلّم آخر.</div>')}
+ if(tab==='cont')return '<div class="h">محتواي</div><div class="cd" style="background:var(--yellow)"><b>علامة مائية باسم المشترك</b><div class="mu" style="color:var(--ink)">مفعّلة تلقائيًا على كل فيديو لحماية حقوقك.</div></div>'+t.ls.map(function(l,i){return '<div class="cd tc"><span class="av" style="--bg:'+t.col+';--s:42px;font-size:18px">'+(i+1)+'</span><div style="flex:1"><b>'+l+'</b><div class="mu">'+(i<4?'منشور':'مسودة')+' · '+(i<2?'مجاني':'للمشتركين')+'</div></div><span class="chip" style="--bg:'+(i<4?'var(--mint)':'#fff')+'">'+(i<4?'منشور':'مسودة')+'</span></div>'}).join('')+'<button class="btn d" style="width:100%" data-toast="تجريبي: هنا ترفع درسك أو تسجّله">+ ارفع درسًا جديدًا</button>'
+ if(tab==='earn')return '<div class="h">أرباحي <em>الشهر</em></div><div class="cd"><div class="mu">عدد الطلاب (جرّب)</div><b class="big" id="nv1">'+AR(n)+'</b><input type="range" min="20" max="500" value="'+n+'" id="rg"></div><div class="cd" id="eb"></div><p class="mu">فرضيات للنقاش: نسبة المنصة '+AR(st.share)+'٪ واشتراك المعلّم الشهري '+AR(st.sub)+' جنيه. لم تُحسم بعد.</p>'}
+/* ---- render ---- */
+function earn(){var t=T[st.pid.t],n=+$('#rg').value,inc=n*t.p,sh=Math.round(inc*st.share/100),net=inc-sh-st.sub;$('#nv1').textContent=AR(n);
+ $('#eb').innerHTML=[['إيراد الاشتراكات',inc,'var(--blue)'],['نسبة المنصة',-sh,'var(--orange)'],['اشتراك المعلّم',-st.sub,'var(--purple)']].map(function(r){return '<div class="ls"><b style="font-size:14px">'+r[0]+'</b><span style="margin-inline-start:auto;font-weight:800">'+AR(r[1])+'</span></div>'}).join('')+'<div class="kp" style="--bg:var(--mint);margin-top:8px"><small>صافي ربحك الشهري</small><b>'+AR(net)+' جنيه</b></div>'}
+function render(){
+ var r=st.role,c=ROLE[r][1];$('#app').style.setProperty('--ac',c);
+ $('#roles').innerHTML=Object.keys(ROLE).map(function(k){return '<button class="rl'+(k===r?' on':'')+'" style="--c:'+ROLE[k][1]+'" data-role="'+k+'">'+ROLE[k][0]+'</button>'}).join('');
+ var w=who();$('#who').innerHTML=av(w.n,w.col||COL[0],28)+w.n.split(' ')[0]+' ▾';
+ var tab=st.tab[r];$('#nv').innerHTML=NAV[r].map(function(x){return '<button class="nv'+(x[0]===tab?' on':'')+'" data-tab="'+x[0]+'"><span>'+x[1]+'</span>'+x[2]+'</button>'}).join('');
+ $('#mn').innerHTML=r==='s'?vS(tab):r==='p'?vP(tab):vT(tab);
+ if(r==='t'&&tab==='earn'){earn();$('#rg').oninput=earn}
+ window.scrollTo(0,0)}
+function sheet(h){$('#sp').innerHTML=h;$('#sh').classList.add('on')}
+function closeSheet(){$('#sh').classList.remove('on')}
+document.addEventListener('click',function(e){var b;
+ if((b=e.target.closest('[data-role]'))){st.role=b.dataset.role;render();return}
+ if((b=e.target.closest('[data-tab]'))){st.tab[st.role]=b.dataset.tab;render();return}
+ if((b=e.target.closest('[data-fs]'))){st.f.stage=b.dataset.fs;render();return}
+ if((b=e.target.closest('[data-fj]'))){st.f.subj=b.dataset.fj;render();return}
+ if((b=e.target.closest('[data-kid]'))){st.kid=+b.dataset.kid;render();return}
+ if((b=e.target.closest('[data-open]'))){var kid=st.role==='s'?S[st.pid.s]:st.role==='p'?S[P[st.pid.p].kids[Math.min(st.kid,P[st.pid.p].kids.length-1)]]:null;st.open=+b.dataset.open;sheet(vTeacherSheet(st.open,kid));return}
+ if((b=e.target.closest('[data-sub]'))){var k2=st.role==='s'?S[st.pid.s]:S[P[st.pid.p].kids[Math.min(st.kid,P[st.pid.p].kids.length-1)]];k2.subs.push({t:+b.dataset.sub,p:0});closeSheet();toast('تم الاشتراك ✓ (محاكاة) · يظهر الآن في «معلميّ»');render();return}
+ if(e.target.closest('[data-close]')||e.target===$('#sh')){closeSheet();return}
+ if((b=e.target.closest('[data-toast]'))){toast(b.dataset.toast);return}
+ if(e.target.closest('[data-pay]')){toast('تجريبي: هنا تفتح بوابة الدفع المرخّصة');return}
+ if(e.target.closest('[data-fin]')){var m=S[st.pid.s].subs[0];m.p=Math.min(100,m.p+8);toast('أحسنت! تقدّمك '+AR(m.p)+'٪');render();return}
+ if(e.target.closest('#pbn')){var v=$('#vd');v.querySelector('.pb').textContent=v.querySelector('.pb').textContent==='▶'?'⏸':'▶';return}
+ if(e.target.closest('#who')){var r2=st.role,L=r2==='s'?S:r2==='p'?P:T;sheet('<div class="h" style="font-size:20px">اختار الشخصية (محاكاة)</div>'+L.map(function(x,i){return '<button class="pr'+(i===st.pid[r2]?' on':'')+'" data-pick="'+i+'">'+(r2==='t'?tav(x,40):av(x.n,x.col,40))+'<div><b>'+x.n+'</b><div class="mu">'+(r2==='s'?x.g:r2==='p'?AR(x.kids.length)+' من الأبناء':x.s+' · '+STG[x.st])+'</div></div></button>'}).join(''));return}
+ if((b=e.target.closest('[data-pick]'))){st.pid[st.role]=+b.dataset.pick;st.kid=0;closeSheet();render();return}
+});
+render();
+</script>
+</body>
+</html>
