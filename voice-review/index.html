@@ -63,7 +63,8 @@ audio{width:100%;margin:10px 0}
 </details></div>
 
 <div class="card"><div class="mut" id="stat">—</div>
-<label style="display:flex;gap:10px;align-items:center;margin:10px 0 0;font-weight:400"><input type="checkbox" id="autoN" style="width:22px;height:22px;flex:none" checked> بعد ✓ صح: يتولّد المقطع التالي ويشتغل مباشرة</label>
+<label style="display:flex;gap:10px;align-items:center;margin:10px 0 0;font-weight:400"><input type="checkbox" id="autoN" style="width:22px;height:22px;flex:none" checked> بعد ✓ صح: ينتقل إلى المقطع التالي</label>
+<label style="display:flex;gap:10px;align-items:center;margin:10px 0 0;font-weight:400"><input type="checkbox" id="ownV" style="width:22px;height:22px;flex:none"> سأسجّل بصوتي أنا (بدل التوليد)</label>
 <div class="bar" style="margin:10px 0"><i id="b1" style="background:var(--g)"></i><i id="b2" style="background:var(--bad)"></i><i id="b3" style="background:var(--hold)"></i><i id="b4" style="background:var(--gl)"></i></div>
 <div class="g2"><button class="pri" id="start" style="grid-column:1/-1">ابدأ: ولّد الأول وشغّله</button><button id="genNew" style="grid-column:1/-1">ولّد الكل دفعة واحدة وشغّله بالتتابع</button><button id="playAll">شغّل الكل بالتتابع</button><button id="stopAll">أوقف التشغيل</button><button id="genBad">أعد توليد الخاطئة</button>
 <button id="copyRep">انسخ تقرير الأخطاء لأرسله لك</button><button class="on" data-f="all" id="fAll">اعرض الكل</button>
@@ -86,7 +87,7 @@ function msg(t,ms){var m=$('#msg');m.textContent=t;m.style.display='block';clear
 function openDB(){return new Promise(function(res){try{var r=indexedDB.open('narration-review',1);r.onupgradeneeded=function(){r.result.createObjectStore('sc')};r.onsuccess=function(){db=r.result;res()};r.onerror=function(){res()}}catch(e){res()}})}
 function put(id){if(!db)return;try{db.transaction('sc','readwrite').objectStore('sc').put(ST[id],id)}catch(e){}}
 function loadAll(){return new Promise(function(res){if(!db)return res();var q=db.transaction('sc').objectStore('sc').openCursor();q.onsuccess=function(){var c=q.result;if(c){ST[c.key]=c.value;c.continue()}else res()};q.onerror=function(){res()}})}
-function init(){SC.forEach(function(s){var o=ST[s.id]||{};ST[s.id]={text:o.text||s.text,voice:o.voice||'',status:o.status||'new',reason:o.reason||'',blob:o.blob||null}})}
+function init(){SC.forEach(function(s){var o=ST[s.id]||{};ST[s.id]={text:o.text||s.text,voice:o.voice||'',status:o.status||'new',reason:o.reason||'',blob:o.blob||null,ext:o.ext||'mp3'}})}
 /* ---- ui ---- */
 function bind(){
   $('#key').value=S.key;$$('.v').forEach(function(i){i.value=S.v[i.dataset.i]||'';i.oninput=function(){S.v[i.dataset.i]=i.value.trim();saveS()}});
@@ -111,6 +112,7 @@ function render(){
      +'<div class="mut" dir="ltr" style="text-align:right">'+s.id+'.mp3</div>'
      +'<textarea data-t="1">'+o.text.replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</textarea>'
      +'<div class="g2" style="margin:10px 0"><select data-vs="1"><option value="">الصوت الافتراضي</option><option value="1">صوت ١</option><option value="2">صوت ٢</option><option value="3">صوت ٣</option><option value="4">صوت ٤</option></select><button data-gen="1">'+(o.blob?'أعد توليد هذا':'ولّد هذا')+'</button></div>'
+     +'<button data-rec="1" class="rec" style="width:100%;margin-bottom:8px">🎙 '+(o.blob?'أعد التسجيل بصوتي':'سجّل بصوتي')+'</button>'
      +(o.blob?'<audio controls preload="auto" src="'+URL.createObjectURL(o.blob)+'"></audio>':'')
      +'<div class="g3"><button data-st="ok" class="'+(o.status==='ok'?'on':'')+'" '+(o.blob?'':'disabled')+'>✓ صح</button><button data-st="bad" class="bad '+(o.status==='bad'?'on':'')+'" '+(o.blob?'':'disabled')+'>✗ خطأ</button><button data-st="hold" class="hold '+(o.status==='hold'?'on':'')+'" '+(o.blob?'':'disabled')+'>أجّل</button></div>'
      +'<input data-r="1" placeholder="ما الخطأ؟" value="'+o.reason.replace(/"/g,'&quot;')+'"></div>';
@@ -125,7 +127,8 @@ $('#list').addEventListener('input',function(e){var d=e.target.closest('.sc');if
 $('#list').addEventListener('click',function(e){var d=e.target.closest('.sc');if(!d)return;var id=d.dataset.id,o=ST[id];
   if(e.target.dataset.st){o.status=e.target.dataset.st;put(id);if(filt!=='all'){render()}else{d.className='sc '+o.status;$('.tag',d).textContent={ok:'صح ✓',bad:'خطأ ✗',hold:'مؤجل'}[o.status];$$('[data-st]',d).forEach(function(b){b.classList.toggle('on',b.dataset.st===o.status)});renderStat()}
     if(o.status==='ok'&&$('#autoN').checked){var nx=nextAfter(id);if(nx)openAndPlay(nx);else msg('انتهت كل المقاطع ✓ نزّل المعتمد')}}
-  if(e.target.dataset.gen){gen([id])}});
+  if(e.target.dataset.gen){gen([id])}
+  if(e.target.dataset.rec){toggleRec(id,e.target)}});
 $$('[data-f]').forEach(function(b){b.onclick=function(){filt=b.dataset.f;render()}});
 /* ---- generate ---- */
 function applyRules(t){S.rules.split('\n').forEach(function(l){var p=l.split('=>');if(p.length===2&&p[0].trim())t=t.split(p[0].trim()).join(p[1].trim())});return t}
@@ -135,15 +138,27 @@ async function genOne(id){
   var r=await fetch('https://api.elevenlabs.io/v1/text-to-speech/'+encodeURIComponent(vid)+'?output_format=mp3_44100_128',{method:'POST',headers:{'xi-api-key':S.key,'Content-Type':'application/json'},
     body:JSON.stringify({text:applyRules(o.text),model_id:S.model,voice_settings:{stability:parseFloat(S.stab)}})});
   if(!r.ok){var t='';try{t=(await r.json()).detail;t=t.message||JSON.stringify(t)}catch(e){}throw new Error('خطأ '+r.status+' '+t)}
-  o.blob=await r.blob();o.status='gen';put(id);
+  o.blob=await r.blob();o.ext='mp3';o.status='gen';put(id);
 }
 var busy=false;
 async function gen(ids,autoplay){if(busy)return;busy=true;var done=0,fail=false;
   try{for(var i=0;i<ids.length;i++){msg('أولّد '+AR(i+1)+' من '+AR(ids.length)+'…',0);await genOne(ids[i]);done++;renderStat()}msg('تم توليد '+AR(done)+' مقطع')}
   catch(e){fail=true;msg('تعذّر: '+e.message,6000)}busy=false;render();if(autoplay&&!fail)playFrom(0,true)}
 $('#genNew').onclick=function(){var ids=SC.filter(function(s){return !ST[s.id].blob}).map(function(s){return s.id});if(!ids.length){playFrom(0,true);return}gen(ids,true)};
+/* ---- record with own voice ---- */
+var recr=null;
+async function toggleRec(id,btn){
+  if(recr){recr.rec.stop();return}
+  try{var stream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true}})}catch(e){return msg('لم يُسمح بالميكروفون: فعّله من إعدادات المتصفح',6000)}
+  var mt=['audio/mp4','audio/webm;codecs=opus','audio/webm','audio/ogg'].find(function(t){return window.MediaRecorder&&MediaRecorder.isTypeSupported(t)})||'';
+  var rec=new MediaRecorder(stream,mt?{mimeType:mt}:{}),chunks=[];
+  rec.ondataavailable=function(e){if(e.data.size)chunks.push(e.data)};
+  rec.onstop=function(){stream.getTracks().forEach(function(t){t.stop()});recr=null;
+    var type=rec.mimeType||mt||'audio/webm',o=ST[id];o.blob=new Blob(chunks,{type:type});o.ext=type.indexOf('mp4')>-1?'m4a':type.indexOf('ogg')>-1?'ogg':'webm';o.status='gen';put(id);render();msg('تم التسجيل. استمع إليه ثم اضغط ✓ صح',5000)};
+  recr={rec:rec,id:id};rec.start();btn.textContent='⏹ أوقف التسجيل';btn.style.background='#c0392b';btn.style.color='#fff';msg('يسجّل الآن… اقرأ النص ثم اضغط أوقف',0)}
 /* ---- step mode: next one is generated after ✓ ---- */
 async function openAndPlay(id){if(busy)return;var o=ST[id];
+  if(!o.blob&&$('#ownV').checked){filt='all';render();var dd=$('.sc[data-id="'+id+'"]');if(dd)dd.scrollIntoView({behavior:'smooth',block:'center'});msg('اضغط «سجّل بصوتي» واقرأ النص',5000);return}
   if(!o.blob){busy=true;try{msg('أولّد المقطع التالي…',0);await genOne(id);msg('جاهز')}catch(e){busy=false;msg('تعذّر: '+e.message,6000);render();return}busy=false}
   if(filt!=='all')filt='all';render();var d=$('.sc[data-id="'+id+'"]');if(!d)return;
   d.scrollIntoView({behavior:'smooth',block:'center'});var a=$('audio',d);a.pause();var p=a.play();if(p&&p.catch)p.catch(function(){msg('اضغط تشغيل مرة واحدة',5000)})}
@@ -180,7 +195,7 @@ function zip(files){var parts=[],cd=[],off=0,enc=new TextEncoder();
 function dl(blob,name){var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(function(){a.remove();URL.revokeObjectURL(a.href)},2000)}
 $('#dlAll').onclick=async function(){
   var ok=SC.filter(function(s){return ST[s.id].status==='ok'&&ST[s.id].blob});if(!ok.length)return msg('لا يوجد معتمد بعد');
-  var fs=[];for(var i=0;i<ok.length;i++)fs.push({name:ok[i].id+'.mp3',data:new Uint8Array(await ST[ok[i].id].blob.arrayBuffer())});
+  var fs=[];for(var i=0;i<ok.length;i++)fs.push({name:ok[i].id+'.'+(ST[ok[i].id].ext||'mp3'),data:new Uint8Array(await ST[ok[i].id].blob.arrayBuffer())});
   dl(zip(fs),'narration-approved.zip');msg('نُزّل '+AR(ok.length)+' مقطع في ملف مضغوط')};
 /* ---- backup ---- */
 function b64(blob){return new Promise(function(r){var f=new FileReader();f.onload=function(){r(f.result)};f.readAsDataURL(blob)})}
